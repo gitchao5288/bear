@@ -79,8 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
-                    Bear
+                    懒熊闲置
                 </div>
 
                 <div class="links">
