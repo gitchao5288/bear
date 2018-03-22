@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//后台登录路由
+Route::get('/admins/login','admin\LoginController@login');
+//后台处理登录路由
+Route::post('/admins/dologin','admin\LoginController@dologin');
+//验证码路由
+Route::get('/kit/captcha/{tmp}','KitController@captcha');
