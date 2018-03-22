@@ -10,4 +10,5 @@ class AdminUser extends Model
     protected $table = 'adminuser';
     protected $primaryKey = 'uid';
     public $timestamps = false;
+    public $guarded = [];
 }

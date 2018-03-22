@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\AdminUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Crypt;
 use Session;
 
 class LoginController extends Controller
@@ -45,7 +46,13 @@ class LoginController extends Controller
 
 
         //如果密码错误，返回登录页弹窗（您输入的密码不正确）
-        if($req['password'] != $data->password){
+        $repass  = $data->password;
+
+        $cry_str = Crypt::decrypt($repass);
+
+
+        if($req['password'] != $cry_str){
+
             return redirect('/admins/login')->withErrors('密码错误');
         }
 

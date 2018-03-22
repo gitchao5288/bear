@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/admins', function () {
     return view('welcome');
 });
 
@@ -21,3 +21,59 @@ Route::get('/admins/login','admin\LoginController@login');
 Route::post('/admins/dologin','admin\LoginController@dologin');
 //验证码路由
 Route::get('/kit/captcha/{tmp}','KitController@captcha');
+
+
+//后台主页
+Route::get('/admins/index','admin\AdminController@index');
+Route::get('/admins/wel','admin\AdminController@wel');
+
+
+/*分类管理*/
+//类别浏览
+Route::get('/admins/Cate','admin\AdminController@Cate');
+
+
+/*商品管理*/
+//商品浏览
+Route::get('/admins/Good','admin\AdminController@Good');
+
+
+
+/*订单管理*/
+//订单浏览
+Route::get('/admins/Order','admin\AdminController@Order');
+
+/*广告管理*/
+//广告浏览
+Route::get('/admins/AD','admin\AdminController@AD');
+
+/*轮播图管理*/
+//轮播图浏览
+Route::get('/admins/RC','admin\AdminController@RC');
+
+
+/*数据统计*/
+Route::get('/admins/Data','admin\AdminController@Data');
+
+
+/*用户管理*/
+
+
+//管理前台用户添加
+Route::get('/admins/Huseradd','admin\AdminController@Huseradd');
+//前台用户修改
+Route::get('/admins/Huseredit','admin\AdminController@Huseredit');
+
+
+
+//后台用户浏览页面
+//Route::get('/admins/User','admin\AdminController@Auser');
+//后台用户添加
+Route::get('/admins/Useradd','admin\AdminController@Useradd');
+//后台用户修改
+//Route::get('/admins/Useredit','admin\AdminController@Useredit');
+
+
+Route::resource('/admins/User','admin\UserController');
+// Route::get('/admins/Huser','admin\AdminController@Huser');
+
