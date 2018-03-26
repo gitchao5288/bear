@@ -20,12 +20,38 @@ class UserController extends Controller
 
 
         //获取数据库所有用户数据
-        $data = AdminUser::paginate(2);
+//        $data = AdminUser::paginate(2);
 
 
 
 
-         return view('admin.User',['data'=>$data]);
+//         return view('admin.User',['data'=>$data]);
+
+         //分页切单个条件搜索
+//        where(function($query) use($request){
+//            //检测关键字
+//            $username = $request->input('keywords1');
+//            $email = $request->input('keywords2');
+//            //如果用户名不为空
+//            if(!empty($username)) {
+//                $query->where('user_name','like','%'.$username.'%');
+//            }
+//            //如果邮箱不为空
+//            if(!empty($email)) {
+//                $query->where('email','like','%'.$email.'%');
+//            }
+//        })
+
+        //条件查询
+        $uname = $request->input('uname');
+
+         $data = AdminUser::orderBy('uid','asc')
+
+             ->where('uname','like','%'.$request->uname.'%')
+             ->paginate(1);
+
+          return view('admin.User',['data'=>$data,'uname'=>$uname]);
+
     }
 
     /**

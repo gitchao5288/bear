@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/admins', function () {
-    return view('welcome');
+Route::get('/', function () {
+    return view('home.index');
 });
 
 //后台登录路由
@@ -77,3 +77,24 @@ Route::get('/admins/Useradd','admin\AdminController@Useradd');
 Route::resource('/admins/User','admin\UserController');
 // Route::get('/admins/Huser','admin\AdminController@Huser');
 
+
+
+
+
+
+
+
+
+/*
+ * 前台页面
+ */
+
+//购物车页面
+Route::get('/home/shopcart',function(){
+    return view('home.shopcart');
+});
+
+//结算页面
+Route::get('/home/pay',function(){
+    return view('home.pay');
+});

@@ -35,7 +35,7 @@
       <div class="layui-row">
         <form class="layui-form layui-col-md12 x-so" action="/admins/User" method="get">
 
-          <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+          <input type="text" name="uname" value="{{$uname}}"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
       </div>
@@ -100,8 +100,11 @@
           <a class="num" href="">489</a>
           <a class="next" href="">&gt;&gt;</a>
         </div>--}}
-        {!!$data->links()!!}
+        {{--{!!$data->links()!!}--}}
+        {{--{{ $data->appends($request)->rander() }}--}}
+        {!! $data->appends(['uname' => $uname])->links() !!}
       </div>
+
 
     </div>
     <script>
