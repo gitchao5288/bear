@@ -15,6 +15,29 @@ Route::get('/admins', function () {
     return view('welcome');
 });
 
+// 前台 ============================================================================
+    // 注册
+    Route::get('home/login/index','Home\LoginController@index');
+    Route::post('home/login/doreg','Home\LoginController@doreg');
+    Route::get('home/login/log/{token}','Home\LoginController@log')->name('log');
+
+    //邮件注册发送成功跳转路由
+    Route::get('home/login/email','Home\LoginController@email');
+    //手机号注册成功跳转路由
+    Route::get('home/login/phone','Home\LoginController@phone');
+
+    // 手机验证码
+    Route::post('home/login/yzm','Home\LoginController@yzm');
+
+
+    //前台登录
+    Route::get('home/login/login','Home\LoginController@login');
+
+
+
+
+
+
 //后台登录路由
 Route::get('/admins/login','admin\LoginController@login');
 //后台处理登录路由
