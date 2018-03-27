@@ -7,14 +7,14 @@
 
 		<title>结算页面</title>
 
-		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+		<link href="/home/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 
-		<link href="../basic/css/demo.css" rel="stylesheet" type="text/css" />
-		<link href="../css/cartstyle.css" rel="stylesheet" type="text/css" />
+		<link href="/home/basic/css/demo.css" rel="stylesheet" type="text/css" />
+		<link href="/home/basic/css2/cartstyle.css" rel="stylesheet" type="text/css" />
 
-		<link href="../css/jsstyle.css" rel="stylesheet" type="text/css" />
+		<link href="/home/basic/css2/jsstyle.css" rel="stylesheet" type="text/css" />
 
-		<script type="text/javascript" src="../js/address.js"></script>
+		<script type="text/javascript" src="/home/basic/js2/address.js"></script>
 
 	</head>
 
@@ -48,9 +48,9 @@
 			<!--悬浮搜索框-->
 
 			<div class="nav white">
-				<div class="logo"><img src="../images/logo.png" /></div>
+				<div class="logo"><img src="/home/basic/images2/logo.png" /></div>
 				<div class="logoBig">
-					<li><img src="../images/logobig.png" /></li>
+					<li><img src="/home/basic/images2/logobig.png" /></li>
 				</div>
 
 				<div class="search-bar pr">
@@ -171,9 +171,9 @@
 					<div class="logistics">
 						<h3>选择支付方式</h3>
 						<ul class="pay-list">
-							<li class="pay card"><img src="../images/wangyin.jpg" />银联<span></span></li>
-							<li class="pay qq"><img src="../images/weizhifu.jpg" />微信<span></span></li>
-							<li class="pay taobao"><img src="../images/zhifubao.jpg" />支付宝<span></span></li>
+							<li class="pay card"><img src="/home/basic/images2/wangyin.jpg" />银联<span></span></li>
+							<li class="pay qq"><img src="/home/basic/images2/weizhifu.jpg" />微信<span></span></li>
+							<li class="pay taobao"><img src="/home/basic/images2/zhifubao.jpg" />支付宝<span></span></li>
 						</ul>
 					</div>
 					<div class="clear"></div>
@@ -214,7 +214,7 @@
 												<li class="td td-item">
 													<div class="item-pic">
 														<a href="#" class="J_MakePoint">
-															<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
+															<img src="/home/basic/images2/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
 													</div>
 													<div class="item-info">
 														<div class="item-basic-info">
@@ -278,7 +278,7 @@
 												<li class="td td-item">
 													<div class="item-pic">
 														<a href="#" class="J_MakePoint">
-															<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
+															<img src="/home/basic/images2/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
 													</div>
 													<div class="item-info">
 														<div class="item-basic-info">
@@ -441,7 +441,7 @@
 
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
-											<a id="J_Go" href="success.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+											<a id="J_Go" href="/home/success" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
 										</div>
 									</div>
 									<div class="clear"></div>
