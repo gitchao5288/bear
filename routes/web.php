@@ -70,7 +70,20 @@ Route::get('/admins/wel','admin\AdminController@wel');
 //类别浏览
 Route::get('/admins/Cate','admin\AdminController@Cate');
 
+Route::get('/admins/cate/add/{id}','admin\AdminController@CateAdd');
 
+Route::post('/admins/cate/doadd','admin\AdminController@CatedoAdd');
+
+//修改分类
+Route::get('/admins/cate/edit/{id}','admin\AdminController@CateEdit');
+//执行修改
+Route::post('/admins/cate/update','admin\AdminController@CateUpdate');
+
+
+
+Route::get('/admins/cate/addfirst','admin\AdminController@CateAddFirst');
+
+Route::post('admins/cate/doaddfirst','admin\AdminController@CateDoAddFirst');
 /*商品管理*/
 //商品浏览
 Route::get('/admins/Good','admin\AdminController@Good');

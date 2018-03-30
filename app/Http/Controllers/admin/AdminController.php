@@ -89,13 +89,126 @@ class AdminController extends Controller
        $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
        $collection = new Collection($arrs);
-       $perPage = 3;
+       $perPage = 10;
        $currentPageSearchResults = $collection->slice(($currentPage-1) * $perPage, $perPage)->all();
        $paginatedSearchResults = new LengthAwarePaginator($currentPageSearchResults, count($collection), $perPage);
        $paginatedSearchResults = $paginatedSearchResults->setPath('/admins/Cate');
 
       return view('admin.Cate',['arrs'=>$paginatedSearchResults,'countarr'=>$arrs]);
    }
+   
+   //增加一级类别
+    public function CateAddFirst()
+    {
+        return view('admin.CateAddFirst');
+    }
+
+    public function CateDoAddFirst(Request $request)
+    {   $arr = [];
+        $s = Cate::where('cate_name',$request->cate_name)->get();
+
+        if($s){
+            $arr['status'] = 0;
+            $arr['msg'] = '该分类已存在！';
+            return $arr;
+        }
+
+
+
+        $cate = new Cate;
+
+        $cate->pid = $request->pid;
+        $cate->cate_name = $request->cate_name;
+        $res  = $cate->save();
+
+        if($res){
+            $arr['status'] = 1;
+            $arr['msg'] = '添加成功';
+        }else{
+            $arr['status'] = 0;
+            $arr['msg'] = '添加失败';
+        }
+        return $arr;
+
+    }
+
+   //增加子类页面
+    public function CateAdd($id)
+    {
+
+        $res = Cate::find($id);
+
+
+
+        return view('admin.CateAdd',compact('res'));
+    }
+
+
+
+    //处理类别增加
+    public function CatedoAdd(Request $request)
+    {
+
+        $arr = [];
+        $s = Cate::where('cate_name',$request->cate_name)->get();
+
+        if($s){
+            $arr['status'] = 0;
+            $arr['msg'] = '该分类已存在！';
+            return $arr;
+        }
+
+        $cate = new Cate;
+
+        $cate->pid = $request->pid;
+        $cate->cate_name = $request->cate_name;
+        $res  = $cate->save();
+
+        if($res){
+            $arr['status'] = 1;
+            $arr['msg'] = '添加成功';
+        }else{
+            $arr['status'] = 0;
+            $arr['msg'] = '添加失败';
+        }
+        return $arr;
+    }
+
+
+    //类别修改页面
+    public function CateEdit($id)
+    {
+        $data = Cate::find($id);
+
+        return view('admin.CateEdit',compact('data'));
+    }
+
+    //执行修改方法
+    public function CateUpdate(Request $request)
+    {
+        $arr = [];
+        $rea = Cate::where('cate_name',$request->cate_name)->get();
+
+        if(!empty($rea)){
+            $arr['status'] = 0;
+            $arr['msg'] = '该类别已经存在';
+            return $arr;
+        }
+        $a = Cate::find($request->id);
+        $a->cate_name = $request->cate_name;
+        $res = $a->save();
+
+        if($res){
+            $arr['status'] = 1;
+            $arr['msg'] = '修改成功';
+            return $arr;
+        }else{
+            $arr['status'] = 0;
+            $arr['msg'] = '修改失败';
+            return $arr;
+        }
+    }
+
 
    //商品管理
    public function Good(){

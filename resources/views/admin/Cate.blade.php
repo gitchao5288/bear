@@ -36,6 +36,9 @@
 
       </div>
       <xblock>
+        <button class="layui-btn" onclick="x_admin_show('添加一级分类','/admins/cate/addfirst')">
+           <i class="layui-icon">&#xe608;</i>  添加一级类别
+        </button>
 
         <span class="x-right" style="line-height:40px">共有数据：{{ count($countarr) }} 条</span>
       </xblock>
@@ -60,7 +63,10 @@
               @endif
               {{ $v['cate_name'] }}</td>
             <td class="td-manage">
-              <a title="编辑"  onclick="x_admin_show('编辑','admin-edit.html')" href="javascript:;">
+                <a title="添加子分类"  onclick="x_admin_show('添加子分类','/admins/cate/add/{{ $v['id'] }}')" href="javascript:;">
+                    <i class="layui-icon">&#xe654;</i>
+                </a>
+              <a title="编辑分类"  onclick="x_admin_show('编辑分类','/admins/cate/edit/{{ $v['id'] }}')" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
               <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
