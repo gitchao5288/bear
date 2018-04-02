@@ -1,6 +1,10 @@
 @extends('home.login.layout')
 @section('title','注册')
 
+@section('login')
+<a href="{{url('/home/login/login')}}" type="button" id="btn" class="btn btn-default btn-sm">我有账号</a>
+@endsection
+
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -11,10 +15,10 @@
         </ul>
 
             {{--信息错误显示信息--}}
-                <div class="container">
-                    @include('flash::message')
+            <div class="container">
+                @include('flash::message')
 
-                </div>
+            </div>
 
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">
@@ -62,12 +66,11 @@
                         <input type="submit" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
                     </div>
                 </form>
+
             </div>
 
             {{--手机号注册--}}
             <div class="am-tab-panel">
-
-
 
                 <form action="doreg" method="post" class="forms">
                     {{ csrf_field()  }}
@@ -79,8 +82,8 @@
                         <label for="code"><i class="am-icon-code-fork"></i></label>
                         <input type="text" name="code" value="{{old('code')}}" id="code" placeholder="请输入验证码">
                         <span></span>
-                        <a class="btn" href="javascript:void(0);" id="sendMobileCode">
-                            <span id="dyMobileButton" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="点击获取验证码">获取</span></a>
+                        <a class="btn" href="javascript:;" id="sendMobileCode" >
+                            <span id="dyMobileButton" class="btn btn-default" onclick="phone();"  data-toggle="tooltip" data-placement="right" title="点击获取验证码">获取验证码</span></a>
                     </div>
                     <div class="user-phone">
                         <label for="phone"><i class="glyphicon glyphicon-user"></i></label>
@@ -110,153 +113,174 @@
                 <hr>
             </div>
 
-            <style>
-                #emailche{
-                    display: inline-block;
-                    margin: 0;
-                    padding: 0;
-                    border: 0;
-                    font-size: 100%;
-                    font: inherit;
-                    vertical-align: baseline;
-                    font-family: arial,"Lantinghei SC","Microsoft Yahei";
-                }
-                #reader-me{
-                    width: 14px;
-                    height: 14px;
-                    line-height: 14px;
-                }
-                .container,.alert-danger{
-                    width: 340px;
-                    position: fixed;
-                    top: 290px;
-                    right: 210px;
-                    z-index: 999;
-                }
-                input#code{
-                    width: 75%;
-                }
-                #dyMobileButton{
-                    color: #ee3495;
-                    width: 20%;
-                }
-
-
-            </style>
-
-            {{--表单提交--------------------------------------}}
-            <script>
-                $('div.alert').not('.alert-important').delay(3000).fadeOut(300);
-
-                $('.btn1').click(function(){
-                    $('#sampledata2').bringins({
-                        "position":"left",
-                        "color":"#d2527f",
-                        "width":"40%",
-                        "closeButton":"white"
-                    });
-                });
-
-                $(function() {
-                    $('#doc-my-tabs').tabs();
-
-                    //获取验证码
-                    $('#sendMobileCode').click(function(){
-
-                        var number = $('input[name=phone]').val();
-
-                        $.ajax({
-                            type: "POST",
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            url: "/home/login/yzm",
-                            data: {number:number},
-                            dataType: "json",
-                            success: function (data) {
-
-                                console.log(data);
-                                code = data;
-                            }
-
-                        });
-
-                        if ( number ) {
-
-                            $('#dyMobileButton').html('已发送').css('color','green');
-
-                        }
-
-                        //阻止默认行为
-                        return false;
-
-                    });
-
-                    // 验证码做比较
-                    $('#code').blur(function(){
-
-                        //获取值
-                        var cv = $(this).val();
-
-                        if(cv == code){
-
-                            $(this).css('border','solid 1px green');
-                            $(this).next().text(' √').css('color','green');
-
-                            CV = true;
-
-                        } else {
-
-                            $(this).css('border','solid 2px red');
-                            $(this).next().text(' *').css('color','red');
-
-                            CV = false;
-
-                        }
-
-                    });
-
-                    // if(confirm('同意协议'));
-                    // 点击同意才能注册通过
-                    var che1;
-                    var che2;
-
-                    $("input[type='checkbox']").eq(0).click(function(){
-
-                        che1 = $("input[type='checkbox']").eq(0).is(':checked');
-                        // console.log(che1);
-                    });
-
-                    $('input[type="checkbox"]').eq(1).click(function(){
-
-                        che2 = $('input[type="checkbox"]').eq(1).is(':checked');
-
-                        // console.log(che2)
-                    });
-
-
-
-                    $('.forms').submit(function(){
-                        if ( che1 || ( che2 && CV ) ) {
-
-                            return true;
-
-                        }
-
-                        alert('请您认真阅读服务协议');
-
-                        return false;
-                    })
-
-
-
-
-                });
-
-            </script>
-
         </div>
     </div>
+
+    <style>
+        #emailche{
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+            font-family: arial,"Lantinghei SC","Microsoft Yahei";
+        }
+        #reader-me{
+            width: 14px;
+            height: 14px;
+            line-height: 14px;
+        }
+        .container,.alert-danger{
+            width: 340px;
+            position: fixed;
+            top: 290px;
+            right: 210px;
+            z-index: 999;
+        }
+        input#code{
+            width: 60%;
+        }
+        #dyMobileButton{
+
+            color: #1a1a1a;
+            width: 35%;
+        }
+
+    </style>
+
+    {{--表单提交--------------------------------------}}
+    <script>
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(300);
+
+        $('.btn1').click(function(){
+            $('#sampledata2').bringins({
+                "position":"left",
+                "color":"#d2527f",
+                "width":"40%",
+                "closeButton":"white"
+            });
+        });
+
+        //获取验证码
+        function phone(){
+
+            var num = $('input[name=phone]').val();
+            if(!num) {
+                alert('手机号不能为空');
+                return;
+            }
+
+            var res = setTime();
+            if(res){
+                return ;
+            }
+
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "/home/login/yzm",
+                data: {number:num},
+                dataType: "json",
+                success: function (data) {
+
+                    console.log(data);
+                    code = data;
+                }
+            });
+        }
+
+        var djs= 60;
+        function setTime(){
+
+            //如果在60s内，按钮显示倒计时效果，并且是禁用的灰色
+            if(djs != 0){
+                // $('#dyMobileButton').
+                $('#dyMobileButton').text("已发送("+djs+")s").css('color','#1a1a1a');
+                $('#dyMobileButton').removeAttr('onclick');
+                $('#dyMobileButton').attr('disabled','disabled');
+                djs--;
+                setTimeout(function(){
+                    setTime();
+                },1000);
+
+            }else{
+                // 如果已经超过60s,将按钮的文字设置成发送验证码，并启用按钮
+                $('#dyMobileButton').text("重新发送");
+                $('#dyMobileButton').attr('onclick','phone()');
+            }
+
+
+        }
+
+        $(function() {
+            $('#doc-my-tabs').tabs();
+
+            // 验证码做比较
+            $('#code').blur(function(){
+
+                //获取值
+                var cv = $(this).val();
+
+                if(cv == code){
+
+                    $(this).css('border','solid 1px green');
+                    $(this).next().text(' √').css('color','green');
+
+                    CV = true;
+
+                } else {
+
+                    $(this).css('border','solid 2px red');
+                    $(this).next().text(' *').css('color','red');
+
+                    CV = false;
+
+                }
+
+            });
+
+            // if(confirm('同意协议'));
+            // 点击同意才能注册通过
+            var che1;
+            var che2;
+
+            $("input[type='checkbox']").eq(0).click(function(){
+
+                che1 = $("input[type='checkbox']").eq(0).is(':checked');
+                // console.log(che1);
+            });
+
+            $('input[type="checkbox"]').eq(1).click(function(){
+
+                che2 = $('input[type="checkbox"]').eq(1).is(':checked');
+
+                // console.log(che2)
+            });
+
+
+
+            $('.forms').submit(function(){
+                if ( che1 || ( che2 && CV ) ) {
+
+                    return true;
+
+                }
+
+                alert('请您认真阅读服务协议');
+
+                return false;
+            })
+
+
+
+
+        });
+
+    </script>
 @endsection
 
 

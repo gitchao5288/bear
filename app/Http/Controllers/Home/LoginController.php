@@ -6,12 +6,18 @@ use App\MyClass\PhoneCode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Mail;
 use DB;
 use Naux\Mail\SendCloudTemplate;
 
+use Cookie;
+
 use App\Model;
+use App\Model\HomeUser;
+
+use App\MyClass\code\Code;
 
 
 
@@ -25,6 +31,7 @@ class LoginController extends Controller
         return view('home.login.index');
 
     }
+
 
     // 表单传过来数据
     public function doreg(Request $request)
@@ -59,11 +66,10 @@ class LoginController extends Controller
             $rand = $data['rand'] = str_random(50);
 //            dd($data);
 
-
             $user = '';
             $user_email = '';
-            $user = Model\HomeUser::where('uname', $name)->first();
-            $user_email = Model\HomeUser::where('email', $email)->first();
+            $user = HomeUser::where('uname', $name)->first();
+            $user_email = HomeUser::where('email', $email)->first();
 
 
             if ($user && $name == $user->uname) {
@@ -85,7 +91,7 @@ class LoginController extends Controller
 //            销毁确认密码
             unset($repass);
 
-            $res = new Model\HomeUser;
+            $res = new HomeUser;
             $res->uname = $name;
             $res->email = $email;
             $res->password = Crypt::encrypt($pass);
@@ -93,10 +99,8 @@ class LoginController extends Controller
 
             $res->maketime = time();
 
-
 //            添加到数据库
             $rows = $res->save();
-//            dd($res);
 
             // 发送邮件 携带随机数($rand)
             $bind_data = [
@@ -106,10 +110,9 @@ class LoginController extends Controller
             $template = new SendCloudTemplate('test_template_active', $bind_data);
 
             Mail::raw($template, function ($message) use ($data) {
-                $message->from('determined_xw@126.com', '懒熊 提醒您');
+                $message->from('determined_xw@126.com', '懒熊宝宝 提醒您');
                 $message->to($data['email']);
             });
-
 
 //            判断邮件是否发送成功
             if ($rows) {
@@ -146,7 +149,7 @@ class LoginController extends Controller
                 'uname.between' => '用户名必须在2-16位之间',
                 'password.required' => '密码不能为空',
                 'password.between' => '密码必须在6-10位之间',
-                'repassword.required' => '确认密码不能为空',
+                'repassword.required' => '两次密码输入不一致',
                 'repassword.same' => '两次密码输入不一致'
             ];
 
@@ -161,13 +164,13 @@ class LoginController extends Controller
 
 
 //         3. 判断是否有此用户
-            $user_name = Model\HomeUser::where('uname', $data['uname'])->first();
+            $user_name = HomeUser::where('uname', $data['uname'])->first();
             if ($user_name) {
                 return redirect('home/login/index')->with('errors', '该用户名已被注册');
             }
 
 //          4. 判断手机号是否被注册
-            $user_phone = Model\HomeUser::where('phone', $data['phone'])->first();
+            $user_phone = HomeUser::where('phone', $data['phone'])->first();
             if ($user_phone) {
                 return redirect('home/login/index')->with('errors', '此手机号已被注册');
             }
@@ -176,7 +179,7 @@ class LoginController extends Controller
 //           5. 销毁确认密码
             unset($repass);
 
-            $res = new Model\HomeUser;
+            $res = new HomeUser;
             $res->uname = $name;
             $res->phone = $phone;
             $res->password = Crypt::encrypt($pass);
@@ -223,11 +226,11 @@ class LoginController extends Controller
         session()->put('code',$code);
 
         $appId = "68054d38f4bd458f95ad87c0dd2363e0";
-        $templateId = "297138";
+        $templateId = "299390";
         $param=$code;
 
         $ucpass->templateSMS($appId,$roNumber,$templateId,$param);
-
+//        dd(session()->get('code'));
         return $code;
 
     }
@@ -252,21 +255,104 @@ class LoginController extends Controller
         $res= DB::table('homeuser')->where('rand',$rand)->first();
 
         if (!$res) {
+            flash('激活失败')->error();
+//            return redirect('/home/login/index');
             return redirect()->route('/home/login/index');
         }
+
         $row = DB::table('homeuser')
             ->where('uid',$res->uid)
             ->update(['status'=>'1']);
-
-        return redirect('/home/login/login');
+        if ( $row ) {
+            return redirect('/home/login/login');
+        }
     }
 
-//    登录 ============================================
+//    前台登录 ================================================
     public function login()
     {
 //        显示登录页
         return view('home.login.login');
+
     }
+
+//    生成验证码
+    public function code()
+    {
+        $code = new Code;
+        return $code->make();
+    }
+
+//    登录处理
+    public function doLogin(Request $request)
+    {
+//        1. 获取用户提交数据
+        $input = $request->except('_token');
+//        dd($input);
+
+//        2. 对提交的数据进行验证
+        $rule = [
+            'uname'=>'required',
+            'password'=>'required',
+            'code'=>'required',
+        ];
+        $msg = [
+            'uname.required'=>'用户名不能为空',
+            'password.required'=>'密码不能为空',
+            'code.required'=>'验证码不正确',
+        ];
+
+        $validator = Validator::make($input,$rule,$msg);
+//        如果验证失败
+        if ( $validator->fails() ) {
+            return redirect('home/login/login')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+//        3. 判断验证码
+        if ( strtolower($input['code']) != strtolower(session()->get('code')) ) {
+            return redirect('home/login/login')->with('errors','验证码错误');
+        }
+
+//        4. 判断是否有此用户
+        $uname_user = HomeUser::where('uname',$input['uname'])->first();
+        $email_user = HomeUser::where('email',$input['uname'])->first();
+        $phone_user = HomeUser::where('phone',$input['uname'])->first();
+        if ( !$uname_user && !$email_user && !$phone_user ) {
+            return redirect('home/login/login')->with('errors','账号与密码不匹配,请重新输入');
+        }
+
+        if ( $uname_user ) {
+            $user = $uname_user;
+
+        } else if ( $email_user ) {
+            $user = $email_user;
+
+        } else if ( $phone_user ) {
+            $user = $phone_user;
+        }
+//        dd($user);
+
+//        5. 判断密码是否正确
+        if ( $input['password'] != Crypt::decrypt($user->password) ) {
+            return redirect('home/login/login')->with('errors','密码错误');
+        }
+//        dd($user);
+
+//        6. 用户信息保存到session
+        Session::put('user',$user);
+
+//        将密码用户名存入cookie
+        Cookie::queue('www', $user->uname, 1);
+
+//        dd(Cookie::get('www'));
+
+//        7. 如果都正确跳转到前台首页
+        return redirect('home/index');
+
+    }
+
 
 
 }
