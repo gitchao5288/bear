@@ -107,7 +107,7 @@ class AdminController extends Controller
     {   $arr = [];
         $s = Cate::where('cate_name',$request->cate_name)->get();
 
-        if($s){
+        if($s->count()!=0){
             $arr['status'] = 0;
             $arr['msg'] = '该分类已存在！';
             return $arr;
@@ -152,7 +152,7 @@ class AdminController extends Controller
         $arr = [];
         $s = Cate::where('cate_name',$request->cate_name)->get();
 
-        if($s){
+        if($s->count()!=0){
             $arr['status'] = 0;
             $arr['msg'] = '该分类已存在！';
             return $arr;
@@ -209,6 +209,27 @@ class AdminController extends Controller
         }
     }
 
+
+    //类别删除
+    public function CateDel(Request $request)
+    {
+        $data = Cate::where('pid',$request->id)->get();
+        $arr = [];
+        if($data->count()==0){
+            $res = Cate::find($request->id)->delete();
+            if($res){
+                $arr['status'] = 1;
+                $arr['msg'] = '删除成功';
+            }else{
+                $arr['status'] = 0;
+                $arr['msg'] = '删除失败';
+            }
+        }else{
+            $arr['status'] = 0;
+            $arr['msg'] = '此类别下还有子分类，不能删除！';
+        }
+        return $arr;
+    }
 
    //商品管理
    public function Good(){

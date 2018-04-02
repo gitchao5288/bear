@@ -96,12 +96,7 @@
                             <li>
                                 <a class="J_menuItem" href="/admins/Cate" tppabs="http://www.zi-han.net/theme/hplus/graph_echarts.html">分类浏览</a>
                             </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_flot.html" tppabs="http://www.zi-han.net/theme/hplus/graph_flot.html">分类增加</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_morris.html" tppabs="http://www.zi-han.net/theme/hplus/graph_morris.html">分类删除</a>
-                            </li>
+                           
 
                         </ul>
                     </li>

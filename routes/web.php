@@ -79,6 +79,8 @@ Route::get('/admins/cate/edit/{id}','admin\AdminController@CateEdit');
 //执行修改
 Route::post('/admins/cate/update','admin\AdminController@CateUpdate');
 
+//删除分类
+Route::get('/admins/cate/del','admin\AdminController@CateDel');
 
 
 Route::get('/admins/cate/addfirst','admin\AdminController@CateAddFirst');

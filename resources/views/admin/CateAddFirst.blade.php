@@ -70,6 +70,7 @@
                         var index = parent.layer.getFrameIndex(window.name);
                         //关闭当前frame
                         parent.layer.close(index);
+                        parent.location.reload(true);
                     });
                 } else {
                     layer.alert(data.msg, {icon: 5},function () {
@@ -77,6 +78,7 @@
                         var index = parent.layer.getFrameIndex(window.name);
                         //关闭当前frame
                         parent.layer.close(index);
+                        parent.location.reload(true);
                     });
                 }
             });

@@ -69,7 +69,7 @@
               <a title="编辑分类"  onclick="x_admin_show('编辑分类','/admins/cate/edit/{{ $v['id'] }}')" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
-              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+              <a title="删除" onclick="member_del(this,{{ $v['id'] }})" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
             </td>
@@ -132,9 +132,28 @@
       /*用户-删除*/
       function member_del(obj,id){
           layer.confirm('确认要删除吗？',function(index){
+
+              $.get('/admins/cate/del',{id:id},function(data){
+                  console.log(data);
+                  if(data.status==1){
+
+                      layer.alert(data.msg, {icon: 6},function () {
+                          //刷新父页面
+                          location.reload(true);
+                      });
+
+
+                  }else{
+                      layer.alert(data.msg, {icon: 5},function () {
+                          //刷新父页面
+                          location.reload(true);
+                      });
+                  }
+              })
               //发异步删除数据
-              $(obj).parents("tr").remove();
-              layer.msg('已删除!',{icon:1,time:1000});
+              /*$(obj).parents("tr").remove();
+
+              layer.msg('已删除!',{icon:1,time:1000});*/
           });
       }
 
