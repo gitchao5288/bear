@@ -95,10 +95,18 @@ Route::get('/admins/Good','admin\AdminController@Good');
 /*订单管理*/
 //订单浏览
 Route::get('/admins/Order','admin\AdminController@Order');
+/*订单管理*/
+//订单浏览
+Route::get('/admins/Order/delall','admin\OrderController@delall');
+Route::resource('/admins/Order','admin\OrderController');
+
+
 
 /*广告管理*/
 //广告浏览
-Route::get('/admins/AD','admin\AdminController@AD');
+Route::get('/admins/AD/delall','admin\Adcontroller@delall');
+Route::post('/admins/AD/upload','admin\Adcontroller@upload');
+Route::resource('/admins/AD','admin\Adcontroller');
 
 /*轮播图管理*/
 //轮播图浏览
@@ -129,7 +137,6 @@ Route::get('/admins/Useradd','admin\AdminController@Useradd');
 
 Route::resource('/admins/User','admin\UserController');
 // Route::get('/admins/Huser','admin\AdminController@Huser');
-
 
 
 
