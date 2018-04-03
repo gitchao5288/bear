@@ -349,7 +349,7 @@ class LoginController extends Controller
 //        dd(Cookie::get('www'));
 
 //        7. 如果都正确跳转到前台首页
-        return redirect('home/index');
+        return redirect('/');
 
     }
 
