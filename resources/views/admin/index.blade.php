@@ -126,11 +126,7 @@
                         <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">广告管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="/admins/AD" tppabs="http://www.zi-han.net/theme/hplus/typography.html">广告发布</a>
-                            </li>
-
-
-                            <li><a class="J_menuItem" href="buttons.html" tppabs="http://www.zi-han.net/theme/hplus/buttons.html">广告修改</a>
-                            </li>
+                            
                         </ul>
                     </li>
 
