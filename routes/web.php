@@ -1,6 +1,7 @@
 <?php
 
 /*
+ *
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ Route::get('/', function () {
 // 前台 ============================================================================
     // 注册
     Route::get('home/login/index','Home\LoginController@index');
+//    邮箱注册
     Route::post('home/login/doreg','Home\LoginController@doreg');
     Route::get('home/login/log/{token}','Home\LoginController@log')->name('log');
 
@@ -29,9 +31,9 @@ Route::get('/', function () {
     // 手机验证码
     Route::post('home/login/yzm','Home\LoginController@yzm');
 
-
-    //前台登录
+    ///*前台登录 **********************************/
     Route::get('home/login/login','Home\LoginController@login');
+
 
 
 /*
@@ -50,6 +52,36 @@ Route::get('/home/pay',function(){
 Route::get('/home/success',function(){
     return view('home.success');
 });
+
+    // 生成验证码路由
+    Route::get('home/login/code','Home\loginController@code');
+
+    // 前台登录处理路由
+    Route::post('home/login/dologin','Home\LoginController@dologin');
+
+    /*忘记密码路由 **************************************/
+    Route::get('home/getpass/forget','Home\GetpassController@forget');
+    // 邮箱找回 ------------------------/
+    Route::get('home/getpass/emailpass','Home\GetpassController@emailpass');
+//    验证身份
+    Route::post('home/getpass/emailget','Home\GetpassController@emailget');
+//    发送验证邮件
+    Route::get('home/getpass/erepass/{rand}','Home\GetpassController@erepass')->name('erepass');
+//    找回密码邮件跳转路由
+    Route::get('home/getpass/epass/{token}','Home\GetpassController@epass')->name('epass');
+//    执行重置密码路由
+    Route::post('home/getpass/eget','Home\GetpassController@eget');
+    Route::get('home/getpass/emaildone','Home\GetpassController@emaildone');
+
+    // 手机号找回 ------------------------/
+    Route::get('home/getpass/phonepass','Home\GetpassController@phonepass');
+    // 手机验证码
+    Route::post('home/getpass/yzm','Home\GetpassController@yzm');
+//    执行找回
+    Route::post('home/getpass/phoneget','Home\GetpassController@phoneget');
+//    手机号找回成功
+    Route::get('home/getpass/phonedone','Home\GetpassController@phonedone');
+
 
 
 

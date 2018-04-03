@@ -10,34 +10,47 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    <link rel="stylesheet" href="/home/AmazeUI-2.4.2/assets/css/amazeui.min.css" />
-    <link href="/home/css/dlstyle.css" rel="stylesheet" type="text/css">
-    <link type="text/css" rel="stylesheet" href="/home/bs/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('/home/AmazeUI-2.4.2/assets/css/amazeui.min.css')}}" />
+    <link href="{{asset('/home/css/dlstyle.css')}}" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" href="{{asset('/home/bs/css/bootstrap.min.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="/home/css/bootstrap-grid.min.css" />
-    <link rel="stylesheet" type="text/css" href="/home/css/reset.css">
-    <script src="/home/js/jquery-3.2.1.min.js"></script>
-    <script src="/home/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('/home/css/bootstrap-grid.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/home/css/reset.css')}}">
+    <script src="{{asset('/home/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('/home/AmazeUI-2.4.2/assets/js/amazeui.min.js')}}"></script>
 
-    <script type="text/javascript" src="/home/js/bringins.js"></script>
-    <script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{asset('/home/js/bringins.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/home/bs/js/bootstrap.min.js')}}"></script>
 
     {{--<link rel="stylesheet" href="/home/layui/css/layui.css">--}}
     {{--<script src="/home/layui/layui.js"></script>--}}
 
 
-
+    <style>
+        #btn{
+            float: right;
+            margin-top: 15px;
+            margin-right: 20px;
+        }
+    </style>
 
 
 </head>
 
 <body>
 
-<div class="login-boxtitle">
-    <a href="home/demo.html"><img alt="" src="/home/images/logobig.png" /></a>
-</div>
+    <div class="login-boxtitle">
+
+        <a href="home/demo.html"><img alt="" src="/home/images/logobig.png" /></a>
+
+        @section('login')
+
+        @show
+    </div>
+
 
 <div class="res-banner">
+
     <div class="res-main">
         <div class="login-banner-bg"><span></span><img src="/home/images/big.jpg" /></div>
 
@@ -51,38 +64,9 @@
 
     </div>
 
+    {{--公共底部 footer --}}
+    @include('home.public.footer')
 
-
-    <div class="footer ">
-        <div class="footer-hd ">
-            <p>
-                <a href="# ">懒熊科技</a>
-                <b>|</b>
-                <a href="# ">商城首页</a>
-                <b>|</b>
-                <a href="# ">支付宝</a>
-                <b>|</b>
-                <a href="# ">物流</a>
-            </p>
-        </div>
-        <div class="footer-bd ">
-            <p>
-                <a href="# ">关于懒熊</a>
-                <a href="# ">合作伙伴</a>
-                <a href="# ">联系我们</a>
-                <a href="# ">网站地图</a>
-                <em>© 2015-2025 Hengwang.com 版权所有.
-                    <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">
-                        懒熊之家
-                    </a>
-                    - Collect from
-                    <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">
-                        网页懒熊
-                    </a>
-                </em>
-            </p>
-        </div>
-    </div>
     <div id="sampledata2" class="bringins-content">
         <h2>懒熊平台服务协议</h2>
         <p>
@@ -132,8 +116,6 @@
             <p>2.2补充协议</p>
 
             <p>由于互联网高速发展，您与淘宝签署的本协议列明的条款并不能完整罗列并覆盖您与淘宝所有权利与义务，现有的约定也不能保证完全符合未来发展的需求。因此，淘宝平台法律声明及隐私权政策、淘宝平台规则均为本协议的补充协议，与本协议不可分割且具有同等法律效力。如您使用淘宝平台服务，视为您同意上述补充协议。</p>
-
-
 
 
     </div>
