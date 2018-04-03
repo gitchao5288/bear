@@ -92,6 +92,7 @@ Route::post('/admins/dologin','admin\LoginController@dologin');
 //验证码路由
 Route::get('/kit/captcha/{tmp}','KitController@captcha');
 
+//后台中间件
 
 //后台主页
 Route::get('/admins/index','admin\AdminController@index')->middleware('Admin');
