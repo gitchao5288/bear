@@ -48,7 +48,7 @@ class UserController extends Controller
          $data = AdminUser::orderBy('uid','asc')
 
              ->where('uname','like','%'.$request->uname.'%')
-             ->paginate(1);
+             ->paginate(5);
 
           return view('admin.User',['data'=>$data,'uname'=>$uname]);
 

@@ -133,6 +133,7 @@
                               var index = parent.layer.getFrameIndex(window.name);
                               //关闭当前frame
                               parent.layer.close(index);
+                              parent.location.reload(true);
                           });
                       }
                   },
@@ -142,6 +143,7 @@
                           var index = parent.layer.getFrameIndex(window.name);
                           //关闭当前frame
                           parent.layer.close(index);
+                          parent.location.reload(true);
                       });
                   }
 

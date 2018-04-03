@@ -94,83 +94,84 @@ Route::get('/kit/captcha/{tmp}','KitController@captcha');
 
 
 //后台主页
-Route::get('/admins/index','admin\AdminController@index');
-Route::get('/admins/wel','admin\AdminController@wel');
+Route::get('/admins/index','admin\AdminController@index')->middleware('Admin');
+Route::get('/admins/wel','admin\AdminController@wel')->middleware('Admin');
 
 
 /*分类管理*/
 //类别浏览
-Route::get('/admins/Cate','admin\AdminController@Cate');
+Route::get('/admins/Cate','admin\AdminController@Cate')->middleware('Admin');
 
-Route::get('/admins/cate/add/{id}','admin\AdminController@CateAdd');
+Route::get('/admins/cate/add/{id}','admin\AdminController@CateAdd')->middleware('Admin');
 
-Route::post('/admins/cate/doadd','admin\AdminController@CatedoAdd');
+Route::post('/admins/cate/doadd','admin\AdminController@CatedoAdd')->middleware('Admin');
 
 //修改分类
-Route::get('/admins/cate/edit/{id}','admin\AdminController@CateEdit');
+Route::get('/admins/cate/edit/{id}','admin\AdminController@CateEdit')->middleware('Admin');
 //执行修改
-Route::post('/admins/cate/update','admin\AdminController@CateUpdate');
+Route::post('/admins/cate/update','admin\AdminController@CateUpdate')->middleware('Admin');
 
 //删除分类
-Route::get('/admins/cate/del','admin\AdminController@CateDel');
+Route::get('/admins/cate/del','admin\AdminController@CateDel')->middleware('Admin');
 
 
-Route::get('/admins/cate/addfirst','admin\AdminController@CateAddFirst');
+Route::get('/admins/cate/addfirst','admin\AdminController@CateAddFirst')->middleware('Admin');
 
-Route::post('admins/cate/doaddfirst','admin\AdminController@CateDoAddFirst');
+Route::post('admins/cate/doaddfirst','admin\AdminController@CateDoAddFirst')->middleware('Admin');
 /*商品管理*/
 //商品浏览
-Route::get('/admins/Good','admin\AdminController@Good');
+Route::get('/admins/Good','admin\AdminController@Good')->middleware('Admin');
 
 
 
 /*订单管理*/
 //订单浏览
-Route::get('/admins/Order','admin\AdminController@Order');
+Route::get('/admins/Order','admin\AdminController@Order')->middleware('Admin');
 /*订单管理*/
 //订单浏览
-Route::get('/admins/Order/delall','admin\OrderController@delall');
-Route::resource('/admins/Order','admin\OrderController');
+Route::get('/admins/Order/delall','admin\OrderController@delall')->middleware('Admin');
+Route::resource('/admins/Order','admin\OrderController')->middleware('Admin');
 
 
 
 /*广告管理*/
 //广告浏览
-Route::get('/admins/AD/delall','admin\Adcontroller@delall');
-Route::post('/admins/AD/upload','admin\Adcontroller@upload');
-Route::resource('/admins/AD','admin\Adcontroller');
+Route::get('/admins/AD/delall','admin\Adcontroller@delall')->middleware('Admin');
+Route::post('/admins/AD/upload','admin\Adcontroller@upload')->middleware('Admin');
+Route::resource('/admins/AD','admin\Adcontroller')->middleware('Admin');
 
 /*轮播图管理*/
 //轮播图浏览
-Route::get('/admins/RC','admin\AdminController@RC');
+Route::get('/admins/RC','admin\AdminController@RC')->middleware('Admin');
 
 
 /*数据统计*/
-Route::get('/admins/Data','admin\AdminController@Data');
+Route::get('/admins/Data','admin\AdminController@Data')->middleware('Admin');
 
 
 /*用户管理*/
 
 
 //管理前台用户添加
-Route::get('/admins/Huseradd','admin\AdminController@Huseradd');
+Route::get('/admins/Huseradd','admin\AdminController@Huseradd')->middleware('Admin');
 //前台用户修改
-Route::get('/admins/Huseredit','admin\AdminController@Huseredit');
+Route::get('/admins/Huseredit','admin\AdminController@Huseredit')->middleware('Admin');
 
 
 
 //后台用户浏览页面
 //Route::get('/admins/User','admin\AdminController@Auser');
 //后台用户添加
-Route::get('/admins/Useradd','admin\AdminController@Useradd');
+Route::get('/admins/Useradd','admin\AdminController@Useradd')->middleware('Admin');
 //后台用户修改
 //Route::get('/admins/Useredit','admin\AdminController@Useredit');
 
 
-Route::resource('/admins/User','admin\UserController');
+Route::resource('/admins/User','admin\UserController')->middleware('Admin');
 // Route::get('/admins/Huser','admin\AdminController@Huser');
 
-
+//后台退出登录
+Route::get('/admins/exit','admin\LoginController@exit');
 
 
 

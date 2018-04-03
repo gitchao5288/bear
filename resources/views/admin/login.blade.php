@@ -21,7 +21,7 @@
         <![endif]-->
 
     </head>
-    {!! session('msg') !!}
+    {{--{!! session('msg') !!}--}}
 
 
     <body oncontextmenu="return false">
@@ -33,7 +33,8 @@
                     <ul>
 
                         @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
+
+                            <script>alert('{!! $error !!}');</script>
 
                         @endforeach
                     </ul>

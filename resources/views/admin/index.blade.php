@@ -277,7 +277,7 @@
                         </li>
                     </ul>
                 </div>
-                <a href="login.html" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+                <a href="/admins/exit" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
             </div>
                 <div class="row J_mainContent" id="content-main">
                     <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="/admins/wel"  frameborder="0" data-id="index_v1.html" seamless></iframe>
@@ -705,6 +705,7 @@
     <script src="/admin/index/js/hplus.min.js-v=4.0.0" tppabs="http://www.zi-han.net/theme/hplus/js/hplus.min.js?v=4.0.0"></script>
     <script type="text/javascript" src="/admin/index/js/contabs.min.js" tppabs="http://www.zi-han.net/theme/hplus/js/contabs.min.js"></script>
     <script src="/admin/index/js/plugins/pace/pace.min.js" tppabs="http://www.zi-han.net/theme/hplus/js/plugins/pace/pace.min.js"></script>
+
 </body>
 
 </html>
