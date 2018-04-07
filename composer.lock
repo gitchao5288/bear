@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5cab612f0b7ca885aa5a1b67dc16b82",
+    "content-hash": "078bd80c203618dc31a4548d24c54065",
     "packages": [
         {
             "name": "caffeinated/flash",
@@ -746,6 +746,48 @@
                 "tokenizer"
             ],
             "time": "2018-03-21T22:21:57+00:00"
+        },
+        {
+            "name": "johnlui/aliyun-oss",
+            "version": "v1.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johnlui/AliyunOSS.git",
+                "reference": "a8e1dd1c840e4441a513e6f2e8d4a2b9b52fa04e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/johnlui/AliyunOSS/a8e1dd1c840e4441a513e6f2e8d4a2b9b52fa04e.zip",
+                "reference": "a8e1dd1c840e4441a513e6f2e8d4a2b9b52fa04e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JohnLui\\AliyunOSS\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "John Lui",
+                    "email": "wenhanlv@gmail.com"
+                }
+            ],
+            "description": "阿里云 OSS 官方 SDK 的 Composer 封装，支持任何 PHP 项目，包括 Laravel、Symfony、TinyLara 等等。",
+            "homepage": "https://github.com/johnlui/AliyunOSS",
+            "keywords": [
+                "AliyunOSS",
+                "aliyun",
+                "oss"
+            ],
+            "time": "2017-03-08T03:35:57+00:00"
         },
         {
             "name": "laracasts/flash",

@@ -107,7 +107,7 @@
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="/admins/Good" tppabs="http://www.zi-han.net/theme/hplus/form_basic.html">商品浏览</a>
                             </li>
-                            <li><a class="J_menuItem" href="form_validate.html" tppabs="http://www.zi-han.net/theme/hplus/form_validate.html">待审核<span class="label label-warning pull-right">16</span></a>
+                            <li><a class="J_menuItem" href="/admins/Good/stating" tppabs="http://www.zi-han.net/theme/hplus/form_validate.html">待审核<span class="label label-warning pull-right">{{$count}}</span></a>
                             </li>
                         </ul>
                     </li>
@@ -126,7 +126,7 @@
                         <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">广告管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="/admins/AD" tppabs="http://www.zi-han.net/theme/hplus/typography.html">广告发布</a>
-                            
+
                         </ul>
                     </li>
 

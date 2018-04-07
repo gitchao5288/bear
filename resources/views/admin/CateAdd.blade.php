@@ -71,7 +71,7 @@
         form.on('submit(add)', function(data){
 
             //ajax处理添加
-            $.post('/admins/cate/doadd',data.field,function(data){
+            $.post('/admins/goods/doadd',data.field,function(data){
                 console.log(data);
                 if(data.status==1){
                     layer.alert(data.msg, {icon: 6},function () {
