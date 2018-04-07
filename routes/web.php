@@ -11,10 +11,33 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//前台首页
+Route::get('/','Home\IndexController@index');
+//商品列表页
+Route::get('/search','Home\IndexController@search');
+//商品详情页面
+Route::get('/goodDetails','Home\IndexController@goodDetails');
+//个人中心页面
+Route::get('/center','Home\IndexController@center');
+//个人信息页面
+Route::get('/information','Home\IndexController@information');
+//修改个人信息
+Route::post('/infoupdate','Home\IndexController@infoupdate');
+//安全设置
+Route::get('/safety','Home\IndexController@safety');
+//收货地址
+Route::get('/address','Home\IndexController@address');
+//添加收货地址
+Route::post('/doaddress','Home\IndexController@doaddress');
+//设置默认收货地址
+Route::post('/dodefault','Home\IndexController@dodefault');
+Route::post('/deladd','Home\IndexController@deladd');
 
-Route::get('/', function () {
-    return view('home.index');
-});
+//订单管理
+Route::get('/order','Home\IndexController@order');
+//退款售后
+Route::get('/change','Home\IndexController@change');
+
 
 // 前台 ============================================================================
     // 注册
@@ -42,7 +65,8 @@ Route::get('/', function () {
 
 //购物车页面
 Route::get('/home/shopcart',function(){
-    return view('home.shopcart');
+//    return view('home.shopcart');
+    dd(session('user'));
 });
 
 //结算页面

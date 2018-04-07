@@ -11,8 +11,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -21,15 +21,16 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
- font-family: arial,"Lantinghei SC","Microsoft Yahei";	
+ font-family: arial,"Lantinghei SC","Microsoft Yahei";
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, main {
 	display: block;
 }
 ul,li,ol{ list-style:none;}
 dl,dd{ margin:auto;}
+
 
 .am-btn {font-size:12px ;}
 
@@ -46,14 +47,14 @@ body{margin:0;
 	 padding:0;
 	 width:100%;
 	 font-size:12px;
-	 font-family: arial,"Lantinghei SC","Microsoft Yahei";	
-	 
+	 font-family: arial,"Lantinghei SC","Microsoft Yahei";
+
 }
 
-   
+
 a:link,a:visited,a:hover{text-decoration:none; outline:none;}
 /*所有超链接不要下划线*/
-	
+
 *, *:after, *:before{
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -61,7 +62,7 @@ a:link,a:visited,a:hover{text-decoration:none; outline:none;}
 	box-sizing: border-box; }
 /*任何标签、包括它前面、后面生成的内容都不要影响盒子的边框*/
 
-.clear{ clear:both} 
+.clear{ clear:both}
 
 img, input {
     vertical-align: middle;}
@@ -96,7 +97,7 @@ color: #555555;background:none;border-color:transparent;cursor: default;}
 .nav.white .logo{float:left;height:41px;width:70px; margin: 6px auto;}
 .logoBig{display:none;}
 .logo img{width:100%}
- 
+
 /*搜索框*/
 .search-bar{height:41px; margin: 8px 20px 0 75px;}
 .search-bar form{border:2px solid #F03726; max-width:670px;}
@@ -110,7 +111,7 @@ color: #F5F5F2;font-size: 14px;cursor:pointer;border-radius:0px 0px ;}
 /*侧边导航*/
 .mui-mbar-tabs{ display:none;}
 
-.header{ display:none; max-width:1000px; margin:0px auto; font-size:12px;}  
+.header{ display:none; max-width:1000px; margin:0px auto; font-size:12px;}
 
 .footer-bd{ display:none}
 .footer{ text-align: center;border-top: 2px solid #F8F8F8 margin-top:20px; padding-top: 5px;margin-bottom:60px ;}
@@ -123,11 +124,11 @@ color: #F5F5F2;font-size: 14px;cursor:pointer;border-radius:0px 0px ;}
 .navCir li i{display: block;font-size: 18px;}
 .navCir li.active a{color:#F03726 ;}
 
-@media only screen and (min-width: 640px) 
+@media only screen and (min-width: 640px)
 
    {
-   	
-   	
+
+
 /*公共*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -138,36 +139,36 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 
 	font-size: 14px;
 
-}   	
-   	
-   	
-   	
-   	
-   	
-   	
-   	
-   	
+}
+
+
+
+
+
+
+
+
    	.nav.white{background: none;}
 	.header { display:block;height: 35px;}
 	.message-l{ float:left;}
     .message-l .topMessage{padding: 0px 6px;height: 35px;line-height: 35px;}
     .message-r {float: right;}
     .message-r .topMessage {float: left;padding: 0px 6px;height: 35px;line-height: 35px;}
-  
-	.nav.white .logo{display:none;}  
-	.nav.white .logoBig{ display:block;float:left;height:56px;width:115px; margin:0px auto; margin-left:5%} 
+
+	.nav.white .logo{display:none;}
+	.nav.white .logoBig{ display:block;float:left;height:56px;width:115px; margin:0px auto; margin-left:5%}
 	.nav.white .logoBig img{width:100%;}
 	.my-cart { width: 46px;height: 46px;}
 	.search-bar {height: 51px;margin: 0px 50px 0 120px; padding-left:5%;}
 	#ai-topsearch {height: 46px;}
-	.search-bar input {width: 80%;height:46px;}	
+	.search-bar input {width: 80%;height:46px;}
 	.my-cart a{display:block; margin-top:5px}
 	.classified{display:none;}
 	.navCir{display:none;}
@@ -186,26 +187,26 @@ time, mark, audio, video {
 /*选项卡样式*/
 .am-nav-tabs > li span{font-size:16px;padding:5px 15px ;}
 	}
-@media only screen and (min-width: 1025px) 
+@media only screen and (min-width: 1025px)
 
    {
 
-.mui-mbar-tabs{ display:block;}  
+.mui-mbar-tabs{ display:block;}
 .nav.white{padding-left:0px; max-width:1000px; margin:0px auto;}
 .nav.white .logo{display:none;}
 .nav.white .logoBig { display:block; float:left;height:90px; width:200px; margin-left:0px;}
 .nav.white .logoBig li{float:left;}
 .search-bar{height:90px; padding: 20px 70px 0 230px; margin:auto;}
-	   
+
 .my-cart{ display:none; right:10%; top:20px;}
 .shopNavfloat{ display:block; position:fixed;bottom:0px;left:30px;}
-.shopMain{margin:0px 40px 0px 5px;} 
+.shopMain{margin:0px 40px 0px 5px;}
 .shopCon li{width:20%;padding:10px;}
 .search-bar input { height: 46px;}
 .search-bar {margin:0px auto;}
 .tip{display:block;}
-	  
-	  
+
+
 /*分类*/
 .nav-table{max-width:1000px;margin: 0px auto;height: 45px;position: relative;overflow: hidden;}
 .all-goods{font-size: 16px;}
@@ -222,11 +223,11 @@ time, mark, audio, video {
 >>>>>>> bear/xuweidong
 .nav-cont .nav-extra i.nav-user{background:#000 ;color:#fff ;width: 33px;height: 33px;border-radius: 33px;position: absolute;left:-28px;z-index: 99;padding: 5px;overflow: hidden;}
 .nav-cont .nav-extra b{display:block;position: absolute;width: 45px;height: 45px;border-radius:45px;z-index: 1;left: -33px;top: -8px;background: #fff;}
-b.line{display: block;width:100%;height:2px ;border-bottom:2px solid #d2364c;position: absolute;top:180px;z-index:5;}	   
+b.line{display: block;width:100%;height:2px ;border-bottom:2px solid #d2364c;position: absolute;top:180px;z-index:5;}
 	   }
-	   
 
-	   
+
+
 @media only screen and (min-width: 1260px) {
 .am-container {max-width: 1200px;}
 .footer{max-width:1200px ;margin: auto;}
@@ -238,8 +239,8 @@ b.line{display: block;width:100%;height:2px ;border-bottom:2px solid #d2364c;pos
 }
 
 
-	   
-/*侧边信息栏*/  
+
+/*侧边信息栏*/
 .tip{ position:fixed; top:0px;right:0px;background-color: #e1e1e1; min-height: 100%;z-index: 1000; }
 #sidebar {
     padding-top: 120px;

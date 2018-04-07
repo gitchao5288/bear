@@ -344,7 +344,10 @@ class LoginController extends Controller
         Session::put('user',$user);
 
 //        将密码用户名存入cookie
-        Cookie::queue('www', $user->uname, 1);
+//        Cookie::queue('www', $user->uname, 1);
+
+
+
 
 //        dd(Cookie::get('www'));
 
