@@ -7,12 +7,17 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use App\Models\Goods;
 
 class AdminController extends Controller
 {
    //首页
    public function index(){
-      return view('admin.index');
+
+      // 统计审核通过的数量
+      $count = count(Goods::all()->where('status','==','0'));
+
+      return view('admin.index',compact('count'));
    }
    public function wel(){
       return view('admin.wel');
@@ -96,7 +101,7 @@ class AdminController extends Controller
 
       return view('admin.Cate',['arrs'=>$paginatedSearchResults,'countarr'=>$arrs]);
    }
-   
+
    //增加一级类别
     public function CateAddFirst()
     {
@@ -232,9 +237,9 @@ class AdminController extends Controller
     }
 
    //商品管理
-   public function Good(){
-      return view('admin.Good');
-   }
+//   public function Good(){
+//      return view('admin.Good');
+//   }
 
    //订单管理
    public function Order(){

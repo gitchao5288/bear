@@ -36,7 +36,7 @@
 
       </div>
       <xblock>
-        <button class="layui-btn" onclick="x_admin_show('添加一级分类','/admins/cate/addfirst')">
+        <button class="layui-btn" onclick="x_admin_show('添加一级分类','/admins/goods/addfirst')">
            <i class="layui-icon">&#xe608;</i>  添加一级类别
         </button>
 
@@ -63,10 +63,10 @@
               @endif
               {{ $v['cate_name'] }}</td>
             <td class="td-manage">
-                <a title="添加子分类"  onclick="x_admin_show('添加子分类','/admins/cate/add/{{ $v['id'] }}')" href="javascript:;">
+                <a title="添加子分类"  onclick="x_admin_show('添加子分类','/admins/goods/add/{{ $v['id'] }}')" href="javascript:;">
                     <i class="layui-icon">&#xe654;</i>
                 </a>
-              <a title="编辑分类"  onclick="x_admin_show('编辑分类','/admins/cate/edit/{{ $v['id'] }}')" href="javascript:;">
+              <a title="编辑分类"  onclick="x_admin_show('编辑分类','/admins/goods/edit/{{ $v['id'] }}')" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
               <a title="删除" onclick="member_del(this,{{ $v['id'] }})" href="javascript:;">
@@ -133,7 +133,7 @@
       function member_del(obj,id){
           layer.confirm('确认要删除吗？',function(index){
 
-              $.get('/admins/cate/del',{id:id},function(data){
+              $.get('/admins/goods/del',{id:id},function(data){
                   console.log(data);
                   if(data.status==1){
 

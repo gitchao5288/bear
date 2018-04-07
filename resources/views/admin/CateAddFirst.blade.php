@@ -62,7 +62,7 @@
         form.on('submit(add)', function(data){
 
             //ajax处理添加
-            $.post('/admins/cate/doaddfirst',data.field,function(data){
+            $.post('/admins/goods/doaddfirst',data.field,function(data){
                 console.log(data);
                 if(data.status==1){
                     layer.alert(data.msg, {icon: 6},function () {

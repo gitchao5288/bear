@@ -103,26 +103,38 @@ Route::get('/admins/wel','admin\AdminController@wel')->middleware('Admin');
 //类别浏览
 Route::get('/admins/Cate','admin\AdminController@Cate')->middleware('Admin');
 
-Route::get('/admins/cate/add/{id}','admin\AdminController@CateAdd')->middleware('Admin');
+Route::get('/admins/goods/add/{id}','admin\AdminController@CateAdd')->middleware('Admin');
 
-Route::post('/admins/cate/doadd','admin\AdminController@CatedoAdd')->middleware('Admin');
+Route::post('/admins/goods/doadd','admin\AdminController@CatedoAdd')->middleware('Admin');
 
 //修改分类
-Route::get('/admins/cate/edit/{id}','admin\AdminController@CateEdit')->middleware('Admin');
+Route::get('/admins/goods/edit/{id}','admin\AdminController@CateEdit')->middleware('Admin');
 //执行修改
-Route::post('/admins/cate/update','admin\AdminController@CateUpdate')->middleware('Admin');
+Route::post('/admins/goods/update','admin\AdminController@CateUpdate')->middleware('Admin');
 
 //删除分类
-Route::get('/admins/cate/del','admin\AdminController@CateDel')->middleware('Admin');
+Route::get('/admins/goods/del','admin\AdminController@CateDel')->middleware('Admin');
 
 
-Route::get('/admins/cate/addfirst','admin\AdminController@CateAddFirst')->middleware('Admin');
+Route::get('/admins/goods/addfirst','admin\AdminController@CateAddFirst')->middleware('Admin');
 
-Route::post('admins/cate/doaddfirst','admin\AdminController@CateDoAddFirst')->middleware('Admin');
+Route::post('admins/goods/doaddfirst','admin\AdminController@CateDoAddFirst')->middleware('Admin');
 /*商品管理*/
 //商品浏览
-Route::get('/admins/Good','admin\AdminController@Good')->middleware('Admin');
+//Route::get('/admins/Good','admin\AdminController@Good');
+//上架下架
+Route::post('/admins/Good/changestatus','Admin\GoodsController@changestatus')->middleware('Admin');
+//批量删除
+Route::get('/admins/Good/delall','Admin\GoodsController@delall')->middleware('Admin');
+//待审核商品
+Route::get('admins/Good/stating','Admin\GoodsController@stating')->middleware('Admin');
+// 审核通过并上架
+Route::post('/admins/Good/state','Admin\GoodsController@state')->middleware('Admin');
 
+Route::resource('admins/Good','Admin\GoodsController')->middleware('Admin');
+
+// 文件上传路由
+Route::post('/upload','UploadController@upload')->middleware('Admin');
 
 
 /*订单管理*/
