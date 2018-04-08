@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\AdminUser;
 use App\Models\Cate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -96,7 +97,7 @@ class AdminController extends Controller
 
       return view('admin.Cate',['arrs'=>$paginatedSearchResults,'countarr'=>$arrs]);
    }
-   
+
    //增加一级类别
     public function CateAddFirst()
     {

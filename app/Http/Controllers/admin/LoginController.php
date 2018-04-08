@@ -56,8 +56,22 @@ class LoginController extends Controller
             return redirect('/admins/login')->withErrors('密码错误');
         }
 
+        //如果成功，存入session('amdinid')
+
+        session(['adminName'=>$req['uname'],'auth'=>$data->auth]);
+
 
         return redirect('/admins/index');
+
+    }
+
+    public function exit(Request $request)
+    {
+
+        $request->session()->forget('adminName');
+
+        return redirect('/admins/login')->withErrors('退出登录成功');
+
 
     }
 }

@@ -12,9 +12,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home.index');
-});
+Route::get('/','Home\IndexController@index');
 
 // 前台 ============================================================================
     // 注册
@@ -152,21 +150,22 @@ Route::get('/admins/Data','admin\AdminController@Data');
 /*用户管理*/
 
 
-//管理前台用户添加
-Route::get('/admins/Huseradd','admin\AdminController@Huseradd');
-//前台用户修改
-Route::get('/admins/Huseredit','admin\AdminController@Huseredit');
+//管理前台用户
+Route::post('/admins/Huser/changestatus','Home\Husercontroller@changestatus');
+
+Route::resource('/admins/Huser','Home\Husercontroller');
 
 
 
 //后台用户浏览页面
 //Route::get('/admins/User','admin\AdminController@Auser');
 //后台用户添加
-Route::get('/admins/Useradd','admin\AdminController@Useradd');
+
 //后台用户修改
-//Route::get('/admins/Useredit','admin\AdminController@Useredit');
-
-
+Route::get('/admins/User/delall','admin\UserController@delall');
+Route::get('/admins/User/Repass','admin\UserController@Repass');
+Route::post('/admins/User/pedit','admin\UserController@pedit');
+Route::get('/admins/exit','admin\LoginController@exit');
 Route::resource('/admins/User','admin\UserController');
 // Route::get('/admins/Huser','admin\AdminController@Huser');
 
