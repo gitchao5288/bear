@@ -187,8 +187,6 @@ Route::get('/admins/Data','admin\AdminController@Data')->middleware('Admin');
 
 
 /*用户管理*/
-
-
 //管理前台用户添加
 Route::get('/admins/Huseradd','admin\AdminController@Huseradd')->middleware('Admin');
 //前台用户修改
