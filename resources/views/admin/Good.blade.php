@@ -33,70 +33,51 @@
     </div>
     <div class="x-body">
       <div class="layui-row">
-
+        <form class="layui-form layui-col-md12 x-so layui-form-pane">
+          <input class="layui-input" placeholder="分类名" name="cate_name">
+          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon"></i>增加</button>
+        </form>
       </div>
       <xblock>
-<<<<<<< HEAD
-        <button class="layui-btn" onclick="x_admin_show('添加一级分类','/admins/goods/addfirst')">
-=======
-        <button class="layui-btn" onclick="x_admin_show('添加一级分类','/admins/cate/addfirst')">
->>>>>>> bear/yangkun
-           <i class="layui-icon">&#xe608;</i>  添加一级类别
-        </button>
-
-        <span class="x-right" style="line-height:40px">共有数据：{{ count($countarr) }} 条</span>
+        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
       </xblock>
       <table class="layui-table">
         <thead>
           <tr>
-
+            <th>
+              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
             <th>ID</th>
             <th>分类名</th>
             <th>操作</th>
         </thead>
         <tbody>
-        @foreach($arrs as $v)
           <tr>
-
-            <td>{{ $v['id'] }}</td>
             <td>
-              @if($v['lev']==2)
-                |----
-                @elseif($v['lev']==3)
-                |----|----
-              @endif
-              {{ $v['cate_name'] }}</td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>1</td>
+            <td>会员相关</td>
             <td class="td-manage">
-<<<<<<< HEAD
-                <a title="添加子分类"  onclick="x_admin_show('添加子分类','/admins/goods/add/{{ $v['id'] }}')" href="javascript:;">
-                    <i class="layui-icon">&#xe654;</i>
-                </a>
-              <a title="编辑分类"  onclick="x_admin_show('编辑分类','/admins/goods/edit/{{ $v['id'] }}')" href="javascript:;">
-=======
-                <a title="添加子分类"  onclick="x_admin_show('添加子分类','/admins/cate/add/{{ $v['id'] }}')" href="javascript:;">
-                    <i class="layui-icon">&#xe654;</i>
-                </a>
-              <a title="编辑分类"  onclick="x_admin_show('编辑分类','/admins/cate/edit/{{ $v['id'] }}')" href="javascript:;">
->>>>>>> bear/yangkun
+              <a title="编辑"  onclick="x_admin_show('编辑','admin-edit.html')" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
-              <a title="删除" onclick="member_del(this,{{ $v['id'] }})" href="javascript:;">
+              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
             </td>
           </tr>
-          @endforeach
         </tbody>
       </table>
       <div class="page">
         <div>
-          {{--<a class="prev" href="">&lt;&lt;</a>--}}
-          {{--<a class="num" href="">1</a>--}}
-          {{--<span class="current">2</span>--}}
-          {{--<a class="num" href="">3</a>--}}
-          {{--<a class="num" href="">489</a>--}}
-          {{--<a class="next" href="">&gt;&gt;</a>--}}
-          {{ $arrs->links() }}
+          <a class="prev" href="">&lt;&lt;</a>
+          <a class="num" href="">1</a>
+          <span class="current">2</span>
+          <a class="num" href="">3</a>
+          <a class="num" href="">489</a>
+          <a class="next" href="">&gt;&gt;</a>
         </div>
       </div>
 
@@ -143,32 +124,9 @@
       /*用户-删除*/
       function member_del(obj,id){
           layer.confirm('确认要删除吗？',function(index){
-
-<<<<<<< HEAD
-              $.get('/admins/goods/del',{id:id},function(data){
-=======
-              $.get('/admins/cate/del',{id:id},function(data){
->>>>>>> bear/yangkun
-                  console.log(data);
-                  if(data.status==1){
-
-                      layer.alert(data.msg, {icon: 6},function () {
-                          //刷新父页面
-                          location.reload(true);
-                      });
-
-
-                  }else{
-                      layer.alert(data.msg, {icon: 5},function () {
-                          //刷新父页面
-                          location.reload(true);
-                      });
-                  }
-              })
               //发异步删除数据
-              /*$(obj).parents("tr").remove();
-
-              layer.msg('已删除!',{icon:1,time:1000});*/
+              $(obj).parents("tr").remove();
+              layer.msg('已删除!',{icon:1,time:1000});
           });
       }
 

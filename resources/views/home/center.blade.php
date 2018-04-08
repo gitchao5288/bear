@@ -24,23 +24,29 @@
 						<ul class="message-l">
 							<div class="topMessage">
 								<div class="menu-hd">
-									<a href="#" target="_top" class="h">亲，请登录</a>
-									<a href="#" target="_top">免费注册</a>
+									{{--如果用户没有登录，显示登录链接，如果已经登录，显示用户账号--}}
+									@if(!session('user'))
+										<a href="/home/login/login" target="_top" class="h">亲，请登录</a>
+										<a href="/home/login/index" target="_top">免费注册</a>
+									@else
+										<span target="_top" class="h">{{session('user')->uname}}</span>
+										<span target="_top" >您好！</span>
+									@endif
 								</div>
 							</div>
 						</ul>
 						<ul class="message-r">
 							<div class="topMessage home">
-								<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
+								<div class="menu-hd"><a href="/" target="_top" class="h">商城首页</a></div>
 							</div>
 							<div class="topMessage my-shangcheng">
-								<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+								<div class="menu-hd MyShangcheng"><a href="/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 							</div>
 							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+								<div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
 							</div>
 							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+								<div class="menu-hd"><a href="/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
 						</ul>
 						</div>
 
@@ -97,11 +103,11 @@
 									<a class="i-load-more-item-shadow" href="order.html">全部订单</a>
 								</div>
 								<ul>
-									<li><a href="order.html"><i><img src="/home/images/pay.png"/></i><span>待付款</span></a></li>
-									<li><a href="order.html"><i><img src="/home/images/send.png"/></i><span>待发货<em class="m-num">1</em></span></a></li>
-									<li><a href="order.html"><i><img src="/home/images/receive.png"/></i><span>待收货</span></a></li>
-									<li><a href="order.html"><i><img src="/home/images/comment.png"/></i><span>待评价<em class="m-num">3</em></span></a></li>
-									<li><a href="change.html"><i><img src="/home/images/refund.png"/></i><span>退换货</span></a></li>
+									<li><a href="/order"><i><img src="/home/images/pay.png"/></i><span>待付款</span></a></li>
+									<li><a href="/order"><i><img src="/home/images/send.png"/></i><span>待发货<em class="m-num">1</em></span></a></li>
+									<li><a href="/order"><i><img src="/home/images/receive.png"/></i><span>待收货</span></a></li>
+									<li><a href="/order"><i><img src="/home/images/comment.png"/></i><span>待评价<em class="m-num">3</em></span></a></li>
+									<li><a href="/change"><i><img src="/home/images/refund.png"/></i><span>退换货</span></a></li>
 								</ul>
 							</div>
 							<!--九宫格-->
@@ -118,7 +124,7 @@
 									<a href="foot.html"><li class="am-u-sm-4"><i class="am-icon-clock-o am-icon-md"></i><img src="/home/images/iconsmall2.png"/><p>我的足迹</p></li></a>
 								</ul>
 							</div>
-							
+
 
 							<!--收藏夹 -->
 							<div class="you-like">
@@ -325,7 +331,7 @@
 						<p>
 							<a href="#">恒望科技</a>
 							<b>|</b>
-							<a href="#">商城首页</a>
+							<a href="/">商城首页</a>
 							<b>|</b>
 							<a href="#">支付宝</a>
 							<b>|</b>
@@ -348,12 +354,12 @@
 
 		</div>
 		<!--引导 -->
-		<div class="navCir">
-			<li><a href="../home/home.html"><i class="am-icon-home "></i>首页</a></li>
+		{{--<div class="navCir">
+			<li><a href="/"><i class="am-icon-home "></i>首页</a></li>
 			<li><a href="../home/sort.html"><i class="am-icon-list"></i>分类</a></li>
-			<li><a href="../home/shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>
+			<li><a href="/home/shopcart"><i class="am-icon-shopping-basket"></i>购物车</a></li>
 			<li class="active"><a href="index.html"><i class="am-icon-user"></i>我的</a></li>
-		</div>
+		</div>--}}
 	</body>
 
 </html>

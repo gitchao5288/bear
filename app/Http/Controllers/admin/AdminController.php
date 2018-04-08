@@ -7,17 +7,24 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+<<<<<<< HEAD
 use App\Models\Goods;
+=======
+>>>>>>> bear/yangkun
 
 class AdminController extends Controller
 {
    //首页
    public function index(){
+<<<<<<< HEAD
 
       // 统计审核通过的数量
       $count = count(Goods::all()->where('status','==','0'));
 
       return view('admin.index',compact('count'));
+=======
+      return view('admin.index');
+>>>>>>> bear/yangkun
    }
    public function wel(){
       return view('admin.wel');
@@ -101,7 +108,11 @@ class AdminController extends Controller
 
       return view('admin.Cate',['arrs'=>$paginatedSearchResults,'countarr'=>$arrs]);
    }
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> bear/yangkun
    //增加一级类别
     public function CateAddFirst()
     {
@@ -237,9 +248,15 @@ class AdminController extends Controller
     }
 
    //商品管理
+<<<<<<< HEAD
 //   public function Good(){
 //      return view('admin.Good');
 //   }
+=======
+   public function Good(){
+      return view('admin.Good');
+   }
+>>>>>>> bear/yangkun
 
    //订单管理
    public function Order(){

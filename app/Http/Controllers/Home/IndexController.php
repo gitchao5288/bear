@@ -1,25 +1,28 @@
 <?php
 
+
 namespace App\Http\Controllers\Home;
 
-
+use App\Models\AdminRotation;
 use App\Model\HomeUser;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use App\Models\Cate;
 class IndexController extends Controller
 {
-    //
 
     //前台首页
     public function index(){
-        //查询所有类别数据转换成数组
-        $cate=Cate::get()->toArray();
-        //调用子树方法赋值给变量
-        $arr=$this->subtree($cate);
-        //返回视图层并携带数据
-        return view('home.index',compact('arr'));
+        //轮播图
+    	$Res = AdminRotation::get();
+
+        //查询所有类别数据
+        $Cate = Cate::get();
+
+
+    	return view('/home/index',['Res'=>$Res,'Cate'=>$Cate]);
     }
     //定义一个子树方法 (全部信息,id,标记)
     public function subtree($arr,$id=0,$lev=1)
@@ -161,6 +164,11 @@ class IndexController extends Controller
         return view('home.change');
     }
 
+    //我的收藏页面
+    public function collection()
+    {
+        return view('home.collection');
+    }
 
 //    return view('home.index');
 }

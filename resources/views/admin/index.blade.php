@@ -107,7 +107,11 @@
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="/admins/Good" tppabs="http://www.zi-han.net/theme/hplus/form_basic.html">商品浏览</a>
                             </li>
+<<<<<<< HEAD
                             <li><a class="J_menuItem" href="/admins/Good/stating" tppabs="http://www.zi-han.net/theme/hplus/form_validate.html">待审核<span class="label label-warning pull-right">{{$count}}</span></a>
+=======
+                            <li><a class="J_menuItem" href="form_validate.html" tppabs="http://www.zi-han.net/theme/hplus/form_validate.html">待审核<span class="label label-warning pull-right">16</span></a>
+>>>>>>> bear/yangkun
                             </li>
                         </ul>
                     </li>
@@ -126,16 +130,24 @@
                         <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">广告管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="/admins/AD" tppabs="http://www.zi-han.net/theme/hplus/typography.html">广告发布</a>
+<<<<<<< HEAD
 
+=======
+                            
+>>>>>>> bear/yangkun
                         </ul>
                     </li>
 
                     <li>
                         <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">轮播图管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
+<<<<<<< HEAD
                             <li><a class="J_menuItem" href="/admins/RC" tppabs="http://www.zi-han.net/theme/hplus/basic_gallery.html">轮播图浏览</a>
                             </li>
                             <li><a class="J_menuItem" href="carousel.html" tppabs="http://www.zi-han.net/theme/hplus/carousel.html">轮播图添加</a>
+=======
+                            <li><a class="J_menuItem" href="/admins/Res" tppabs="http://www.zi-han.net/theme/hplus/basic_gallery.html">轮播图浏览</a>
+>>>>>>> bear/yangkun
                             </li>
 
                         </ul>
@@ -277,7 +289,11 @@
                         </li>
                     </ul>
                 </div>
+<<<<<<< HEAD
                 <a href="/admins/exit" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+=======
+                <a href="login.html" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+>>>>>>> bear/yangkun
             </div>
                 <div class="row J_mainContent" id="content-main">
                     <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="/admins/wel"  frameborder="0" data-id="index_v1.html" seamless></iframe>
@@ -705,7 +721,10 @@
     <script src="/admin/index/js/hplus.min.js-v=4.0.0" tppabs="http://www.zi-han.net/theme/hplus/js/hplus.min.js?v=4.0.0"></script>
     <script type="text/javascript" src="/admin/index/js/contabs.min.js" tppabs="http://www.zi-han.net/theme/hplus/js/contabs.min.js"></script>
     <script src="/admin/index/js/plugins/pace/pace.min.js" tppabs="http://www.zi-han.net/theme/hplus/js/plugins/pace/pace.min.js"></script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> bear/yangkun
 </body>
 
 </html>

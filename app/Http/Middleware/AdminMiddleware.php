@@ -18,7 +18,11 @@ class AdminMiddleware
     {
 
         //request变量 记录所有的请求参数
+<<<<<<< HEAD
         if(!session('adminName')) {
+=======
+        if(session('adminName')) {
+>>>>>>> bear/yangkun
 
         	return $next($request);
         } else {

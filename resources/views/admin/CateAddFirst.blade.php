@@ -62,7 +62,11 @@
         form.on('submit(add)', function(data){
 
             //ajax处理添加
+<<<<<<< HEAD
             $.post('/admins/goods/doaddfirst',data.field,function(data){
+=======
+            $.post('/admins/cate/doaddfirst',data.field,function(data){
+>>>>>>> bear/yangkun
                 console.log(data);
                 if(data.status==1){
                     layer.alert(data.msg, {icon: 6},function () {

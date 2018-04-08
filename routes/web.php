@@ -11,6 +11,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 //前台首页
 Route::get('/','Home\IndexController@index');
 //商品列表页
@@ -37,6 +38,9 @@ Route::post('/deladd','Home\IndexController@deladd');
 Route::get('/order','Home\IndexController@order');
 //退款售后
 Route::get('/change','Home\IndexController@change');
+//收藏页面
+Route::get('/collection','Home\IndexController@collection');
+
 
 
 // 前台 ============================================================================
@@ -65,8 +69,9 @@ Route::get('/change','Home\IndexController@change');
 
 //购物车页面
 Route::get('/home/shopcart',function(){
-//    return view('home.shopcart');
-    dd(session('user'));
+
+    return view('home.shopcart');
+
 });
 
 //结算页面
@@ -116,6 +121,7 @@ Route::post('/admins/dologin','admin\LoginController@dologin');
 //验证码路由
 Route::get('/kit/captcha/{tmp}','KitController@captcha');
 
+
 //后台中间件
 
 //后台主页
@@ -123,8 +129,10 @@ Route::get('/admins/index','admin\AdminController@index')->middleware('Admin');
 Route::get('/admins/wel','admin\AdminController@wel')->middleware('Admin');
 
 
+
 /*分类管理*/
 //类别浏览
+
 Route::get('/admins/Cate','admin\AdminController@Cate')->middleware('Admin');
 
 Route::get('/admins/goods/add/{id}','admin\AdminController@CateAdd')->middleware('Admin');
@@ -161,8 +169,10 @@ Route::resource('admins/Good','Admin\GoodsController')->middleware('Admin');
 Route::post('/upload','UploadController@upload')->middleware('Admin');
 
 
+
 /*订单管理*/
 //订单浏览
+
 Route::get('/admins/Order','admin\AdminController@Order')->middleware('Admin');
 /*订单管理*/
 //订单浏览
@@ -173,14 +183,21 @@ Route::resource('/admins/Order','admin\OrderController')->middleware('Admin');
 
 /*广告管理*/
 //广告浏览
+
 Route::get('/admins/AD/delall','admin\Adcontroller@delall')->middleware('Admin');
 Route::post('/admins/AD/upload','admin\Adcontroller@upload')->middleware('Admin');
 Route::resource('/admins/AD','admin\Adcontroller')->middleware('Admin');
 
 /*轮播图管理*/
 //轮播图浏览
-Route::get('/admins/RC','admin\AdminController@RC')->middleware('Admin');
-
+/*Route::get('/admins/RC','admin\AdminController@RC')->middleware('Admin');*/
+///轮播图资源控制器
+/// 文件上传
+Route::post('/admins/Res/upload','admin\RotationController@upload');
+//删除所有
+Route::get('/admins/Res/delall','admin\RotationController@delall');
+//轮播资源控制器
+Route::resource('/admins/Res','admin\RotationController');
 
 /*数据统计*/
 Route::get('/admins/Data','admin\AdminController@Data')->middleware('Admin');
@@ -194,12 +211,16 @@ Route::get('/admins/Huseredit','admin\AdminController@Huseredit')->middleware('A
 
 
 
+
 //后台用户浏览页面
 //Route::get('/admins/User','admin\AdminController@Auser');
 //后台用户添加
+
 Route::get('/admins/Useradd','admin\AdminController@Useradd')->middleware('Admin');
+
 //后台用户修改
 //Route::get('/admins/Useredit','admin\AdminController@Useredit');
+
 
 
 Route::resource('/admins/User','admin\UserController')->middleware('Admin');
@@ -207,6 +228,7 @@ Route::resource('/admins/User','admin\UserController')->middleware('Admin');
 
 //后台退出登录
 Route::get('/admins/exit','admin\LoginController@exit');
+
 
 
 
