@@ -89,36 +89,33 @@
 						</div>
 
 
-			<div class="clear"></div>	
+			<div class="clear"></div>
 			</div>
 
 
 
 			<div class="shopNav">
 				<div class="slideall">
-					
+
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
 					   <div class="nav-cont">
 							<ul>
-								<li class="index"><a href="#">首页</a></li>
-                                <li class="qc"><a href="#">闪购</a></li>
-                                <li class="qc"><a href="#">限时抢</a></li>
-                                <li class="qc"><a href="#">团购</a></li>
-                                <li class="qc last"><a href="#">大包装</a></li>
+								<li class="index"><a href="/">首页</a></li>
+                                <li class="qc"><a href="#">手机二手</a></li>
+                                <li class="qc"><a href="#">女朋友二手</a></li>
+                                <li class="qc"><a href="#">降降降</a></li>
+                                <li class="qc last"><a href="#">发布闲置</a></li>
 							</ul>
-						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-						    </div>
-						</div>					
-		        				
+						</div>
+
 						<!--侧边导航 -->
 						<div id="nav" class="navfull">
 							<div class="area clearfix">
 								<div class="category-content" id="guide_2">
-									
+
 									<div class="category">
 										<ul class="category-list" id="js_climit_li">
+
 											@foreach($Cate as $a)
 												@if($a->pid==0)
 											<li class="appliance js_toggle relative first">
@@ -157,16 +154,17 @@
 											</li>
 												@endif
 												@endforeach
+
 										</ul>
 									</div>
 								</div>
 
 							</div>
 						</div>
-						
-						
+
+
 						<!--轮播-->
-						
+
 						<script type="text/javascript">
 							(function() {
 								$('.am-slider').flexslider();
@@ -219,14 +217,14 @@
 							<ul>
 								<li class="title-first"><a target="_blank" href="#">
 									<img src="/home/basic/images2/TJ2.jpg"></img>
-									<span>[特惠]</span>商城爆品1分秒								
+									<span>[特惠]</span>商城爆品1分秒
 								</a></li>
 								<li class="title-first"><a target="_blank" href="#">
 									<span>[公告]</span>商城与广州市签署战略合作协议
 								     <img src="/home/basic/images2/TJ.jpg"></img>
 								     <p>XXXXXXXXXXXXXXXXXX</p>
 							    </a></li>
-							    
+
 						<div class="mod-vip">
 							<div class="m-baseinfo">
 								<a href="../person/index.html">
@@ -234,7 +232,7 @@
 								</a>
 								<em>
 									Hi,<span class="s-name">小叮当</span>
-									<a href="#"><p>点击更多优惠活动</p></a>									
+									<a href="#"><p>点击更多优惠活动</p></a>
 								</em>
 							</div>
 							<div class="member-logout">
@@ -247,13 +245,13 @@
 								<a href="#"><strong>0</strong>待付款</a>
 								<a href="#"><strong>0</strong>待评价</a>
 							</div>
-							<div class="clear"></div>	
-						</div>																	    
-							    
+							<div class="clear"></div>
+						</div>
+
 								<li><a target="_blank" href="#"><span>[特惠]</span>洋河年末大促，低至两件五折</a></li>
 								<li><a target="_blank" href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
 								<li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
-								
+
 							</ul>
                         <div class="advTip"><img src="/home/basic/images2/advTip.jpg"/></div>
 						</div>
@@ -300,7 +298,7 @@
 							<div class="recommendationMain one">
 								<a href="introduction.html"><img src="/home/basic/images2/tj.png "></img></a>
 							</div>
-						</div>						
+						</div>
 						<div class="am-u-sm-4 am-u-lg-3 ">
 							<div class="info ">
 								<h3>囤货过冬</h3>
@@ -327,6 +325,7 @@
                 @if($v->pid==0)
                 <div id="f1">
 					<!--分类标题-->
+
 					<div class="am-container ">
 						<div class="shopTitle ">
 
@@ -354,6 +353,7 @@
 					<div class="am-g am-g-fixed floodFour">
 						<div class="am-u-sm-5 am-u-md-4 text-one list ">
 							<div class="word">
+
 								@foreach($Cate as $vv)
 								@if($vv->pid==$v->id)
 								@foreach($Cate as $vvv)
@@ -363,6 +363,7 @@
 								@endforeach
 								@endif
 								@endforeach
+
 							</div>
 							<a href="# ">
 								<div class="outer-con ">
@@ -405,7 +406,9 @@
 							</div>
 
 
+
 							<div class="am-u-sm-3 am-u-md-2 text-three big">
+
 								<div class="outer-con ">
 									<div class="title ">
 										小优布丁
@@ -415,6 +418,7 @@
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
+
 								<a href="# "><img src="/home/basic/images2/5.jpg" /></a>
 							</div>
 
@@ -423,15 +427,18 @@
 									<div class="title ">
 										小优布丁
 									</div>
+
 									<div class="sub-title ">
 										¥4.8
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
+
 								<a href="# "><img src="/home/basic/images2/3.jpg" /></a>
 							</div>
 
 							<div class="am-u-sm-3 am-u-md-2 text-three ">
+
 								<div class="outer-con ">
 									<div class="title ">
 										小优布丁
@@ -447,17 +454,22 @@
 							<div class="am-u-sm-3 am-u-md-2 text-three last big ">
 								<div class="outer-con ">
 									<div class="title ">
+
 										小优布丁
+
 									</div>
 									<div class="sub-title ">
 										¥4.8
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
+
 								<a href="# "><img src="/home/basic/images2/5.jpg" /></a>
 							</div>
 
+
 					</div>
+
                  	<div class="clear "></div>
 
 
@@ -465,6 +477,7 @@
                 </div>
                 @endif
 				@endforeach
+
 
 
 

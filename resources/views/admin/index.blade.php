@@ -33,26 +33,12 @@
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <span><img alt="image" class="img-circle" src="/admin/index/img/profile_small.jpg" tppabs="http://www.zi-han.net/theme/hplus/img/profile_small.jpg" /></span>
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
-                                <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
+                               <span class="block m-t-xs"><strong class="font-bold">{{session('adminName')}}</strong></span>
+                                <span class="text-muted text-xs block">{{(session('auth')==0)?'超级管理员':'普通管理员'}}</span>
                                 </span>
-                            </a>
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a class="J_menuItem" href="form_avatar.html" tppabs="http://www.zi-han.net/theme/hplus/form_avatar.html">修改头像</a>
-                                </li>
-                                <li><a class="J_menuItem" href="profile.html" tppabs="http://www.zi-han.net/theme/hplus/profile.html">个人资料</a>
-                                </li>
-                                <li><a class="J_menuItem" href="contacts.html" tppabs="http://www.zi-han.net/theme/hplus/contacts.html">联系我们</a>
-                                </li>
-                                <li><a class="J_menuItem" href="mailbox.html" tppabs="http://www.zi-han.net/theme/hplus/mailbox.html">信箱</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="login.html" tppabs="http://www.zi-han.net/theme/hplus/login.html">安全退出</a>
-                                </li>
-                            </ul>
+
+
                         </div>
                         <div class="logo-element">H+
                         </div>
@@ -68,7 +54,7 @@
                                 <li>
                                     <a href="#">前台用户 <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
-                                        <li><a class="J_menuItem" href="/admins/User" tppabs="http://www.zi-han.net/theme/hplus/form_webuploader.html">用户浏览</a>
+                                        <li><a class="J_menuItem" href="/admins/Huser" tppabs="http://www.zi-han.net/theme/hplus/form_webuploader.html">用户浏览</a>
                                         </li>
 
                                     </ul>
@@ -107,11 +93,9 @@
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="/admins/Good" tppabs="http://www.zi-han.net/theme/hplus/form_basic.html">商品浏览</a>
                             </li>
-<<<<<<< HEAD
+
                             <li><a class="J_menuItem" href="/admins/Good/stating" tppabs="http://www.zi-han.net/theme/hplus/form_validate.html">待审核<span class="label label-warning pull-right">{{$count}}</span></a>
-=======
-                            <li><a class="J_menuItem" href="form_validate.html" tppabs="http://www.zi-han.net/theme/hplus/form_validate.html">待审核<span class="label label-warning pull-right">16</span></a>
->>>>>>> bear/yangkun
+
                             </li>
                         </ul>
                     </li>
@@ -130,24 +114,16 @@
                         <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">广告管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="/admins/AD" tppabs="http://www.zi-han.net/theme/hplus/typography.html">广告发布</a>
-<<<<<<< HEAD
 
-=======
-                            
->>>>>>> bear/yangkun
                         </ul>
                     </li>
 
                     <li>
                         <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">轮播图管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-<<<<<<< HEAD
-                            <li><a class="J_menuItem" href="/admins/RC" tppabs="http://www.zi-han.net/theme/hplus/basic_gallery.html">轮播图浏览</a>
-                            </li>
-                            <li><a class="J_menuItem" href="carousel.html" tppabs="http://www.zi-han.net/theme/hplus/carousel.html">轮播图添加</a>
-=======
+
                             <li><a class="J_menuItem" href="/admins/Res" tppabs="http://www.zi-han.net/theme/hplus/basic_gallery.html">轮播图浏览</a>
->>>>>>> bear/yangkun
+
                             </li>
 
                         </ul>
@@ -155,7 +131,7 @@
 
 
                     <li>
-                        <a class="J_menuItem" href="css_animation.html" tppabs="http://www.zi-han.net/theme/hplus/css_animation.html"><i class="fa fa-magic"></i> <span class="nav-label">客服管理</span></a>
+                        <a class="J_menuItem" href="https://app.meiqia.com/signin" tppabs="http://www.zi-han.net/theme/hplus/css_animation.html"><i class="fa fa-magic"></i> <span class="nav-label">客服管理</span></a>
                     </li>
 
 
@@ -172,11 +148,7 @@
             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-                        <form role="search" class="navbar-form-custom" method="post" action="http://www.zi-han.net/theme/hplus/search_results.html">
-                            <div class="form-group">
-                                <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
-                            </div>
-                        </form>
+
                     </div>
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
@@ -254,8 +226,11 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="hidden-xs">
-                            <a href="index_v1.html" class="J_menuItem" data-index="0"><i class="fa fa-cart-arrow-down"></i> 购买</a>
+                        <li>
+                            <ul class="nav nav-third-level">
+                                <li><a class="J_menuItem" href="/admins/User/Repass" tppabs="http://www.zi-han.net/theme/hplus/form_webuploader.html">更改密码</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="dropdown hidden-xs">
                             <a class="right-sidebar-toggle" aria-expanded="false">
@@ -289,11 +264,9 @@
                         </li>
                     </ul>
                 </div>
-<<<<<<< HEAD
+
                 <a href="/admins/exit" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
-=======
-                <a href="login.html" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
->>>>>>> bear/yangkun
+
             </div>
                 <div class="row J_mainContent" id="content-main">
                     <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="/admins/wel"  frameborder="0" data-id="index_v1.html" seamless></iframe>
@@ -633,7 +606,7 @@
 
                 <div class="left">
                     <div class="author-name">
-                        Beau-zihan <small class="chat-date">
+                     {{session('adminName')}}<small class="chat-date">
                         10:02
                     </small>
                     </div>
@@ -721,10 +694,7 @@
     <script src="/admin/index/js/hplus.min.js-v=4.0.0" tppabs="http://www.zi-han.net/theme/hplus/js/hplus.min.js?v=4.0.0"></script>
     <script type="text/javascript" src="/admin/index/js/contabs.min.js" tppabs="http://www.zi-han.net/theme/hplus/js/contabs.min.js"></script>
     <script src="/admin/index/js/plugins/pace/pace.min.js" tppabs="http://www.zi-han.net/theme/hplus/js/plugins/pace/pace.min.js"></script>
-<<<<<<< HEAD
 
-=======
->>>>>>> bear/yangkun
 </body>
 
 </html>

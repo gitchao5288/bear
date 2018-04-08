@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\AdminUser;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Crypt;
+use Session;
 
 class UserController extends Controller
 {
@@ -15,6 +15,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function index(Request $request)
     {
 
@@ -131,7 +134,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        return view('admin.Useredit');
+        $data=AdminUser::find($id);
+        return view('admin.Useredit',compact('data'));
     }
 
     /**
@@ -143,7 +147,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = AdminUser::find($id);
+        $data->uname = $request->uname;
+        $data->phone = $request->phone;
+        $data->sex   =  $request->sex;
+        $data->auth  = $request->auth;
+        $res = $data->save();
+        if($res){
+            return 1;
+        }else{
+
+        }
+
     }
 
     /**
@@ -154,6 +169,80 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+         $del = AdminUser::find($id);
+         $res = $del->delete();
+
+         if($res){
+            return 1;
+         }
+    }
+
+      //删除所有被选中的用户
+    public function delall(Request $request)
+    {
+        //获取请求参数中，要删除的用户的id
+        $ids = $request->input('ids');
+
+//        删除ids里存储的用户的id对应的用户
+        $res = AdminUser::destroy($ids);
+
+        if($res){
+            $data = [
+                'status'=>0,
+                'msg'=>'删除成功'
+            ];
+        }else{
+            $data = [
+                'status'=>1,
+                'msg'=>'删除失败'
+            ];
+        }
+
+
+        return $data;
+
+    }
+
+    public function Repass()
+    {
+
+        //导入视图
+        return view('admin.Repass');
+    }
+    public function pedit(Request $request)
+    {
+        //用用户名拿到那个数据
+            $data = AdminUser::where('uname' ,session('adminName'))->first();
+            $password = Crypt::decrypt($data->password);
+            $pass = $request->pass;
+
+        //判断输入的旧密码与数据库密码是否一致
+            if($pass !== $password){
+                  $arr = [
+                    'status'=>0,
+                    'msg'=>'旧密码不正确'
+                ];
+
+            }else{
+                $repass = Crypt::encrypt($request->repass);
+                $data->password = $repass;
+                $res = $data->save();
+                if($res){
+                      $arr = [
+                        'status'=>1,
+                        'msg'=>'修改成功'
+                    ];
+                }
+            }
+
+
+             return $arr;
+
+
+
+        //用新密码替换到数据库实现更改
+
+        //返回更改的结果
     }
 }

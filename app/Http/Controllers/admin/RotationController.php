@@ -13,6 +13,39 @@ class RotationController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function statusup(Request $request)
+    {
+        // 轮播图id
+        $rid = $request->input('id');
+        //轮播图的状态
+        $status =  ($request->input('status') == 1) ? '0' : '1';
+
+        //修改状态
+//        return $status;
+//        $goods = Goods::find($uid);
+
+        $ress = AdminRotation::find($rid);
+        $ress->rstatus = $status;
+        $res = $ress->save();
+//        ->update(['rstatus'=>$status]);
+//return $res;
+
+        if($res){
+//            json格式的接口信息  {'status':是否成功，'msg'：提示信息}
+            $arr = [
+                'status'=>1,
+                'msg'=>'修改成功'
+            ];
+        }else{
+            $arr = [
+                'status'=>0,
+                'msg'=>'修改失败'
+            ];
+        }
+
+        return $arr;
+    }
+    
     public function upload(Request $request)
     {
         $file = $request->file('fileupload');

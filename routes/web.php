@@ -12,6 +12,7 @@
 |
 */
 
+
 //前台首页
 Route::get('/','Home\IndexController@index');
 //商品列表页
@@ -40,6 +41,7 @@ Route::get('/order','Home\IndexController@order');
 Route::get('/change','Home\IndexController@change');
 //收藏页面
 Route::get('/collection','Home\IndexController@collection');
+
 
 
 
@@ -196,19 +198,30 @@ Route::resource('/admins/AD','admin\Adcontroller')->middleware('Admin');
 Route::post('/admins/Res/upload','admin\RotationController@upload');
 //删除所有
 Route::get('/admins/Res/delall','admin\RotationController@delall');
+//修改轮播图状态
+Route::get('/admins/Res/statusup','admin\RotationController@statusup');
 //轮播资源控制器
 Route::resource('/admins/Res','admin\RotationController');
+
 
 /*数据统计*/
 Route::get('/admins/Data','admin\AdminController@Data')->middleware('Admin');
 
 
 /*用户管理*/
-//管理前台用户添加
+
+/*//管理前台用户添加
 Route::get('/admins/Huseradd','admin\AdminController@Huseradd')->middleware('Admin');
 //前台用户修改
-Route::get('/admins/Huseredit','admin\AdminController@Huseredit')->middleware('Admin');
+Route::get('/admins/Huseredit','admin\AdminController@Huseredit')->middleware('Admin');*/
 
+
+
+
+//管理前台用户
+Route::post('/admins/Huser/changestatus','Home\Husercontroller@changestatus')->middleware('Admin');
+
+Route::resource('/admins/Huser','Home\Husercontroller')->middleware('Admin');
 
 
 
@@ -216,14 +229,24 @@ Route::get('/admins/Huseredit','admin\AdminController@Huseredit')->middleware('A
 //Route::get('/admins/User','admin\AdminController@Auser');
 //后台用户添加
 
-Route::get('/admins/Useradd','admin\AdminController@Useradd')->middleware('Admin');
+
+/*Route::get('/admins/Useradd','admin\AdminController@Useradd')->middleware('Admin');
 
 //后台用户修改
 //Route::get('/admins/Useredit','admin\AdminController@Useredit');
 
 
 
-Route::resource('/admins/User','admin\UserController')->middleware('Admin');
+Route::resource('/admins/User','admin\UserController')->middleware('Admin');*/
+
+
+//后台用户修改
+Route::get('/admins/User/delall','admin\UserController@delall');
+Route::get('/admins/User/Repass','admin\UserController@Repass');
+Route::post('/admins/User/pedit','admin\UserController@pedit');
+Route::get('/admins/exit','admin\LoginController@exit');
+Route::resource('/admins/User','admin\UserController');
+
 // Route::get('/admins/Huser','admin\AdminController@Huser');
 
 //后台退出登录

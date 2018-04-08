@@ -11,13 +11,11 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-<<<<<<< HEAD
+
+
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
-=======
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
->>>>>>> bear/yangkun
+
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -26,27 +24,21 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-<<<<<<< HEAD
+
  font-family: arial,"Lantinghei SC","Microsoft Yahei";
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
-=======
- font-family: arial,"Lantinghei SC","Microsoft Yahei";	
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
->>>>>>> bear/yangkun
+
 footer, header, hgroup, menu, nav, section, main {
 	display: block;
 }
 ul,li,ol{ list-style:none;}
 dl,dd{ margin:auto;}
 
-<<<<<<< HEAD
 
-=======
->>>>>>> bear/yangkun
+
+
 .am-btn {font-size:12px ;}
 
 html{width:100%;
@@ -62,7 +54,7 @@ body{margin:0;
 	 padding:0;
 	 width:100%;
 	 font-size:12px;
-<<<<<<< HEAD
+
 	 font-family: arial,"Lantinghei SC","Microsoft Yahei";
 
 }
@@ -71,16 +63,13 @@ body{margin:0;
 a:link,a:visited,a:hover{text-decoration:none; outline:none;}
 /*所有超链接不要下划线*/
 
-=======
-	 font-family: arial,"Lantinghei SC","Microsoft Yahei";	
-	 
+
 }
 
-   
+
 a:link,a:visited,a:hover{text-decoration:none; outline:none;}
 /*所有超链接不要下划线*/
-	
->>>>>>> bear/yangkun
+
 *, *:after, *:before{
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -88,11 +77,9 @@ a:link,a:visited,a:hover{text-decoration:none; outline:none;}
 	box-sizing: border-box; }
 /*任何标签、包括它前面、后面生成的内容都不要影响盒子的边框*/
 
-<<<<<<< HEAD
+
 .clear{ clear:both}
-=======
-.clear{ clear:both} 
->>>>>>> bear/yangkun
+
 
 img, input {
     vertical-align: middle;}
@@ -127,11 +114,7 @@ color: #555555;background:none;border-color:transparent;cursor: default;}
 .nav.white .logo{float:left;height:41px;width:70px; margin: 6px auto;}
 .logoBig{display:none;}
 .logo img{width:100%}
-<<<<<<< HEAD
 
-=======
- 
->>>>>>> bear/yangkun
 /*搜索框*/
 .search-bar{height:41px; margin: 8px 20px 0 75px;}
 .search-bar form{border:2px solid #F03726; max-width:670px;}
@@ -145,11 +128,9 @@ color: #F5F5F2;font-size: 14px;cursor:pointer;border-radius:0px 0px ;}
 /*侧边导航*/
 .mui-mbar-tabs{ display:none;}
 
-<<<<<<< HEAD
+
 .header{ display:none; max-width:1000px; margin:0px auto; font-size:12px;}
-=======
-.header{ display:none; max-width:1000px; margin:0px auto; font-size:12px;}  
->>>>>>> bear/yangkun
+
 
 .footer-bd{ display:none}
 .footer{ text-align: center;border-top: 2px solid #F8F8F8 margin-top:20px; padding-top: 5px;margin-bottom:60px ;}
@@ -162,19 +143,13 @@ color: #F5F5F2;font-size: 14px;cursor:pointer;border-radius:0px 0px ;}
 .navCir li i{display: block;font-size: 18px;}
 .navCir li.active a{color:#F03726 ;}
 
-<<<<<<< HEAD
+
 @media only screen and (min-width: 640px)
 
    {
 
 
-=======
-@media only screen and (min-width: 640px) 
 
-   {
-   	
-   	
->>>>>>> bear/yangkun
 /*公共*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -185,19 +160,15 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-<<<<<<< HEAD
+
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
-=======
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
->>>>>>> bear/yangkun
+
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 
 	font-size: 14px;
 
-<<<<<<< HEAD
 }
 
 
@@ -207,41 +178,26 @@ time, mark, audio, video {
 
 
 
-=======
-}   	
-   	
-   	
-   	
-   	
-   	
-   	
-   	
-   	
->>>>>>> bear/yangkun
+
+
    	.nav.white{background: none;}
 	.header { display:block;height: 35px;}
 	.message-l{ float:left;}
     .message-l .topMessage{padding: 0px 6px;height: 35px;line-height: 35px;}
     .message-r {float: right;}
     .message-r .topMessage {float: left;padding: 0px 6px;height: 35px;line-height: 35px;}
-<<<<<<< HEAD
+
 
 	.nav.white .logo{display:none;}
 	.nav.white .logoBig{ display:block;float:left;height:56px;width:115px; margin:0px auto; margin-left:5%}
-=======
-  
-	.nav.white .logo{display:none;}  
-	.nav.white .logoBig{ display:block;float:left;height:56px;width:115px; margin:0px auto; margin-left:5%} 
->>>>>>> bear/yangkun
+
 	.nav.white .logoBig img{width:100%;}
 	.my-cart { width: 46px;height: 46px;}
 	.search-bar {height: 51px;margin: 0px 50px 0 120px; padding-left:5%;}
 	#ai-topsearch {height: 46px;}
-<<<<<<< HEAD
+
 	.search-bar input {width: 80%;height:46px;}
-=======
-	.search-bar input {width: 80%;height:46px;}	
->>>>>>> bear/yangkun
+
 	.my-cart a{display:block; margin-top:5px}
 	.classified{display:none;}
 	.navCir{display:none;}
@@ -260,46 +216,29 @@ time, mark, audio, video {
 /*选项卡样式*/
 .am-nav-tabs > li span{font-size:16px;padding:5px 15px ;}
 	}
-<<<<<<< HEAD
+
 @media only screen and (min-width: 1025px)
 
    {
 
 .mui-mbar-tabs{ display:block;}
-=======
-@media only screen and (min-width: 1025px) 
 
-   {
-
-.mui-mbar-tabs{ display:block;}  
->>>>>>> bear/yangkun
 .nav.white{padding-left:0px; max-width:1000px; margin:0px auto;}
 .nav.white .logo{display:none;}
 .nav.white .logoBig { display:block; float:left;height:90px; width:200px; margin-left:0px;}
 .nav.white .logoBig li{float:left;}
 .search-bar{height:90px; padding: 20px 70px 0 230px; margin:auto;}
-<<<<<<< HEAD
+
 
 .my-cart{ display:none; right:10%; top:20px;}
 .shopNavfloat{ display:block; position:fixed;bottom:0px;left:30px;}
 .shopMain{margin:0px 40px 0px 5px;}
-=======
-	   
-.my-cart{ display:none; right:10%; top:20px;}
-.shopNavfloat{ display:block; position:fixed;bottom:0px;left:30px;}
-.shopMain{margin:0px 40px 0px 5px;} 
->>>>>>> bear/yangkun
+
 .shopCon li{width:20%;padding:10px;}
 .search-bar input { height: 46px;}
 .search-bar {margin:0px auto;}
 .tip{display:block;}
-<<<<<<< HEAD
 
-
-=======
-	  
-	  
->>>>>>> bear/yangkun
 /*分类*/
 .nav-table{max-width:1000px;margin: 0px auto;height: 45px;position: relative;overflow: hidden;}
 .all-goods{font-size: 16px;}
@@ -309,26 +248,21 @@ time, mark, audio, video {
 .nav-cont li::before{content: '\20';display: inline-block;height: 16px;border-right: 1px solid #d9d9d9;width: 0;vertical-align: middle;margin-left: -1px;}
 .nav-cont li a {font-size: 16px;color: #333;line-height: 36px;margin-left: -1px;padding: 0 25px;text-decoration: none;font-weight: 700;display: inline-block;vertical-align: middle;}
 
-<<<<<<< HEAD
+
 .nav-cont .nav-extra{position: absolute;right:0px ;top:6px;font-size: 16px;color:#fcff00;line-height:33px;height:33px ;width:160px;text-align:center;background: url(/home/basic/images/extra.png);cursor: pointer;}
-=======
-.nav-cont .nav-extra{position: absolute;right:0px ;top:6px;font-size: 16px;color:#fcff00;line-height:33px;height:33px ;width:160px;text-align:center;background: url(../../images/extra.png);cursor: pointer;}
->>>>>>> bear/xuweidong
+
 .nav-cont .nav-extra i.nav-user{background:#000 ;color:#fff ;width: 33px;height: 33px;border-radius: 33px;position: absolute;left:-28px;z-index: 99;padding: 5px;overflow: hidden;}
 .nav-cont .nav-extra b{display:block;position: absolute;width: 45px;height: 45px;border-radius:45px;z-index: 1;left: -33px;top: -8px;background: #fff;}
-<<<<<<< HEAD
+
 b.line{display: block;width:100%;height:2px ;border-bottom:2px solid #d2364c;position: absolute;top:180px;z-index:5;}
 	   }
 
 
 
-=======
-b.line{display: block;width:100%;height:2px ;border-bottom:2px solid #d2364c;position: absolute;top:180px;z-index:5;}	   
-	   }
-	   
 
-	   
->>>>>>> bear/yangkun
+	   }
+
+
 @media only screen and (min-width: 1260px) {
 .am-container {max-width: 1200px;}
 .footer{max-width:1200px ;margin: auto;}
@@ -340,13 +274,10 @@ b.line{display: block;width:100%;height:2px ;border-bottom:2px solid #d2364c;pos
 }
 
 
-<<<<<<< HEAD
+
 
 /*侧边信息栏*/
-=======
-	   
-/*侧边信息栏*/  
->>>>>>> bear/yangkun
+
 .tip{ position:fixed; top:0px;right:0px;background-color: #e1e1e1; min-height: 100%;z-index: 1000; }
 #sidebar {
     padding-top: 120px;
@@ -405,11 +336,9 @@ cursor: pointer;color: #FFF; margin-bottom:10px;}
 .item a,.quick_toggle a{ display:block;
 width: 40px;
 height: 38px;cursor: pointer; position:relative; overflow:hidden; }
-<<<<<<< HEAD
+
 .quick_toggle span{position:absolute;top:12px;left:12px;background: url(/home/basic/images/ibar_sprites.png) no-repeat;}
-=======
-.quick_toggle span{position:absolute;top:12px;left:12px;background: url(../images/ibar_sprites.png) no-repeat;}
->>>>>>> bear/xuweidong
+
 .quick_toggle .kfzx{background-position:0 -175px;}
 .quick_toggle li:hover .kfzx{ background-position:-33px -175px;}
 .quick_toggle .mpbtn_qrcode {background-position: 0 -302px; position:absolute;top:12px;left:10px;}
@@ -429,11 +358,9 @@ height: 38px;cursor: pointer; position:relative; overflow:hidden; }
 
 
 .mp_tooltip {height: 38px;line-height: 38px;width: 92px;position: absolute;z-index: 2;left: -121px;top: 0;background: #2b2b2b;color: #d8d8d8;text-align: center;display: block;visibility: hidden;font-size:12px;}
-<<<<<<< HEAD
+
 .icon_arrow_white {position: absolute;right: -5px;top: 15px;width: 5px;height: 9px;background:url(/home/basic/images/ibar_sprites.png) no-repeat;background-position: 0 -253px;}
-=======
-.icon_arrow_white {position: absolute;right: -5px;top: 15px;width: 5px;height: 9px;background:url(../images/ibar_sprites.png) no-repeat;background-position: 0 -253px;}
->>>>>>> bear/xuweidong
+
 .icon_arrow_right_black {position: absolute;right: -5px;top: 15px;width: 5px;height: 9px;
 background:url(../images/ibar_sprites.png) no-repeat;background-position:0px -234px;overflow: hidden;}
 

@@ -1,6 +1,7 @@
 <?php
 
 
+
 namespace App\Http\Controllers\Home;
 
 use App\Models\AdminRotation;
@@ -171,4 +172,5 @@ class IndexController extends Controller
     }
 
 //    return view('home.index');
+
 }

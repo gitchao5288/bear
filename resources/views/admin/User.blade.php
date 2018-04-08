@@ -7,12 +7,8 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/admin/index/css/font.css">
-    <link rel="stylesheet" href="/admin/index/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/admin/index/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/admin/index/js/xadmin.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @include('admin.style')
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
       <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -63,7 +59,7 @@
         @foreach($data as $v)
           <tr>
             <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="{{$v->uid}}"><i class="layui-icon">&#xe605;</i></div>
             </td>
             <td>{{$v->uid}}</td>
             <td>{{$v->uname}}</td>
@@ -80,10 +76,10 @@
 
             <td class="td-manage">
 
-              <a title="编辑"  onclick="x_admin_show('编辑','/admins/User/{id}/edit')" href="javascript:;">
+              <a title="编辑"  onclick="x_admin_show('编辑','/admins/User/{{$v->uid}}/edit')" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
-              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+              <a title="删除" onclick="member_del(this,'{{$v->uid}}')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
             </td>
@@ -148,23 +144,46 @@
 
       /*用户-删除*/
       function member_del(obj,id){
+
           layer.confirm('确认要删除吗？',function(index){
               //发异步删除数据
-              $(obj).parents("tr").remove();
-              layer.msg('已删除!',{icon:1,time:1000});
-          });
-      }
-
+               $.ajax({
+                  type:"DELETE",
+                  url:"/admins/User/"+id,
+                  dataType:"json",
+                  headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                  success:function(data){
+                    if(data==1){
+                       $(obj).parents("tr").remove();
+                       layer.msg('已删除!',{icon:1,time:1000});
+                     }
+                  }
+                });
+        });
+}
 
 
       function delAll (argument) {
 
-        var data = tableCheck.getData();
+        //var data = tableCheck.getData();
+        //声明一个空数组,存放所有被选中的复选框的data-id的属性值
+        var ids = [];
 
-        layer.confirm('确认要删除吗？'+data,function(index){
-            //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
+        //获取所有的被选中的复选框
+        $('.layui-form-checked').not('.header').each(function(i,v){
+          ids.push($(v).attr('data-id'))
+        })
+        // console.log(ids);
+        $.get('/admins/User/delall',{"ids":ids},function(data){
+          //后台删除成功,在前台上也删除
+           if(data.status==0){
+                layer.msg('删除成功', {icon: 1});
             $(".layui-form-checked").not('.header').parents('tr').remove();
+           }else{
+              layer.msg('删除失败',{icon: 1});
+           }
         });
       }
     </script>

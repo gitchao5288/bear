@@ -57,7 +57,9 @@ class LoginController extends Controller
         }
 
         //如果成功，存入session('amdinid')
-        session(['adminName'=>$req['uname']]);
+
+        session(['adminName'=>$req['uname'],'auth'=>$data->auth]);
+
 
 
         return redirect('/admins/index');
@@ -69,8 +71,10 @@ class LoginController extends Controller
 
         $request->session()->forget('adminName');
 
+
             return redirect('/admins/login')->withErrors('退出登录成功');
 
 
     }
 }
+
