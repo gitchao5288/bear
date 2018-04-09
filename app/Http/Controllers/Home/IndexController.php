@@ -7,14 +7,18 @@ namespace App\Http\Controllers\Home;
 use App\Models\AdminRotation;
 use App\Model\HomeUser;
 use App\Models\Address;
+
 use App\Models\Goods;
 use App\Models\ORDER;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Cate;
 
+
 use App\Models\ORDERDETAIL;
+
 class IndexController extends Controller
 {
 
@@ -25,6 +29,7 @@ class IndexController extends Controller
 
         //查询所有类别数据
         $Cate = Cate::get();
+
     	return view('/home/index',['Res'=>$Res,'Cate'=>$Cate]);
     }
     //定义一个子树方法 (全部信息,id,标记)
@@ -144,6 +149,7 @@ class IndexController extends Controller
 
          return view('home.success',compact('add','ormb'));
     }
+
     public function center()
     {
         return view('home.center');
@@ -175,6 +181,7 @@ class IndexController extends Controller
         }else{
             $arr['status'] = 0;
             $arr['msg'] = '修改失败';
+
         }
         return $arr;
     }
@@ -242,6 +249,7 @@ class IndexController extends Controller
     //订单管理
     public function order()
     {
+
         $id = session('user')->uid;
         $orders = ORDER::where('bid',$id)->where('display','1')->get();
 
@@ -295,7 +303,11 @@ class IndexController extends Controller
 
 
         return view('home.mygoodDetail',compact('goods','firstCate','secondCate','thirdCate'));
+        //return view('home.order');
     }
+
+
+
 
     //退款售后
     public function change()

@@ -36,7 +36,9 @@
 							@else
 								<span target="_top" class="h">{{session('user')->uname}}</span>
 								<span target="_top" >您好！</span>
+
 								<a href="/home/login/login" target="_top" class="h">[更换账号]</a>
+
 							@endif
 						</div>
 					</div>
@@ -78,13 +80,13 @@
 			<div class="banner">
                       <!--轮播 -->
 						<div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
-							
+
 							<ul class="am-slides">
 								@foreach($Res as $v)
 								<li><a href="{{$v->link}}"><img src="{{$v->feilname}}" /></a></li>
 								@endforeach
 							</ul>
-							
+
 						</div>
 
 
@@ -103,7 +105,8 @@
                                 <li class="qc"><a href="#">手机二手</a></li>
                                 <li class="qc"><a href="#">女朋友二手</a></li>
                                 <li class="qc"><a href="#">降降降</a></li>
-                                <li class="qc last"><a href="#">发布闲置</a></li>
+                                <li class="qc last"><a href="/home/addgoods">发布闲置</a></li>
+
 							</ul>
 						</div>
 
@@ -125,6 +128,7 @@
 													<div class="area-in">
 														<div class="area-bg">
 
+
 															<div class="menu-srot">
 
 																<div class="sort-side">
@@ -139,6 +143,7 @@
 																					@endif
 																				@endforeach
 
+
 																	</dl>
 																		@endif
 																	@endforeach
@@ -149,7 +154,9 @@
 														</div>
 													</div>
 												</div>
+
 											<b class="arrow"></b>	
+
 											</li>
 												@endif
 												@endforeach
@@ -223,14 +230,14 @@
 								     <img src="/home/basic/images2/TJ.jpg"></img>
 								     <p>XXXXXXXXXXXXXXXXXX</p>
 							    </a></li>
-							
-							
+
 						<div class="mod-vip">
 							<div class="m-baseinfo">
 								<a href="../person/index.html">
 									<img src="/home/basic/images2/getAvatar.do.jpg">
 								</a>
 								<em>
+
 							{{--如果用户没有登录，显示登录链接，如果已经登录，显示用户账号--}}
 							@if(!session('user'))
 							        Hi,<span class="s-name">请您先登录</span>
@@ -239,6 +246,7 @@
 								Hi,<span class="s-name">{{session('user')->uname}}</span>
 									<a href="#"><p>点击更多优惠活动</p></a>
 							@endif
+
 								</em>
 							</div>
 							@if(!session('user'))
@@ -339,7 +347,6 @@
 
 							<h4>{{$v->cate_name}}</h4>
 
-							
 							<h3>每一道甜品都有一个故事</h3>
 							<div class="today-brands ">
                                 @foreach($Cate as $vv)
@@ -551,6 +558,7 @@
 
 		</div>
 		</div>
+
 
 
 		<!--右侧菜单 -->

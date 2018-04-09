@@ -56,7 +56,9 @@
 
 				<div class="nav white">
 					<div class="logoBig">
+
 						<li><img src="/home/basic/images2/logo2.png" /></li>
+
 					</div>
 
 					<div class="search-bar pr">

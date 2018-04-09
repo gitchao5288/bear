@@ -14,7 +14,9 @@
 		<li class="person">
 			<a href="#">我的交易</a>
 			<ul>
+
 				<li><a href="/publish">我的发布</a></li>
+
 				<li><a href="/order">订单管理</a></li>
 				<li> <a href="/change">退款售后</a></li>
 			</ul>

@@ -303,6 +303,7 @@ class LoginController extends Controller
         ];
 
         $validator = Validator::make($input,$rule,$msg);
+
 //        如果验证失败
         if ( $validator->fails() ) {
             return redirect('home/login/login')
@@ -338,6 +339,7 @@ class LoginController extends Controller
         if ( $input['password'] != Crypt::decrypt($user->password) ) {
             return redirect('home/login/login')->with('errors','密码错误');
         }
+
 //        dd($user);
 
 //        6. 用户信息保存到session

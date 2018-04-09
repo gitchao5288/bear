@@ -34,6 +34,7 @@
   <ul class="message-r">
     <div class="topMessage home"><div class="menu-hd"><a href="/" target="_top" class="h">商城首页</a></div></div>
     <div class="topMessage my-shangcheng"><div class="menu-hd MyShangcheng"><a href="/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div></div>
+
     <div class="topMessage favorite"><div class="menu-hd"><a href="/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
   </ul>
 </div>
@@ -74,8 +75,8 @@
      </ul>
      <div class="option">
        <span class="info">您可以</span>
-        <a href="../person/order.html" class="J_MakePoint">查看<span>已买到的宝贝</span></a>
-        <a href="../person/orderinfo.html" class="J_MakePoint">查看<span>交易详情</span></a>
+        <a href="/order" class="J_MakePoint">查看<span>已买到的宝贝</span></a>
+
      </div>
     </div>
   </div>

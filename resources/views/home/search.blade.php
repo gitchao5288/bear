@@ -161,11 +161,13 @@
 									<li class="big"><a title="评价" href="#">评价为主</a></li>
 								</div>
 								<div class="clear"></div>
+
 									
 								<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
 									<li>
 										<div class="i-pic limit">
 											<a href="/goodDetails/1">
+
 											<img src="/home/basic/images2/imgsearch1.jpg" />
 											<p class="title fl">【良品铺子旗舰店】手剥松子218g 坚果炒货零食新货巴西松子包邮</p>
 											<p class="price fl">
@@ -177,6 +179,7 @@
 											</p></a>
 										</div>
 									</li>
+
 								</ul>
 							</div>
 							<div class="search-side">
@@ -274,7 +277,6 @@
 			<li><a href="../person/index.html"><i class="am-icon-user"></i>我的</a></li>					
 		</div>
 
-		<!--菜单 -->
 
 		<script>
 			window.jQuery || document.write('<script src="basic/js/jquery-1.9.min.js"><\/script>');

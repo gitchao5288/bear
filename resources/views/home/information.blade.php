@@ -44,7 +44,6 @@
 							<div class="topMessage my-shangcheng">
 								<div class="menu-hd MyShangcheng"><a href="/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 							</div>
-
 							<div class="topMessage favorite">
 								<div class="menu-hd"><a href="/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
 						</ul>
@@ -54,7 +53,9 @@
 
 						<div class="nav white">
 							<div class="logoBig">
+
 								<li><img src="/home/basic/images2/logo2.png" /></li>
+
 							</div>
 
 							<div class="search-bar pr">

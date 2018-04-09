@@ -56,7 +56,9 @@
 
 						<div class="nav white">
 							<div class="logoBig">
+
 								<li><img src="/home/basic/images2/logo2.png" /></li>
+
 							</div>
 
 							<div class="search-bar pr">
@@ -131,6 +133,7 @@
 
 									<div class="order-main">
 										<div class="order-list">
+
 											{{--{{dd($orders)}}--}}
 											@foreach($orders as $k=>$v)
 											<!--交易成功-->
@@ -138,6 +141,7 @@
 												<div class="order-title">
 													<div class="dd-num">订单编号：<a href="javascript:;">{{$v->id}}</a></div>
 													<span>成交时间：{{$v->otime}}</span>
+
 													<!--    <em>店铺：小桔灯</em>-->
 												</div>
 												<div class="order-content">
@@ -145,28 +149,36 @@
 														<ul class="item-list">
 															<li class="td td-item">
 																<div class="item-pic">
+
 																	<a href="/goodDetails" class="J_MakePoint">
 																		<img src="{{$goods[$k]->gpic}}" class="itempic J_ItemImg">
+
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
+
 																		<a href="/goodDetails">
 																			<p>商品名称</p>
+
 
 																		</a>
 																	</div>
 																</div>
 															</li>
 
+
 															<li class="td td-price">
 																<div class="item-price">
 																	{{$v->ormb}}.00
+
 																</div>
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
+
 																	<span>×</span>1
+
 																</div>
 															</li>
 															<li class="td td-operation">
@@ -181,7 +193,9 @@
 													<div class="order-right">
 														<li class="td td-amount">
 															<div class="item-amount">
+
 																合计：{{$v->ormb}}.00
+
 
 															</div>
 														</li>
@@ -190,16 +204,19 @@
 																<div class="item-status">
 																	<p class="Mystatus">交易成功</p>
 
+
 																</div>
 															</li>
 															<li class="td td-change">
 																<div class="am-btn am-btn-danger anniu displaychange" oid="{{$v->id}}">
+
 																	删除订单</div>
 															</li>
 														</div>
 													</div>
 												</div>
 											</div>
+
 												<hr><br>
 
 											@endforeach
@@ -213,6 +230,7 @@
 								</div>
 
 							</div>
+
 
 						</div>
 					</div>
@@ -245,7 +263,6 @@
 			@include('home.public.centerlayout')
 		</div>
 
-
 		<script>
 			$('.displaychange').click(function(){
 			    if(confirm('您确定要删除吗？')){
@@ -265,6 +282,7 @@
 
 			})
 		</script>
+
 	</body>
 
 </html>

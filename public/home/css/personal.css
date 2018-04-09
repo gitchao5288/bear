@@ -11,8 +11,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -25,7 +25,7 @@ time, mark, audio, video {
 	font-family: arial,"Lantinghei SC","Microsoft Yahei";
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, main {
 	display: block;
 }
@@ -46,14 +46,14 @@ body{margin:0;
 	 padding:0;
 	 width:100%;
 	 font-size:12px;
-	 font-family: arial,"Lantinghei SC","Microsoft Yahei";	
+	 font-family: arial,"Lantinghei SC","Microsoft Yahei";
 	 background: #F5F8FA  none repeat scroll 0% 0%;
 }
 
-   
+
 a:link,a:visited{text-decoration:none; outline:none; color: #000;}
 /*所有超链接不要下划线*/
-* {padding:0;margin:0;}； 	
+* {padding:0;margin:0;}；
 *, *:after, *:before{
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -62,7 +62,7 @@ a:link,a:visited{text-decoration:none; outline:none; color: #000;}
 /*任何标签、包括它前面、后面生成的内容都不要影响盒子的边框*/
 .am-form textarea,.am-form select, .am-form textarea, .am-form input[type="text"], .am-form input[type="password"], .am-form input[type="datetime"], .am-form input[type="datetime-local"], .am-form input[type="date"], .am-form input[type="month"], .am-form input[type="time"], .am-form input[type="week"], .am-form input[type="tel"], .am-form input[type="email"], .am-form input[type="url"], .am-form input[type="search"], .am-form input[type="tel"], .am-form input[type="color"], .am-form-field,.am-btn{ font-size:14px;}
 
-.clear{ clear:both} 
+.clear{ clear:both}
 header{display: none;}
 
 /*选项卡样式定义*/
@@ -114,10 +114,10 @@ hr{margin:5px 0px;}
 
 .footer{display:none; text-align: center;border-top: 2px solid #F8F8F8 margin-top:20px; padding-top: 5px;}
 .main-wrap {background-color:#fff;}
-@media only screen and (min-width:640px) 
-{	
-	
-	
+@media only screen and (min-width:640px)
+{
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -127,15 +127,15 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 font-size:14px ;
-}	
-	
-	
-	
+}
+
+
+
 /*头*/
 header { display:block;}
 header article{max-width: 1200px;margin:0px auto;}
@@ -146,16 +146,16 @@ header article{max-width: 1200px;margin:0px auto;}
 .message-r .topMessage {float: left;padding: 0px 6px;height: 35px;line-height: 35px;}
 /*浮动框*/
 .nav.white{width:100%;margin:0px auto;}
-.nav.white .logoBig{ display:block;float:left;height:56px;width:115px; margin:0px auto; margin-left:5%} 
+.nav.white .logoBig{ display:block;float:left;height:56px;width:115px; margin:0px auto; margin-left:5%}
 .nav.white .logoBig img{width:100%;}
 .my-cart { width: 46px;height: 46px;}
 
 #ai-topsearch {height: 46px;}
-.search-bar input {width: 80%;height:46px;}	
+.search-bar input {width: 80%;height:46px;}
 .classified{display:none;}
 .nav.white{ position:relative;top:0px;z-index:0;}
 
- 
+
 /*搜索框*/
 .search-bar {height: 51px;margin: 0px 50px 0 120px; padding-left:5%;}
 .search-bar form{border:2px solid #F03726; max-width:670px;}
@@ -201,7 +201,7 @@ li.person{border-bottom:1px solid #F5F8FA ;padding-bottom:10px;padding-top: 10px
 }
 
 
-@media only screen and (min-width: 1025px) 
+@media only screen and (min-width: 1025px)
 
    {
 	   .nav.white{padding-left:0px; max-width:1000px; margin:0px auto;}
@@ -209,8 +209,8 @@ li.person{border-bottom:1px solid #F5F8FA ;padding-bottom:10px;padding-top: 10px
 	   .nav.white .logoBig li{float:left;}
 	   .search-bar{height:90px; padding: 20px 70px 0 230px; margin:auto;}
 
-	  
-	  
+
+
 /*分类*/
 .nav-table{max-width:1000px;margin: 0px auto;height: 45px;position: relative;overflow: hidden;display: block;margin-top:10px ;}
 .nav-table .all-goods{font-size: 16px;}
@@ -223,14 +223,14 @@ li.person{border-bottom:1px solid #F5F8FA ;padding-bottom:10px;padding-top: 10px
 .nav-cont .nav-extra{position: absolute;right:0px ;top:6px;font-size: 16px;color:#fcff00;line-height:33px;height:33px ;width:160px;text-align:center;background: url(../images/extra.png);cursor: pointer;}
 .nav-cont .nav-extra i.nav-user{background:#000 ;color:#fff ;width: 33px;height: 33px;border-radius: 33px;position: absolute;left:-28px;z-index: 99;padding: 5px;overflow: hidden;}
 .nav-cont .nav-extra b{display:block;position: absolute;width: 45px;height: 45px;border-radius:45px;z-index: 1;left: -33px;top: -8px;background: #fff;}
-b.line{display: block;width:100%;height:2px ;border-bottom:2px solid #d2364c;}	   
+b.line{display: block;width:100%;height:2px ;border-bottom:2px solid #d2364c;}
 
-.bloglist{padding-top:20px ;}   
+.bloglist{padding-top:20px ;}
 .blog-content p {font-size: 16px;line-height: 24px;}
 
 	   }
 
-@media only screen and (min-width: 1260px) 
+@media only screen and (min-width: 1260px)
 
    {
 /*分类*/

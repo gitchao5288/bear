@@ -49,7 +49,6 @@
 				<div class="topMessage my-shangcheng">
 					<div class="menu-hd MyShangcheng"><a href="/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 				</div>
-
 				<div class="topMessage favorite">
 					<div class="menu-hd"><a href="/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
 			</ul>
@@ -60,7 +59,9 @@
 			<div class="nav white">
 				<div class="logo"><img src="/home/images/logo.png" /></div>
 				<div class="logoBig">
+
 					<li><img src="/home/basic/images2/logo2.png" /></li>
+
 				</div>
 				<div class="search-bar pr">
 					<a name="index_none_header_sysc" href="#"></a>
@@ -141,9 +142,11 @@
 							</script>
 
 							<div class="tb-booth tb-pic tb-s310">
+
 								<a href="{{$data->gpic}}"><img src="{{$data->gpic}}" alt="细节展示放大镜特效" rel="{{$data->gpic}}" class="jqzoom" /></a>
 							</div>
 						
+
 						</div>
 
 						<div class="clear"></div>
@@ -155,8 +158,10 @@
 						<!--名称-->
 						<div class="tb-detail-hd">
 							<h1>	
+
 								{{$data->gname}}
 	          				</h1>
+
 						</div>
 						<div class="tb-detail-list">
 							<!--价格-->
@@ -173,6 +178,7 @@
 							<div class="clear"></div>
 
 							<!--销量-->
+
 
 							<div class="clear"></div>
 
@@ -193,13 +199,13 @@
 											<form class="theme-signin" name="loginform" action="" method="post">
 
 												<div class="theme-signin-left">
-
 												
 													<div class="theme-options">
 														<div class="cart-title number">数量</div>
 														<dd>
 
 															<input id="text_box" readonly name="" type="text" value="1" style="width:30px;" />
+
 
 
 														</dd>
@@ -241,10 +247,11 @@
 							</div>
 							<li>
 								<div class="clearfix tb-btn tb-btn-buy theme-login">
-									<a id="LikBuy" href="/home/pay/2" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
+									<a id="LikBuy" href="/home/pay/1" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
 								</div>
 							</li>
 							<li>
+
 
 							</li>
 						</div>
@@ -255,7 +262,7 @@
 
 				</div>
 
-		
+
 				<!-- introduce-->
 
 				<div class="introduce">
@@ -274,7 +281,6 @@
 
 								</li>
 
-
 							</ul>
 
 							<div class="am-tabs-bd">
@@ -287,6 +293,7 @@
 										<div class="clear"></div>
 										<ul id="J_AttrUL">
 											<li title="">{{$data->gdesc}}</li>
+
 
 										</ul>
 										<div class="clear"></div>
@@ -309,8 +316,6 @@
 									<div class="clear"></div>
 
 								</div>
-
-
 
 							</div>
 
@@ -345,6 +350,7 @@
 				</div>
 			</div>
 
+
 		<script>
 			// $('#LikBasket').click(function(){			
 			// 	$.post('/home/storecart',{data:{{$data}}},function(data){
@@ -353,6 +359,7 @@
 			// 	})
 			// })
 		</script>
+
 	</body>
 
 </html>

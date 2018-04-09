@@ -55,7 +55,9 @@
 
 						<div class="nav white">
 							<div class="logoBig">
+
 								<li><img src="/home/basic/images2/logo2.png" /></li>
+
 							</div>
 
 							<div class="search-bar pr">
@@ -161,7 +163,9 @@
 										<div class="am-form-group">
 											<label for="user-intro" class="am-form-label">详细地址</label>
 											<div class="am-form-content">
+
 												<textarea class="" rows="3" name="address" style="resize:none;" id="user-intro" placeholder="输入详细地址"></textarea>
+
 												<small>100字以内写出你的详细地址...</small>
 											</div>
 										</div>
@@ -190,10 +194,12 @@
 							var addname = $('input[name=addname]').val();
 							var phone = $('input[name=phone]').val();
 							var address = $('textarea[name=address]').val();
+
 							if(!addname || !phone || !address){
 							    alert('请填写每一项！');
 							    return false;
 							}
+
 
 							$.ajax({
 								url:'/doaddress',

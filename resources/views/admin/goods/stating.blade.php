@@ -88,8 +88,8 @@
           <tr>
 
             <td style="width: 30px;">{{$v['gid']}}</td>
-            <td style="width: 60px;">{{$v->HomeUser->uname}}</td>
-              <td>{{$v->Cate->cate_name}}</td>
+            <td style="width: 60px;">{{$v['HomeUser']['uname']}}</td>
+              <td>{{$v['Cate']['cate_name']}}</td>
             <td style="width: 100px;">{{$v['gname']}}</td>
             <td >
                 <img src="{{$v['gpic']}}" alt="" style="width: 70px;">

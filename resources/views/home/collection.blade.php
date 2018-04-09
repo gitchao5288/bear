@@ -53,7 +53,9 @@
 
 						<div class="nav white">
 							<div class="logoBig">
+
 								<li><img src="/home/basic/images2/logo2.png" /></li>
+
 							</div>
 
 							<div class="search-bar pr">
@@ -115,10 +117,12 @@
 											<div class="s-price-box">
 												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">42.50</em></span>
 
+
 											</div>
 
 										</div>
 										<div class="s-tp">
+
 
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
@@ -144,6 +148,7 @@
 
 										</div>
 										<div class="s-tp">
+
 
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
@@ -166,10 +171,12 @@
 											<div class="s-price-box">
 												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">378.00</em></span>
 
+
 											</div>
 
 										</div>
 										<div class="s-tp">
+
 
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
@@ -191,10 +198,12 @@
 											<div class="s-price-box">
 												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">42.50</em></span>
 
+
 											</div>
 
 										</div>
 										<div class="s-tp">
+
 
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
@@ -216,10 +225,12 @@
 											<div class="s-price-box">
 												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">49.90</em></span>
 
+
 											</div>
 
 										</div>
 										<div class="s-tp">
+
 
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
@@ -241,10 +252,12 @@
 											<div class="s-price-box">
 												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">378.00</em></span>
 
+
 											</div>
 
 										</div>
 										<div class="s-tp">
+
 
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
