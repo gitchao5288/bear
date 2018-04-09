@@ -18,8 +18,20 @@ Route::get('/','Home\IndexController@index');
 //商品列表页
 Route::get('/search','Home\IndexController@search');
 //商品详情页面
-Route::get('/goodDetails','Home\IndexController@goodDetails');
+
+//Route::get('/goodDetails','Home\IndexController@goodDetails');
 Route::get('/mygoodDetail/{gid}','Home\IndexController@mygoodDetail');
+
+Route::get('/goodDetails/{id}','Home\IndexController@goodDetails');
+//结算页面
+Route::get('/home/pay/{id}','Home\IndexController@pay');
+//加入购物车
+Route::post('/home/storecart','Home\IndexController@storecart');
+//结算完成
+Route::post('/home/success','Home\IndexController@success');
+//地址改变
+Route::get('/home/Achange','Home\IndexController@Achange');
+
 //个人中心页面
 Route::get('/center','Home\IndexController@center');
 //个人信息页面
@@ -80,13 +92,8 @@ Route::get('/home/shopcart',function(){
 
 });
 
-//结算页面
-Route::get('/home/pay',function(){
-    return view('home.pay');
-});
-Route::get('/home/success',function(){
-    return view('home.success');
-});
+
+
 
     // 生成验证码路由
     Route::get('home/login/code','Home\loginController@code');
@@ -129,33 +136,21 @@ Route::get('/kit/captcha/{tmp}','KitController@captcha');
 
 
 //后台中间件
-
 //后台主页
 Route::get('/admins/index','admin\AdminController@index')->middleware('Admin');
 Route::get('/admins/wel','admin\AdminController@wel')->middleware('Admin');
-
-
-
 /*分类管理*/
 //类别浏览
-
 Route::get('/admins/Cate','admin\AdminController@Cate')->middleware('Admin');
-
 Route::get('/admins/goods/add/{id}','admin\AdminController@CateAdd')->middleware('Admin');
-
 Route::post('/admins/goods/doadd','admin\AdminController@CatedoAdd')->middleware('Admin');
-
 //修改分类
 Route::get('/admins/goods/edit/{id}','admin\AdminController@CateEdit')->middleware('Admin');
 //执行修改
 Route::post('/admins/goods/update','admin\AdminController@CateUpdate')->middleware('Admin');
-
 //删除分类
 Route::get('/admins/goods/del','admin\AdminController@CateDel')->middleware('Admin');
-
-
 Route::get('/admins/goods/addfirst','admin\AdminController@CateAddFirst')->middleware('Admin');
-
 Route::post('admins/goods/doaddfirst','admin\AdminController@CateDoAddFirst')->middleware('Admin');
 /*商品管理*/
 //商品浏览
@@ -168,35 +163,23 @@ Route::get('/admins/Good/delall','Admin\GoodsController@delall')->middleware('Ad
 Route::get('admins/Good/stating','Admin\GoodsController@stating')->middleware('Admin');
 // 审核通过并上架
 Route::post('/admins/Good/state','Admin\GoodsController@state')->middleware('Admin');
-
 Route::resource('admins/Good','Admin\GoodsController')->middleware('Admin');
-
 // 文件上传路由
 Route::post('/upload','UploadController@upload')->middleware('Admin');
-
-
-
 /*订单管理*/
 //订单浏览
-
 Route::get('/admins/Order','admin\AdminController@Order')->middleware('Admin');
 /*订单管理*/
 //订单浏览
 Route::get('/admins/Order/delall','admin\OrderController@delall')->middleware('Admin');
 Route::resource('/admins/Order','admin\OrderController')->middleware('Admin');
-
-
-
 /*广告管理*/
 //广告浏览
-
 Route::get('/admins/AD/delall','admin\Adcontroller@delall')->middleware('Admin');
 Route::post('/admins/AD/upload','admin\Adcontroller@upload')->middleware('Admin');
 Route::resource('/admins/AD','admin\Adcontroller')->middleware('Admin');
-
 /*轮播图管理*/
 //轮播图浏览
-/*Route::get('/admins/RC','admin\AdminController@RC')->middleware('Admin');*/
 ///轮播图资源控制器
 /// 文件上传
 Route::post('/admins/Res/upload','admin\RotationController@upload');
@@ -206,53 +189,17 @@ Route::get('/admins/Res/delall','admin\RotationController@delall');
 Route::get('/admins/Res/statusup','admin\RotationController@statusup');
 //轮播资源控制器
 Route::resource('/admins/Res','admin\RotationController');
-
-
 /*数据统计*/
 Route::get('/admins/Data','admin\AdminController@Data')->middleware('Admin');
-
-
-/*用户管理*/
-
-/*//管理前台用户添加
-Route::get('/admins/Huseradd','admin\AdminController@Huseradd')->middleware('Admin');
-//前台用户修改
-Route::get('/admins/Huseredit','admin\AdminController@Huseredit')->middleware('Admin');*/
-
-
-
-
 //管理前台用户
 Route::post('/admins/Huser/changestatus','Home\Husercontroller@changestatus')->middleware('Admin');
-
 Route::resource('/admins/Huser','Home\Husercontroller')->middleware('Admin');
-
-
-
-//后台用户浏览页面
-//Route::get('/admins/User','admin\AdminController@Auser');
-//后台用户添加
-
-
-/*Route::get('/admins/Useradd','admin\AdminController@Useradd')->middleware('Admin');
-
-//后台用户修改
-//Route::get('/admins/Useredit','admin\AdminController@Useredit');
-
-
-
-Route::resource('/admins/User','admin\UserController')->middleware('Admin');*/
-
-
 //后台用户修改
 Route::get('/admins/User/delall','admin\UserController@delall');
 Route::get('/admins/User/Repass','admin\UserController@Repass');
 Route::post('/admins/User/pedit','admin\UserController@pedit');
 Route::get('/admins/exit','admin\LoginController@exit');
 Route::resource('/admins/User','admin\UserController');
-
-// Route::get('/admins/Huser','admin\AdminController@Huser');
-
 //后台退出登录
 Route::get('/admins/exit','admin\LoginController@exit');
 

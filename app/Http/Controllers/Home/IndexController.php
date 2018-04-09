@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Cate;
+
+use App\Models\ORDERDETAIL;
 class IndexController extends Controller
 {
 
@@ -23,8 +25,6 @@ class IndexController extends Controller
 
         //查询所有类别数据
         $Cate = Cate::get();
-
-
     	return view('/home/index',['Res'=>$Res,'Cate'=>$Cate]);
     }
     //定义一个子树方法 (全部信息,id,标记)
@@ -49,7 +49,7 @@ class IndexController extends Controller
 
     //商品列表页
     public function search()
-    {
+    {   
         return view('home.search');
     }
 
@@ -65,11 +65,85 @@ class IndexController extends Controller
 
 
     //商品详情
-    public function goodDetails()
+    public function goodDetails($id)
+    {   
+        $data = Goods::where('gid',$id)->first();
+       
+        return view('home.goodDetails',compact('data'));
+    }
+    //加入购物车
+    public function storecart(Request $request)
+    {   
+        $data = $request->except('_token');
+        $arr = [];
+        $arr['gid'] = $data->gid;
+        $arr['uid'] = $data->uid;
+        $arr['gname'] = $data->gname;
+        $arr['cid'] = $data->cid;
+        $arr['gpic'] = $data->gpic;
+        $arr['gdesc'] = $data->gdesc;
+        
+
+        session()->push('shopcart',$arr);
+        dd($arr);
+        // return view('home.shopcart');   
+    }
+    
+    //地址联动
+    public function Achange(Request $request)
     {
-        return view('home.goodDetails');
+        $Adata=Address::where('addid',$request->id)->first();
+        return $Adata;
     }
 
+    //确认订单页面
+    public function pay($id)
+    { 
+        $data = Goods::where('gid',$id)->first();
+        $udata = Address::where('uid',session('user')->uid)->get();
+        $default = Address::where('uid',session('user')->uid)->where('default','1')->first();
+        return view('home.pay',compact('data','udata','default'));
+    }
+    //提交订单页面
+    public function success(Request $request)
+    {   
+        // dd($request->ormb);
+        //生成订单号
+        $oid = time().rand('1111','9999');
+        $ormb = $request->ormb;
+        $otime = time();
+        $bid = session('user')->uid;
+        $gid = $request->gid;
+        $bmsg = $request->bmsg;
+        $sids = Goods::where('gid',$gid)->first();
+        $sid = $sids->uid;
+        $add = Address::find($request->addid);
+
+
+        $order = new ORDER();
+        $order->oid = $oid;
+        $order->ormb = $ormb;
+        $order->otime = $otime;
+        $order->bid = $bid;
+        $order->gid = $gid;
+        $order->save();
+
+        $orderdetail = new ORDERDETAIL();
+        $orderdetail->oid = $oid;
+        $orderdetail->gid = $gid;
+        $orderdetail->bmsg = $bmsg;
+        $orderdetail->addid = $request->addid;
+        $orderdetail->bid = $bid;
+        $orderdetail->sid = $sid;
+        $orderdetail->save();
+
+
+
+
+
+
+         return view('home.success',compact('add','ormb'));
+    }
     public function center()
     {
         return view('home.center');
@@ -101,8 +175,6 @@ class IndexController extends Controller
         }else{
             $arr['status'] = 0;
             $arr['msg'] = '修改失败';
-
-
         }
         return $arr;
     }
@@ -173,17 +245,20 @@ class IndexController extends Controller
         $id = session('user')->uid;
         $orders = ORDER::where('bid',$id)->where('display','1')->get();
 
+        $goods = [];
+        foreach($orders as $k=>$v){
+            $goods[$k] = Goods::where('gid',$v->gid)->first();
+        }
+//        dd($orders);
 
-
-
-        return view('home.order',compact('orders'));
+        return view('home.order',compact('orders','goods'));
     }
 
     //前台删除订单
     public function orderDisplay(Request $request)
     {
         $oid = $request->oid;
-        $order = ORDER::where('oid',$oid)->first();
+        $order = ORDER::where('id',$oid)->first();
 
         $order->display = '0';
         $res = $order->save();

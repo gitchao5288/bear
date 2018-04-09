@@ -36,6 +36,7 @@
 							@else
 								<span target="_top" class="h">{{session('user')->uname}}</span>
 								<span target="_top" >您好！</span>
+								<a href="/home/login/login" target="_top" class="h">[更换账号]</a>
 							@endif
 						</div>
 					</div>
@@ -136,7 +137,7 @@
 
 																				@foreach($Cate as $c)
 																					@if($c->pid==$b->id)
-																		<dd><a title="{{$c->cate_name}}" href="#"><span>{{$c->cate_name}}</span></a></dd>
+																		<dd><a href="/search" title="{{$c->cate_name}}" href="#"><span>{{$c->cate_name}}</span></a></dd>
 																					@endif
 																				@endforeach
 
@@ -224,21 +225,30 @@
 								     <img src="/home/basic/images2/TJ.jpg"></img>
 								     <p>XXXXXXXXXXXXXXXXXX</p>
 							    </a></li>
-
+							
+							
 						<div class="mod-vip">
 							<div class="m-baseinfo">
 								<a href="../person/index.html">
 									<img src="/home/basic/images2/getAvatar.do.jpg">
 								</a>
 								<em>
-									Hi,<span class="s-name">小叮当</span>
+							{{--如果用户没有登录，显示登录链接，如果已经登录，显示用户账号--}}
+							@if(!session('user'))
+							        Hi,<span class="s-name">请您先登录</span>
 									<a href="#"><p>点击更多优惠活动</p></a>
+							@else
+								Hi,<span class="s-name">{{session('user')->uname}}</span>
+									<a href="#"><p>点击更多优惠活动</p></a>
+							@endif
 								</em>
 							</div>
+							@if(!session('user'))
 							<div class="member-logout">
-								<a class="am-btn-warning btn" href="login.html">登录</a>
-								<a class="am-btn-warning btn" href="register.html">注册</a>
+								<a class="am-btn-warning btn" href="/home/login/login">登录</a>
+								<a class="am-btn-warning btn" href="/home/login/index">注册</a>
 							</div>
+							@endif
 							<div class="member-login">
 								<a href="#"><strong>0</strong>待收货</a>
 								<a href="#"><strong>0</strong>待发货</a>

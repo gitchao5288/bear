@@ -102,6 +102,7 @@
 
 							<div class="clear"></div>
 
+
 							<div class="bundle-main">
 								<ul class="item-content clearfix">
 									<li class="td td-chk">
@@ -117,7 +118,7 @@
 										</div>
 										<div class="item-info">
 											<div class="item-basic-info">
-												<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
+												<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$v['data']}}</a>
 											</div>
 										</div>
 									</li>
@@ -173,6 +174,7 @@
 								
 								
 							</div>
+
 						</div>
 					</tr>
 					<div class="clear"></div>

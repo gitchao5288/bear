@@ -136,11 +136,12 @@
 
 									<div class="order-main">
 										<div class="order-list">
-											@foreach($orders as $v)
+											{{--{{dd($orders)}}--}}
+											@foreach($orders as $k=>$v)
 											<!--交易成功-->
 											<div class="order-status5">
 												<div class="order-title">
-													<div class="dd-num">订单编号：<a href="javascript:;">{{ $v->oid }}</a></div>
+													<div class="dd-num">订单编号：<a href="javascript:;">{{$v->id}}</a></div>
 													<span>成交时间：{{$v->otime}}</span>
 													<!--    <em>店铺：小桔灯</em>-->
 												</div>
@@ -150,19 +151,19 @@
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="/goodDetails" class="J_MakePoint">
-																		<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="{{$goods[$k]->gpic}}" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="/goodDetails">
-																			<p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-																			<p class="info-little">颜色：12#川南玛瑙
-																				<br/>包装：裸装 </p>
+																			<p>商品名称</p>
+
 																		</a>
 																	</div>
 																</div>
 															</li>
+
 															<li class="td td-price">
 																<div class="item-price">
 																	{{$v->ormb}}.00
@@ -197,7 +198,7 @@
 																</div>
 															</li>
 															<li class="td td-change">
-																<div class="am-btn am-btn-danger anniu displaychange" oid="{{$v->oid}}">
+																<div class="am-btn am-btn-danger anniu displaychange" oid="{{$v->id}}">
 																	删除订单</div>
 															</li>
 														</div>
