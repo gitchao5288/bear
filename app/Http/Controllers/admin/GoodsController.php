@@ -5,12 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Model\HomeUser;
 use App\Models\Cate;
 
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
+//use Illuminate\Support\Facades\Validator;
 use App\Models\Goods;
 
 class GoodsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -137,7 +141,7 @@ class GoodsController extends Controller
 
         $one = Cate::where('id',$two->pid)->first();
         $one_id = $one->id;
-//        dd($one);
+//        dd($good);
 
 
 //        dd($good->cate->id);
@@ -156,13 +160,43 @@ class GoodsController extends Controller
     {
         // 获取提交的数据
         $data = $request->all();
+//        return $data;
+
+//        表单验证
+        /*$rule = [
+//            'uname' => 'required',
+            'gname' => 'required',
+            'cname' => 'required',
+            'thumb' => 'required',
+            'price' => 'required',
+            'gdesc' => 'required',
+
+        ];
+
+        $msg = [
+            'game.required' => '商品名称不能为空',
+            'cname.required' => '请重新选择类别',
+            'thumb.required' => '商品图片不能为空',
+            'price.required' => '商品价格不能为空',
+            'gdesc.required' => '商品描述不能为空',
+        ];
+
+        $validator = Validator::make($data, $rule, $msg);
+        // 2. 如果验证失败
+        if ($validator->fails()) {
+            return redirect('admin/Good/{'.$id.'}/edit')
+                ->withErrors($validator)
+                ->withInput();
+        }*/
+
 
 //        根据id获取数据库中数据
 
 //        修改商品信息
         $row_goods = Goods::where('gid',$id)
                 ->update(['gname'=>$data['gname'],
-                        'gpic'=>$data['art_thumb'],
+
+                        'gpic'=>$data['thumb'],
                         'price'=>$data['price'],
                         'gdesc'=>$data['gdesc'],
                         'status'=>$data['status'],
@@ -172,7 +206,7 @@ class GoodsController extends Controller
         $good = Goods::find($id);
 
         $row_cate = Cate::where('id',$good->cid)
-                ->update(['cate_name'=>$data['cate_name']]);
+                ->update(['cate_name'=>$data['cname']]);
 //        return $row1;
         if ( $row_goods || $row_cate ) {
             $arr = [
@@ -347,7 +381,7 @@ class GoodsController extends Controller
     {
         $gid = $request->input('gid');
         //查询所有类别
-         return $gid;
+//         return $gid;
 
         $two = Cate::where('pid',$gid)->get();
 

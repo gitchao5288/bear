@@ -217,6 +217,8 @@
         }
 
         $(function() {
+
+            // window.location.reload(true);
             $('#doc-my-tabs').tabs();
 
             // 验证码做比较

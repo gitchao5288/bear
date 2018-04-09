@@ -78,6 +78,7 @@ class AddController extends Controller
             'gdesc.required' => '商品描述不能为空',
         ];
 
+
         $validator = Validator::make($input, $rule, $msg);
 
         // 2. 如果验证失败
