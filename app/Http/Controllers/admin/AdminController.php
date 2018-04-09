@@ -25,7 +25,7 @@ class AdminController extends Controller
 
    }
    public function wel(){
-      return view('admin.wel');
+      return view('welcome');
    }
 
 

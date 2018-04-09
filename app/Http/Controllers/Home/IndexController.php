@@ -29,8 +29,25 @@ class IndexController extends Controller
 
         //查询所有类别数据
         $Cate = Cate::get();
+        $arr = [];
+        $fc = Cate::where('pid',0)->get();
+        $firstCate = Cate::where('pid',0)->get()->toArray();
+        foreach($firstCate as $v){
 
-    	return view('/home/index',['Res'=>$Res,'Cate'=>$Cate]);
+            $arr[]= Cate::where('pid',$v['id'])->first()->id;
+        }
+        $brr = [];
+        foreach($arr as $v){
+            $brr[] = Cate::where('pid',$v)->first()->id;
+        }
+        $goods = [];
+        foreach($brr as $v){
+            $goods[] = Goods::where('cid',$v)->where('status','1')->get()->toArray();
+        }
+//        dd($goods);
+
+
+    	return view('/home/index',['Res'=>$Res,'Cate'=>$Cate,'goods'=>$goods,'firstCate'=>$fc]);
     }
     //定义一个子树方法 (全部信息,id,标记)
     public function subtree($arr,$id=0,$lev=1)
@@ -52,11 +69,27 @@ class IndexController extends Controller
     }
 
 
-    //商品列表页
-    public function search()
-    {   
-        return view('home.search');
+    //点击条件查询方法展示列表页
+    public function clickSearch(Request $request,$id)
+    {
+        $goods = Goods::where('cid',$id)->where('status','1')->paginate(12);
+//        $goods = Goods::where('cid',$id)->get();
+        return view('home.search',compact('goods','request'));
     }
+
+    //搜索条件查询方法展示列表页
+    public function searchCriteria(Request $request)
+    {
+        $goods = Goods::where('gname','like','%'.$request->gname.'%')->paginate(12);
+
+        return view('home.search',compact('goods','request'));
+    }
+
+    //商品列表页
+//    public function search()
+//    {
+//        return view('home.search');
+//    }
 
 
     //购物车页面
@@ -74,7 +107,7 @@ class IndexController extends Controller
     {   
         $data = Goods::where('gid',$id)->first();
        
-        return view('home.goodDetails',compact('data'));
+        return view('home.goodDetails',compact('data','id'));
     }
     //加入购物车
     public function storecart(Request $request)
@@ -111,14 +144,29 @@ class IndexController extends Controller
     }
     //提交订单页面
     public function success(Request $request)
-    {   
+    {
+        $gid = $request->gid;
+        //修改商品为已经售出状态  状态码 3
+        $goods = Goods::find($gid);
+        if($goods->status==3){
+            header('refresh:2;url="/"');
+            die('宝贝已经售出，请浏览其他宝贝！');
+
+        }
+
+        $goods->status = '3';
+        $goods->save();
+
+
+
         // dd($request->ormb);
         //生成订单号
+
         $oid = time().rand('1111','9999');
         $ormb = $request->ormb;
         $otime = time();
         $bid = session('user')->uid;
-        $gid = $request->gid;
+
         $bmsg = $request->bmsg;
         $sids = Goods::where('gid',$gid)->first();
         $sid = $sids->uid;
@@ -141,7 +189,6 @@ class IndexController extends Controller
         $orderdetail->bid = $bid;
         $orderdetail->sid = $sid;
         $orderdetail->save();
-
 
 
 

@@ -66,8 +66,9 @@
 
 					<div class="search-bar pr">
 						<a name="index_none_header_sysc" href="#"></a>
-						<form>
-							<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
+						<form action="/search/criteria" method="get">
+
+							<input id="searchInput" name="gname" type="text" placeholder="搜索" value="" autocomplete="off">
 							<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
 						</form>
 					</div>
@@ -139,7 +140,7 @@
 
 																				@foreach($Cate as $c)
 																					@if($c->pid==$b->id)
-																		<dd><a href="/search" title="{{$c->cate_name}}" href="#"><span>{{$c->cate_name}}</span></a></dd>
+																		<dd><a href="/click/search/{{$c->id}}" title="{{$c->cate_name}}" href="#"><span>{{$c->cate_name}}</span></a></dd>
 																					@endif
 																				@endforeach
 
@@ -190,31 +191,7 @@
 
 
 
-					<!--小导航 -->
-<!-- 					<div class="am-g am-g-fixed smallnav">
-						<div class="am-u-sm-3">
-							<a href="sort.html"><img src="../images/navsmall.jpg" />
-								<div class="title">商品分类</div>
-							</a>
-						</div>
-						<div class="am-u-sm-3">
-							<a href="#"><img src="../images/huismall.jpg" />
-								<div class="title">大聚惠</div>
-							</a>
-						</div>
-						<div class="am-u-sm-3">
-							<a href="#"><img src="../images/mansmall.jpg" />
-								<div class="title">个人中心</div>
-							</a>
-						</div>
-						<div class="am-u-sm-3">
-							<a href="#"><img src="../images/moneysmall.jpg" />
-								<div class="title">投资理财</div>
-							</a>
-						</div>
-					</div> -->
 
-					<!--走马灯 -->
 
 					<div class="marqueen">
 						<span class="marqueen-title">商城头条</span>
@@ -276,22 +253,7 @@
 				</div>
 
 
-<!-- 				<script type="text/javascript">
-					if ($(window).width() < 640) {
-						function autoScroll(obj) {
-							$(obj).find("ul").animate({
-								marginTop: "-39px"
-							}, 500, function() {
-								$(this).css({
-									marginTop: "0px"
-								}).find("li:first").appendTo(this);
-							})
-						}
-						$(function() {
-							setInterval('autoScroll(".demo")', 3000);
-						})
-					}
-				</script> -->
+
 			</div>
 
 
@@ -337,8 +299,8 @@
 					</div>
 					<div class="clear "></div>
 
-				@foreach($Cate as $v)
-                @if($v->pid==0)
+				@foreach($firstCate as $k=>$v)
+
                 <div id="f1">
 					<!--分类标题-->
 
@@ -397,27 +359,27 @@
 							<div class="am-u-sm-7 am-u-md-4 text-two sug">
 								<div class="outer-con ">
 									<div class="title ">
-										雪之恋和风大福
+										{{$goods[$k][0]['gname'] or '雪之恋和风大福'}}
 									</div>
 									<div class="sub-title ">
 										¥13.8
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="/home/basic/images2/2.jpg" /></a>
+								<a href="/goodDetails/{{$goods[$k][0]['gid'] or '1'}}"><img src="{{$goods[$k][0]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
 							</div>
 
 							<div class="am-u-sm-7 am-u-md-4 text-two">
 								<div class="outer-con ">
 									<div class="title ">
-										雪之恋和风大福
+										{{$goods[$k][1]['gname'] or '雪之恋和风大福'}}
 									</div>
 									<div class="sub-title ">
 										¥13.8
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="/home/basic/images2/1.jpg" /></a>
+								<a href="/goodDetails/{{$goods[$k][1]['gid'] or '1'}} "><img src="{{$goods[$k][1]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
 							</div>
 
 
@@ -426,7 +388,7 @@
 
 								<div class="outer-con ">
 									<div class="title ">
-										小优布丁
+										{{$goods[$k][2]['gname'] or '小优布丁'}}
 									</div>
 									<div class="sub-title ">
 										¥4.8
@@ -434,13 +396,13 @@
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
 
-								<a href="# "><img src="/home/basic/images2/5.jpg" /></a>
+								<a href="/goodDetails/{{$goods[$k][2]['gid'] or '1'}}"><img src="{{$goods[$k][2]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
 							</div>
 
 							<div class="am-u-sm-3 am-u-md-2 text-three sug">
 								<div class="outer-con ">
 									<div class="title ">
-										小优布丁
+										{{$goods[$k][3]['gname'] or '小优布丁'}}
 									</div>
 
 									<div class="sub-title ">
@@ -449,28 +411,29 @@
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
 
-								<a href="# "><img src="/home/basic/images2/3.jpg" /></a>
+								<a href="/goodDetails/{{$goods[$k][3]['gid'] or '1'}}"><img src="{{$goods[$k][3]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
 							</div>
 
 							<div class="am-u-sm-3 am-u-md-2 text-three ">
 
 								<div class="outer-con ">
 									<div class="title ">
-										小优布丁
+
+										{{$goods[$k][4]['gname'] or '小优布丁'}}
 									</div>
 									<div class="sub-title ">
 										¥4.8
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="/home/basic/images2/4.jpg" /></a>
+								<a href="/goodDetails/{{$goods[$k][4]['gid'] or '1'}}"><img src="{{$goods[$k][4]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
 							</div>
 
 							<div class="am-u-sm-3 am-u-md-2 text-three last big ">
 								<div class="outer-con ">
 									<div class="title ">
 
-										小优布丁
+										{{$goods[$k][5]['gname'] or '小优布丁'}}
 
 									</div>
 									<div class="sub-title ">
@@ -479,7 +442,7 @@
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
 
-								<a href="# "><img src="/home/basic/images2/5.jpg" /></a>
+								<a href="/goodDetails/{{$goods[$k][5]['gid'] or '1'}}"><img src="{{$goods[$k][5]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
 							</div>
 
 
@@ -490,7 +453,7 @@
 
 
                 </div>
-                @endif
+
 				@endforeach
 
 

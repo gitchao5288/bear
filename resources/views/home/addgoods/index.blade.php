@@ -102,7 +102,7 @@
                                 <li class="qc"><a href="#">团购</a></li>
                                 <li class="qc last"><a href="#">大包装</a></li>
 							</ul>
-						    
+
 						</div>
 			</div>
 			<b class="line"></b>

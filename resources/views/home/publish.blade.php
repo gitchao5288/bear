@@ -106,8 +106,10 @@
 										<div class="s-item">
 
 											<div class="s-pic">
+
 												<a href="/mygoodDetail/{{$v->gid}}" class="s-pic-link">
 													<img src="{{$v->gpic}}" alt="{{ $v->gname }}" title="{{ $v->gname }}" class="s-pic-img s-guess-item-img">
+
 												</a>
 											</div>
 											<div class="s-price-box">
