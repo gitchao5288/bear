@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="{{asset('admin/index/css/font.css')}}">
     <link rel="stylesheet" href="{{asset('admin/index/css/xadmin.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/index/lib/layui/css/layui.css')}}')}}">
+{{--    <link rel="stylesheet" href="{{asset('admin/index/lib/layui/css/layui.css')}}')}}">--}}
     <script type="text/javascript" src="{{asset('admin/index/js/jquery-3.2.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('admin/index/lib/layui/layui.js')}}" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('admin/index/js/xadmin.js')}}"></script>
@@ -22,6 +22,7 @@
     <!--<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>-->
     {{--<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>--}}
     <![endif]-->
+
 </head>
 
 <body>
@@ -34,7 +35,7 @@
                 <span class="x-red">*</span>发布人
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="username" readonly value="{{$good->HomeUser->uname}}" required="" lay-verify="required"
+                <input type="text" id="username" name="username" readonly value="{{$good->HomeUser->uname}}" required="" lay-verify="required"
                        autocomplete="off" class="layui-input">
                 <input type="hidden" name="gid" value="{{ $good->gid }}">
             </div>
@@ -45,8 +46,12 @@
             <label for="username" class="layui-form-label">
                 <span class="x-red"></span>分类名
             </label>
+            {{--<div class="layui-input-block">--}}
+                {{--<input type="text" id="username" name="gname" value="{{$good->Cate->cate_name}}" required="" lay-verify="required"--}}
+                       {{--autocomplete="off" class="layui-input">--}}
+            {{--</div>--}}
             <div class="layui-input-inline">
-                <select name="cate_name1" id="one" lay-filter="one" onchange="changeOne()">
+                <select name="one" id="one" lay-filter="one" >
 
                     @foreach($tree as $v)
                         @if($v->lev==1)
@@ -57,18 +62,21 @@
                 </select>
             </div>
             <div class="layui-input-inline">
-                <select name="cate_name2" id="two" onchange="changeTwo()">
+                <select name="two" id="two" lay-filter="two" onchange="changeTwo()">
 
                     <option value="">{{$two_name}}</option>
 
                 </select>
             </div>
             <div class="layui-input-inline">
-                <select name="cate_name3" id="three" >
+                <select name="three" id="three" lay-filter="three" onchange="changeThree()">
                     <option value="">{{$three_name}}</option>
 
                 </select>
+                <input type="hidden" value="" name="cname" id="cate">
+
             </div>
+            <div class="layui-form-mid layui-word-aux">类别需重新选择</div>
 
         </div>
         <div class="layui-form-item">
@@ -119,7 +127,7 @@
                 <span class="x-red"></span>商品描述
             </label>
             <div class="layui-input-block">
-                <textarea  name="gdesc" class="layui-textarea">{{$good->gdesc}}</textarea>
+                <textarea  name="gdesc" class="layui-textarea" value="{{$good->gdesc}}">{{$good->gdesc}}</textarea>
             </div>
         </div>
 
@@ -139,78 +147,16 @@
         <div class="layui-form-item">
             <label for="L_repass" class="layui-form-label">
             </label>
-            <button  class="layui-btn" lay-filter="edit" lay-submit="">
+            <button  class="layui-btn" lay-filter="edit">
                 修改
             </button>
         </div>
     </form>
+
 </div>
 
 <script>
 
-    // 类别联动******************************************
-    // 一级类
-    // layui.use("form", function () {
-    //     var form = layui.form();
-    //
-    //
-
-
-    // function changeOne()
-    // {
-    //     console.log(123);
-    //     var id = $('#one').val();
-    //     console.log(id);
-    //     $('#two').html('');
-    //     $('#three').html('');
-    //
-    //     $.get('/admins/Good/two',{gid:id},function(data){
-    //         // var two;
-    //         console.log(data);
-    //
-    //         // option = $('<option value="">选择分类</option>');
-    //
-    //         for (var i = 0; i < data.length; i++) {
-    //
-    //             // console.log(data[i].cate_name);
-    //             opt = $('<option value=""></option>');
-    //             opt.html(data[i].cate_name);
-    //             opt.val(data[i].id);
-    //             $('#two').append(opt);
-    //
-    //             // console.log(opt);
-    //
-    //         }
-    //         changeTwo();
-    //
-    //
-    //     },'json')
-    //
-    //
-    // }
-
-    // 二级类
-    // function changeTwo()
-    // {
-    //     var id = $('#two').val();
-    //     $('#three').html('');
-    //
-    //     $.get('/admins/Good/three',{gid:id},function(data){
-    //
-    //         for (var i = 0; i < data.length; i++) {
-    //
-    //             opt = $('<option value=""></option>');
-    //             opt.html(data[i].cate_name);
-    //             $('#three').append(opt);
-    //
-    //         }
-    //         var cate_name = $('#three option').html();
-    //         $('#cate').val(cate_name);
-    //         console.log(cate_name);
-    //
-    //     },'json')
-    //
-    // }
 
     // 修改
 
@@ -287,89 +233,142 @@
     //     });
     // });
 
-
+    var hid = '';
     layui.use(['form','layer'], function(){
         $ = layui.jquery;
         var form = layui.form
             ,layer = layui.layer;
 
         //- 代码写在这里面.
-
-        form.on('select(one)', function changeOne(data){
-
-            // console.log(data.elem); //得到select原始DOM对象
-            // console.log(data.value); //得到被选中的值
-            // console.log(data.othis); //得到美化后的DOM对象
-
-            // $(this).change(function(){
-            //     alert(123);
-                var id = $('#one').val();
-                console.log(id);
-                $('#two').html('');
-                $('#three').html('');
-
-                $.get('/admins/Good/two',{gid:id},function(data){
-                    // var two;
-                    console.log(data);
-
-                    // option = $('<option value="">选择分类</option>');
-
-                    for (var i = 0; i < data.length; i++) {
-
-                        // console.log(data[i].cate_name);
-                        opt = $('<option value=""></option>');
-                        opt.html(data[i].cate_name);
-                        opt.val(data[i].id);
-                        $('#two').append(opt);
-
-                        // console.log(opt);
-
-                    }
-                    changeTwo();
-
-
-                },'json')
-
-            // });
-        });
-
-
+        var $form;
+        // var form;
+        var $;
+        $ = layui.jquery;
+        // form = layui.form;
+        $form = $('form');
 
         //监听提交
-        form.on('submit(edit)', function(data){
+        /*form.on('submit(edit)', function(data){
 
             //获取当前要修改的用户的id
-            var uid = $("input[type='hidden']").val();
-            // console.log(uid);
+            var gid = $("input[name='gid']").val();
+            // var gid = $form.find('input[name=gid]').value;
+            console.log(gid);
             $.ajax({
                 type: "PUT",
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "/admins/Good/"+uid,
+                url: "/admins/Good/"+gid,
                 data: data.field,
                 dataType: "json",
                 success: function(data){
-                    // console.log(data);
+                    console.log(data);
                     // 如果添加成功
                     if(data.status == 0){
                         layer.alert(data.msg,{icon:6,time:3000},function(){
                             //关闭弹层，刷新父页面
 
                         })
-                        parent.location.reload(true);
+                        // parent.location.reload(true);
                     }else{
                         layer.alert(data.msg,{icon:6,time:3000},function(){
                             //关闭弹层，刷新父页面
 
                         })
-                        parent.location.reload(true);
+                        // parent.location.reload(true);
                     }
                 }
             });
 
             return false;
+        });*/
+
+
+
+        // 监听一级类
+        form.on('select(one)', function changeOne(data){
+
+            // console.log(data.elem); //得到select原始DOM对象
+            // console.log(data.value); //得到被选中的值
+            // console.log(data.othis); //得到美化后的DOM对象
+
+            var id = data.value;
+
+            $form.find('select[name=two]').html("");
+            $form.find('select[name=three]').html("");
+            form.render('select');
+
+
+
+            $.get('/admins/Good/two',{gid:id},function(data){
+                // console.log(data);
+
+                for (var i = 0; i < data.length; i++) {
+
+                    // console.log(data[i].cate_name);
+                    var opt = $('<option value="'+data[i].id+'">'+data[i].cate_name+'</option>');
+
+                    $form.find('select[name=two]').append(opt);
+
+                    // console.log(opt);
+                    form.render('select');
+
+                }
+                two();
+
+
+            },'json')
+
         });
+
+
+        function two()
+        {
+
+            // 二级类
+            form.on('select(two)', function changeTwo(data)
+            {
+
+                var id = data.value;
+                $form.find('select[name=three]').html("");
+                form.render('select');
+
+                $.get('/admins/Good/three',{gid:id},function(data2){
+
+                    // console.log(data2);
+                    var kong = $('<option value="">请选择</option>');
+                    $form.find('select[name=three]').append(kong);
+                    form.render('select');
+
+                    for (var i = 0; i < data2.length; i++) {
+
+                        var opt = $('<option value="'+data2[i].id+'">'+data2[i].cate_name+'</option>');
+                        $form.find('select[name=three]').append(opt);
+                        form.render('select');
+
+                    }
+                    three();
+
+
+                },'json')
+
+            });
+        }
+
+        function three(){
+            form.on('select(three)', function changeThree(data){
+
+                cate_name = data.elem[data.elem.selectedIndex].text;
+
+                // var hid = $('#cate').html(cate_name);
+                hid = $form.find('input[name=cname]').value= cate_name;
+                form.render('select');
+                // console.log(hid);
+            });
+        }
+
+
 
 
         //监听提交
@@ -406,6 +405,54 @@
         // });
 
 
+    });
+
+    $('form').submit(function(){
+        var gid = $("input[name='gid']").val();
+
+
+        var uname = $("input[name='username']").val();
+        var cname = hid;
+        var thumb = $('input[name="art_thumb"]').val();
+        var price = $('input[name="price"]').val();
+        var gdesc = $('textarea[name="gdesc"]').val();
+        var status = $('input[type="radio"]:checked').val();
+        var gname = $('input[name="gname"]').val();
+
+        // console.log(status);
+
+        $.ajax({
+            type: "PUT",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "/admins/Good/"+gid,
+            data: {uname:uname,cname:cname,thumb:thumb,price:price,gdesc:gdesc,status:status,gname:gname},
+            dataType: "json",
+            success: function(data){
+                console.log(data);
+                // 如果添加成功
+                if(data.status == 0){
+                    layer.alert(data.msg,{icon:6,time:3000},function(){
+                        //关闭弹层，刷新父页面
+
+                    })
+                    parent.location.reload(true);
+                }else{
+                    layer.alert(data.msg,{icon:6,time:3000},function(){
+                        //关闭弹层，刷新父页面
+
+                    })
+                    parent.location.reload(true);
+                }
+            }
+        });
+        if(!cname ){
+            alert('请重新选择类别');
+        }
+
+
+        return false;
     });
 </script>
 <script>
