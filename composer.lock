@@ -4,11 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
+
     "content-hash": "078bd80c203618dc31a4548d24c54065",
-=======
-    "content-hash": "e5cab612f0b7ca885aa5a1b67dc16b82",
->>>>>>> bear/yangkun
+
     "packages": [
         {
             "name": "caffeinated/flash",
@@ -752,7 +750,7 @@
             "time": "2018-03-21T22:21:57+00:00"
         },
         {
-<<<<<<< HEAD
+
             "name": "johnlui/aliyun-oss",
             "version": "v1.3.6",
             "source": {
@@ -795,8 +793,7 @@
             "time": "2017-03-08T03:35:57+00:00"
         },
         {
-=======
->>>>>>> bear/yangkun
+
             "name": "laracasts/flash",
             "version": "3.0.2",
             "source": {

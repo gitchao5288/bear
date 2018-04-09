@@ -200,7 +200,7 @@
                                   //发异步把用户状态进行更改
 
                                   $(obj).find('i').html('&#xe601;');
-                                  
+
                                   layer.msg('已上架!',{icon: 6,time:1000});
                                   location.reload(true);
 

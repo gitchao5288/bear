@@ -7,6 +7,8 @@ namespace App\Http\Controllers\Home;
 use App\Models\AdminRotation;
 use App\Model\HomeUser;
 use App\Models\Address;
+use App\Models\Goods;
+use App\Models\ORDER;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -50,6 +52,17 @@ class IndexController extends Controller
     {
         return view('home.search');
     }
+
+
+    //购物车页面
+    public function shopCart()
+    {
+
+//        $shopcart = session('shopcart');
+
+//        return view('home.shopcart',compact('shopcart'));
+    }
+
 
     //商品详情
     public function goodDetails()
@@ -157,8 +170,58 @@ class IndexController extends Controller
     //订单管理
     public function order()
     {
-        return view('home.order');
+        $id = session('user')->uid;
+        $orders = ORDER::where('bid',$id)->where('display','1')->get();
+
+
+
+
+        return view('home.order',compact('orders'));
     }
+
+    //前台删除订单
+    public function orderDisplay(Request $request)
+    {
+        $oid = $request->oid;
+        $order = ORDER::where('oid',$oid)->first();
+
+        $order->display = '0';
+        $res = $order->save();
+        if($res){
+            return 1;
+        }
+
+    }
+
+    //我的发布页面
+    public function publish()
+    {
+
+        //获取本用户发布的商品
+        $goods = Goods::where('uid',session('user')->uid)->get();
+
+        return view('home.publish',compact('goods'));
+    }
+
+    //我的发布商品详情
+    public function mygoodDetail($gid)
+    {
+        $goods = Goods::find($gid);
+        $cid = $goods->cid;
+        $cate = Cate::find($cid);
+        //三级分类名称
+        $thirdCate = $cate->cate_name;
+        //二级分类名称
+        $second = Cate::find($cate->pid);
+        $secondCate = $second->cate_name;
+        //一级分类名称
+        $first = Cate::find($second->pid);
+        $firstCate = $first->cate_name;
+
+
+        return view('home.mygoodDetail',compact('goods','firstCate','secondCate','thirdCate'));
+    }
+
     //退款售后
     public function change()
     {

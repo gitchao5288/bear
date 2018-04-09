@@ -19,6 +19,7 @@ Route::get('/','Home\IndexController@index');
 Route::get('/search','Home\IndexController@search');
 //商品详情页面
 Route::get('/goodDetails','Home\IndexController@goodDetails');
+Route::get('/mygoodDetail/{gid}','Home\IndexController@mygoodDetail');
 //个人中心页面
 Route::get('/center','Home\IndexController@center');
 //个人信息页面
@@ -27,6 +28,8 @@ Route::get('/information','Home\IndexController@information');
 Route::post('/infoupdate','Home\IndexController@infoupdate');
 //安全设置
 Route::get('/safety','Home\IndexController@safety');
+//我的发布
+Route::get('/publish','Home\IndexController@publish');
 //收货地址
 Route::get('/address','Home\IndexController@address');
 //添加收货地址
@@ -37,6 +40,7 @@ Route::post('/deladd','Home\IndexController@deladd');
 
 //订单管理
 Route::get('/order','Home\IndexController@order');
+Route::get('/orderDisplay','Home\IndexController@orderDisplay');
 //退款售后
 Route::get('/change','Home\IndexController@change');
 //收藏页面
@@ -71,7 +75,7 @@ Route::get('/collection','Home\IndexController@collection');
 
 //购物车页面
 Route::get('/home/shopcart',function(){
-
+//    'Home\IndexController@shopCart'
     return view('home.shopcart');
 
 });
