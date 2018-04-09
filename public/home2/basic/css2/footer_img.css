@@ -1,0 +1,48 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.idle-footer-download{
+	width:100%;
+	height:270px;
+	/*margin-top: 20px;*/
+	margin: 0 auto;
+	background:url(/home/basic/images2/tb1on87hvxxxxcvxpxxieo_0pxx-288-177.png) no-repeat 200px 50%;
+	position:relative;
+	background-color: rgb(255,218,68);
+	display:block;
+
+	/*width: 990px;*/
+	/*height: 270px;*/
+	/*margin: 0 auto;*/
+	/*position: relative;*/
+	/*background: url(//gtms04.alicdn.com/tps/i4/TB1ON87HVXXXXcVXpXXieo_0pXX-288-177.png) no-repeat 40px 50%;*/
+	/*display: none;*/
+}
+/*background:url(../images/tb1on87hvxxxxcvxpxxieo_0pxx-288-177.png) no-repeat 40px 50%;*/
+.bcolor{
+	position:absolute;
+	background-color: rgb(255,218,68);
+}
+.idle-footer-slogan {
+	position:absolute;
+	left:44%;
+	top:50%;
+	margin-left:-150px;
+	margin-top:-40px
+}
+.idle-download-ios {
+	position:absolute;
+	left:1150px;
+	top:68px
+}
+.idle-download-android {
+	position:absolute;
+	left:1150px;
+	top:135px
+}
+.idle-qrcode {
+	position:absolute;
+	left:1380px;
+	top:68px
+}
