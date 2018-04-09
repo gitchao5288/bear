@@ -54,7 +54,7 @@
 
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="/home/images/logobig.png" /></li>
+								<li><img src="/home/basic/images2/logo2.png" /></li>
 							</div>
 
 							<div class="search-bar pr">
@@ -81,10 +81,7 @@
                                 <li class="qc"><a href="#">团购</a></li>
                                 <li class="qc last"><a href="#">大包装</a></li>
 							</ul>
-						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-						    </div>
+
 						</div>
 			</div>
 			<b class="line"></b>
@@ -136,56 +133,7 @@
 
 						</div>
 					</div>
-					<div class="wrap-right">
 
-						<!-- 日历-->
-						<div class="day-list">
-							<div class="s-bar">
-								<a class="i-history-trigger s-icon" href="#"></a>我的日历
-								<a class="i-setting-trigger s-icon" href="#"></a>
-							</div>
-							<div class="s-care s-care-noweather">
-								<div class="s-date">
-									<em>21</em>
-									<span>星期一</span>
-									<span>2015.12</span>
-								</div>
-							</div>
-						</div>
-						<!--新品 -->
-						<div class="new-goods">
-							<div class="s-bar">
-								<i class="s-icon"></i>今日新品
-								<a class="i-load-more-item-shadow">15款新品</a>
-							</div>
-							<div class="new-goods-info">
-								<a class="shop-info" href="#" target="_blank">
-									<div class="face-img-panel">
-										<img src="/home/images/imgsearch1.jpg" alt="">
-									</div>
-									<span class="new-goods-num ">4</span>
-									<span class="shop-title">剥壳松子</span>
-								</a>
-								<a class="follow " target="_blank">关注</a>
-							</div>
-						</div>
-
-						<!--热卖推荐 -->
-						<div class="new-goods">
-							<div class="s-bar">
-								<i class="s-icon"></i>热卖推荐
-							</div>
-							<div class="new-goods-info">
-								<a class="shop-info" href="#" target="_blank">
-									<div >
-										<img src="/home/images/imgsearch1.jpg" alt="">
-									</div>
-                                    <span class="one-hot-goods">￥9.20</span>
-								</a>
-							</div>
-						</div>
-
-					</div>
 				</div>
 				<!--底部-->
 				<div class="footer">

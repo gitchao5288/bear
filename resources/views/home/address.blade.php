@@ -45,9 +45,7 @@
 							<div class="topMessage my-shangcheng">
 								<div class="menu-hd MyShangcheng"><a href="/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 							</div>
-							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-							</div>
+
 							<div class="topMessage favorite">
 								<div class="menu-hd"><a href="/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
 						</ul>
@@ -57,7 +55,7 @@
 
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="/home/images/logobig.png" /></li>
+								<li><img src="/home/basic/images2/logo2.png" /></li>
 							</div>
 
 							<div class="search-bar pr">
@@ -85,10 +83,7 @@
 					<li class="qc"><a href="#">团购</a></li>
 					<li class="qc last"><a href="#">大包装</a></li>
 				</ul>
-				<div class="nav-extra">
-					<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-					<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-				</div>
+
 			</div>
 		</div>
 		<b class="line"></b>
@@ -130,46 +125,7 @@
 							</li>
 								@endforeach
 							@endif
-							{{--<li class="user-addresslist">--}}
-								{{--<span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>--}}
-								{{--<p class="new-tit new-p-re">--}}
-									{{--<span class="new-txt">小叮当</span>--}}
-									{{--<span class="new-txt-rd2">159****1622</span>--}}
-								{{--</p>--}}
-								{{--<div class="new-mu_l2a new-p-re">--}}
-									{{--<p class="new-mu_l2cw">--}}
-										{{--<span class="title">地址：</span>--}}
-										{{--<span class="province">湖北</span>省--}}
-										{{--<span class="city">武汉</span>市--}}
-										{{--<span class="dist">洪山</span>区--}}
-										{{--<span class="street">雄楚大道666号(中南财经政法大学)</span></p>--}}
-								{{--</div>--}}
-								{{--<div class="new-addr-btn">--}}
-									{{--<a href="#"><i class="am-icon-edit"></i>编辑</a>--}}
-									{{--<span class="new-addr-bar">|</span>--}}
-									{{--<a href="javascript:void(0);" onclick="delClick(this);"><i class="am-icon-trash"></i>删除</a>--}}
-								{{--</div>--}}
-							{{--</li>--}}
-							{{--<li class="user-addresslist">--}}
-								{{--<span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>--}}
-								{{--<p class="new-tit new-p-re">--}}
-									{{--<span class="new-txt">小叮当</span>--}}
-									{{--<span class="new-txt-rd2">159****1622</span>--}}
-								{{--</p>--}}
-								{{--<div class="new-mu_l2a new-p-re">--}}
-									{{--<p class="new-mu_l2cw">--}}
-										{{--<span class="title">地址：</span>--}}
-										{{--<span class="province">湖北</span>省--}}
-										{{--<span class="city">武汉</span>市--}}
-										{{--<span class="dist">洪山</span>区--}}
-										{{--<span class="street">雄楚大道666号(中南财经政法大学)</span></p>--}}
-								{{--</div>--}}
-								{{--<div class="new-addr-btn">--}}
-									{{--<a href="#"><i class="am-icon-edit"></i>编辑</a>--}}
-									{{--<span class="new-addr-bar">|</span>--}}
-									{{--<a href="javascript:void(0);" onclick="delClick(this);"><i class="am-icon-trash"></i>删除</a>--}}
-								{{--</div>--}}
-							{{--</li>--}}
+
 						</ul>
 						<div class="clear"></div>
 						<a class="new-abtn-type" data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0}">添加新地址</a>
@@ -205,7 +161,7 @@
 										<div class="am-form-group">
 											<label for="user-intro" class="am-form-label">详细地址</label>
 											<div class="am-form-content">
-												<textarea class="" rows="3" name="address" id="user-intro" placeholder="输入详细地址"></textarea>
+												<textarea class="" rows="3" name="address" style="resize:none;" id="user-intro" placeholder="输入详细地址"></textarea>
 												<small>100字以内写出你的详细地址...</small>
 											</div>
 										</div>
@@ -234,6 +190,10 @@
 							var addname = $('input[name=addname]').val();
 							var phone = $('input[name=phone]').val();
 							var address = $('textarea[name=address]').val();
+							if(!addname || !phone || !address){
+							    alert('请填写每一项！');
+							    return false;
+							}
 
 							$.ajax({
 								url:'/doaddress',

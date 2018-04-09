@@ -44,9 +44,7 @@
 							<div class="topMessage my-shangcheng">
 								<div class="menu-hd MyShangcheng"><a href="/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 							</div>
-							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-							</div>
+
 							<div class="topMessage favorite">
 								<div class="menu-hd"><a href="/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
 						</ul>
@@ -56,7 +54,7 @@
 
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="/home/images/logobig.png" /></li>
+								<li><img src="/home/basic/images2/logo2.png" /></li>
 							</div>
 
 							<div class="search-bar pr">
@@ -83,10 +81,7 @@
                                 <li class="qc"><a href="#">团购</a></li>
                                 <li class="qc last"><a href="#">大包装</a></li>
 							</ul>
-						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-						    </div>
+
 						</div>
 			</div>
 			<b class="line"></b>
