@@ -146,25 +146,9 @@
 							</script>
 
 							<div class="tb-booth tb-pic tb-s310">
-								<a href="/home/images/01.jpg"><img src="/home/images/01_mid.jpg" alt="细节展示放大镜特效" rel="/home/images/01.jpg" class="jqzoom" /></a>
+								<a href="{{$data->gpic}}"><img src="{{$data->gpic}}" alt="细节展示放大镜特效" rel="{{$data->gpic}}" class="jqzoom" /></a>
 							</div>
-							<ul class="tb-thumb" id="thumblist">
-								<li class="tb-selected">
-									<div class="tb-pic tb-s40">
-										<a href="#"><img src="/home/images/01_small.jpg" mid="/home/images/01_mid.jpg" big="/home/images/01.jpg"></a>
-									</div>
-								</li>
-								<li>
-									<div class="tb-pic tb-s40">
-										<a href="#"><img src="/home/images/02_small.jpg" mid="/home/images/02_mid.jpg" big="/home/images/02.jpg"></a>
-									</div>
-								</li>
-								<li>
-									<div class="tb-pic tb-s40">
-										<a href="#"><img src="/home/images/03_small.jpg" mid="/home/images/03_mid.jpg" big="/home/images/03.jpg"></a>
-									</div>
-								</li>
-							</ul>
+						
 						</div>
 
 						<div class="clear"></div>
@@ -176,46 +160,24 @@
 						<!--名称-->
 						<div class="tb-detail-hd">
 							<h1>	
-				 良品铺子 手剥松子218g 坚果炒货 巴西松子
-	          </h1>
+								{{$data->gname}}
+	          				</h1>
 						</div>
 						<div class="tb-detail-list">
 							<!--价格-->
 							<div class="tb-detail-price">
 								<li class="price iteminfo_price">
 									<dt>促销价</dt>
-									<dd><em>¥</em><b class="sys_item_price">56.90</b>  </dd>                                 
+									<dd><em>¥</em><b class="sys_item_price">{{$data->price}}</b>  </dd>                                 
 								</li>
 								<li class="price iteminfo_mktprice">
 									<dt>原价</dt>
-									<dd><em>¥</em><b class="sys_item_mktprice">98.00</b></dd>									
+									<dd><em>¥</em><b class="sys_item_mktprice">288.00</b></dd>									
 								</li>
 								<div class="clear"></div>
 							</div>
 
-							<!--地址-->
-							<dl class="iteminfo_parameter freight">
-								<dt>配送至</dt>
-								<div class="iteminfo_freprice">
-									<div class="am-form-content address">
-										<select data-am-selected>
-											<option value="a">浙江省</option>
-											<option value="b">湖北省</option>
-										</select>
-										<select data-am-selected>
-											<option value="a">温州市</option>
-											<option value="b">武汉市</option>
-										</select>
-										<select data-am-selected>
-											<option value="a">瑞安区</option>
-											<option value="b">洪山区</option>
-										</select>
-									</div>
-									<div class="pay-logis">
-										快递<b class="sys_item_freprice">10</b>元
-									</div>
-								</div>
-							</dl>
+				
 							<div class="clear"></div>
 
 							<!--销量-->
@@ -250,23 +212,7 @@
 
 												<div class="theme-signin-left">
 
-													<div class="theme-options">
-														<div class="cart-title">口味</div>
-														<ul>
-															<li class="sku-line selected">原味<i></i></li>
-															<li class="sku-line">奶油<i></i></li>
-															<li class="sku-line">炭烧<i></i></li>
-															<li class="sku-line">咸香<i></i></li>
-														</ul>
-													</div>
-													<div class="theme-options">
-														<div class="cart-title">包装</div>
-														<ul>
-															<li class="sku-line selected">手袋单人份<i></i></li>
-															<li class="sku-line">礼盒双人份<i></i></li>
-															<li class="sku-line">全家福礼包<i></i></li>
-														</ul>
-													</div>
+												
 													<div class="theme-options">
 														<div class="cart-title number">数量</div>
 														<dd>
@@ -331,13 +277,17 @@
 							</div>
 							<li>
 								<div class="clearfix tb-btn tb-btn-buy theme-login">
-									<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
+									<a id="LikBuy" href="/home/pay/2" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
 								</div>
 							</li>
 							<li>
+							<form action="/home/storecart" method="post">
+								{{csrf_field()}}
+								<input type="hidden" name="data" value="{{$data}}">
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
-									<a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+										<button class="am-btn am-btn-danger" style="border: 3px solid orange">加入购物车</button>
 								</div>
+							</form>	
 							</li>
 						</div>
 
@@ -347,35 +297,7 @@
 
 				</div>
 
-				<!--优惠套装-->
-				<div class="match">
-					<div class="match-title">优惠套装</div>
-					<div class="match-comment">
-						<ul class="like_list">
-							<li>
-								<div class="s_picBox">
-									<a class="s_pic" href="#"><img src="/home/images/cp.jpg"></a>
-								</div> <a class="txt" target="_blank" href="#">萨拉米 1+1小鸡腿</a>
-								<div class="info-box"> <span class="info-box-price">¥ 29.90</span> <span class="info-original-price">￥ 199.00</span> </div>
-							</li>
-							<li class="plus_icon"><i>+</i></li>
-							<li>
-								<div class="s_picBox">
-									<a class="s_pic" href="#"><img src="/home/images/cp2.jpg"></a>
-								</div> <a class="txt" target="_blank" href="#">ZEK 原味海苔</a>
-								<div class="info-box"> <span class="info-box-price">¥ 8.90</span> <span class="info-original-price">￥ 299.00</span> </div>
-							</li>
-							<li class="plus_icon"><i>=</i></li>
-							<li class="total_price">
-								<p class="combo_price"><span class="c-title">套餐价:</span><span>￥35.00</span> </p>
-								<p class="save_all">共省:<span>￥463.00</span></p> <a href="#" class="buy_now">立即购买</a> </li>
-							<li class="plus_icon"><i class="am-icon-angle-right"></i></li>
-						</ul>
-					</div>
-				</div>
-				<div class="clear"></div>
-				
-							
+		
 				<!-- introduce-->
 
 				<div class="introduce">
@@ -1334,7 +1256,14 @@
 					</div>
 				</div>
 			</div>
-
+		<script>
+			// $('#LikBasket').click(function(){			
+			// 	$.post('/home/storecart',{data:{{$data}}},function(data){
+					
+			// 		console.log(data);
+			// 	})
+			// })
+		</script>
 	</body>
 
 </html>

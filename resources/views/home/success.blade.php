@@ -64,11 +64,11 @@
    <h2>您已成功付款</h2>
    <div class="successInfo">
      <ul>
-       <li>付款金额<em>¥9.90</em></li>
+       <li>付款金额<em>¥{{$ormb}}</em></li>
        <div class="user-info">
-         <p>收货人：艾迪</p>
-         <p>联系电话：15871145629</p>
-         <p>收货地址：湖北省 武汉市 武昌区 东湖路75号众环大厦</p>
+         <p>收货人: {{$add->addname}}</p>
+         <p>联系电话：{{$add->phone}}</p>
+         <p>收货地址：{{$add->add}}</p>
        </div>
              请认真核对您的收货信息，如有错误请联系客服
                                
