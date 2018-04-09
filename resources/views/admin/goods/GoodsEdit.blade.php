@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="{{asset('admin/index/css/font.css')}}">
     <link rel="stylesheet" href="{{asset('admin/index/css/xadmin.css')}}">
-    {{--<link rel="stylesheet" href="{{asset('admin/index/lib/layui/css/layui.css')}}')}}">--}}
+    <link rel="stylesheet" href="{{asset('admin/index/lib/layui/css/layui.css')}}')}}">
     <script type="text/javascript" src="{{asset('admin/index/js/jquery-3.2.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('admin/index/lib/layui/layui.js')}}" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('admin/index/js/xadmin.js')}}"></script>
@@ -28,6 +28,7 @@
 
 <div class="x-body">
     <form id="art_form" class="layui-form"  enctype="multipart/form-data">
+
         <div class="layui-form-item">
             <label for="username" class="layui-form-label">
                 <span class="x-red">*</span>发布人
@@ -45,8 +46,28 @@
                 <span class="x-red"></span>分类名
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="username" name="cate_name" value="{{$good->Cate->cate_name}}" required="" lay-verify="required"
-                       autocomplete="off" class="layui-input">
+                <select name="cate_name1" id="one" lay-filter="one" onchange="changeOne()">
+
+                    @foreach($tree as $v)
+                        @if($v->lev==1)
+                            <option value="{{$v->id}}" {!! ($v->id == $one_id) ? 'selected' : '' !!}>{{$v->cate_name}}</option>
+                        @endif
+                    @endforeach
+
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="cate_name2" id="two" onchange="changeTwo()">
+
+                    <option value="">{{$two_name}}</option>
+
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="cate_name3" id="three" >
+                    <option value="">{{$three_name}}</option>
+
+                </select>
             </div>
 
         </div>
@@ -127,9 +148,73 @@
 
 <script>
 
+    // 类别联动******************************************
+    // 一级类
+    // layui.use("form", function () {
+    //     var form = layui.form();
+    //
+    //
+
+
+    // function changeOne()
+    // {
+    //     console.log(123);
+    //     var id = $('#one').val();
+    //     console.log(id);
+    //     $('#two').html('');
+    //     $('#three').html('');
+    //
+    //     $.get('/admins/Good/two',{gid:id},function(data){
+    //         // var two;
+    //         console.log(data);
+    //
+    //         // option = $('<option value="">选择分类</option>');
+    //
+    //         for (var i = 0; i < data.length; i++) {
+    //
+    //             // console.log(data[i].cate_name);
+    //             opt = $('<option value=""></option>');
+    //             opt.html(data[i].cate_name);
+    //             opt.val(data[i].id);
+    //             $('#two').append(opt);
+    //
+    //             // console.log(opt);
+    //
+    //         }
+    //         changeTwo();
+    //
+    //
+    //     },'json')
+    //
+    //
+    // }
+
+    // 二级类
+    // function changeTwo()
+    // {
+    //     var id = $('#two').val();
+    //     $('#three').html('');
+    //
+    //     $.get('/admins/Good/three',{gid:id},function(data){
+    //
+    //         for (var i = 0; i < data.length; i++) {
+    //
+    //             opt = $('<option value=""></option>');
+    //             opt.html(data[i].cate_name);
+    //             $('#three').append(opt);
+    //
+    //         }
+    //         var cate_name = $('#three option').html();
+    //         $('#cate').val(cate_name);
+    //         console.log(cate_name);
+    //
+    //     },'json')
+    //
+    // }
+
     // 修改
 
-
+    // 上传图片 ******************************************
     $(function () {
         $("#file_upload").change(function () {
             uploadImage();
@@ -208,6 +293,48 @@
         var form = layui.form
             ,layer = layui.layer;
 
+        //- 代码写在这里面.
+
+        form.on('select(one)', function changeOne(data){
+
+            // console.log(data.elem); //得到select原始DOM对象
+            // console.log(data.value); //得到被选中的值
+            // console.log(data.othis); //得到美化后的DOM对象
+
+            // $(this).change(function(){
+            //     alert(123);
+                var id = $('#one').val();
+                console.log(id);
+                $('#two').html('');
+                $('#three').html('');
+
+                $.get('/admins/Good/two',{gid:id},function(data){
+                    // var two;
+                    console.log(data);
+
+                    // option = $('<option value="">选择分类</option>');
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        // console.log(data[i].cate_name);
+                        opt = $('<option value=""></option>');
+                        opt.html(data[i].cate_name);
+                        opt.val(data[i].id);
+                        $('#two').append(opt);
+
+                        // console.log(opt);
+
+                    }
+                    changeTwo();
+
+
+                },'json')
+
+            // });
+        });
+
+
+
         //监听提交
         form.on('submit(edit)', function(data){
 
@@ -281,12 +408,14 @@
 
     });
 </script>
-<script>var _hmt = _hmt || []; (function() {
+<script>
+    var _hmt = _hmt || []; (function() {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
-    })();</script>
+    })();
+</script>
 </body>
 
 </html>

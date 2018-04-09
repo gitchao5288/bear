@@ -116,10 +116,33 @@ class GoodsController extends Controller
     public function edit($gid)
     {
 //        $goods = Goods::find($gid);
+
         $good = Goods::with('Cate','HomeUser')
             ->where('gid',$gid)->first();
-//        dd($goods);
-        return view('admin.goods.goodsedit',compact('good'));
+
+
+        //查询所有类别
+        $cate = Cate::get();
+        $tree = Cate::subtree($cate);
+
+//        $threeid = $good->cate->id;
+//        分类名字
+        $three_name = $good->cate->cate_name;
+
+//        二级分类id
+        $twoid = $good->cate->pid;
+        $two = Cate::where('id',$twoid)->first();
+//        二级分类名字
+        $two_name = $two->cate_name;
+
+        $one = Cate::where('id',$two->pid)->first();
+        $one_id = $one->id;
+//        dd($one);
+
+
+//        dd($good->cate->id);
+
+        return view('admin.goods.goodsedit',compact('good','tree','one_id','two_name','three_name'));
     }
 
     /**
@@ -302,7 +325,7 @@ class GoodsController extends Controller
         //        return $status;
         //        $goods = Goods::find($uid);
         $res = Goods::where('gid',$gid) ->update(['status'=>1]);
-        return $res;
+//        return $res;
         if($res){
         //            json格式的接口信息  {'status':是否成功，'msg'：提示信息}
             $arr = [
@@ -317,6 +340,30 @@ class GoodsController extends Controller
         }
 
         return $arr;
+    }
+
+    // 类别联动  二级类 ***************************************************
+    public function two(Request $request)
+    {
+        $gid = $request->input('gid');
+        //查询所有类别
+         return $gid;
+
+        $two = Cate::where('pid',$gid)->get();
+
+        return $two;
+    }
+
+    // 三级类
+    public function three(Request $request)
+    {
+        $gid = $request->input('gid');
+        //查询所有类别
+        // return $gid;
+
+        $three = Cate::where('pid',$gid)->get();
+
+        return $three;
     }
 
 

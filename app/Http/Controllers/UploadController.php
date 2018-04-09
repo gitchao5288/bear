@@ -20,16 +20,16 @@ class UploadController extends Controller
 
             // 1. 将文件上传到本地服务器
             //将文件从临时目录移动到指定目录
-            // $path = $file->move(public_path().'/uploads/goods',$newfile);
+             $path = $file->move(public_path().'/uploads/goods',$newfile);
 
             // 2. 将文件上传到 alioss 存储
-            $oldfile = $file->getRealPath();
-            $row = OSS::upload($newfile,$oldfile);
-
-            $path = env('ALIOSS_DOMAIN');
+//            $oldfile = $file->getRealPath();
+//            $row = OSS::upload($newfile,$oldfile);
+//
+//            $path = env('ALIOSS_DOMAIN');
             // 将上传文件的新路径返回给客户端
-            // return '/uploads/goods/'.$newfile;
-            return $path.'/'.$newfile;
+             return '/uploads/goods/'.$newfile;
+//            return $path.'/'.$newfile;
 
         }
 

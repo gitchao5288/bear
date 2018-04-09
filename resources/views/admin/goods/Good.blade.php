@@ -92,8 +92,8 @@
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{{$v->gid}}'><i class="layui-icon">&#xe605;</i></div>
             </td>
             <td style="width: 30px;">{{$v['gid']}}</td>
-            <td style="width: 60px;">{{$v->HomeUser->uname}}</td>
-              <td>{{$v->Cate->cate_name}}</td>
+            <td style="width: 60px;">{{$v['HomeUser']['uname']}}</td>
+            <td>{{$v['Cate']['cate_name']}}</td>
             <td style="width: 100px;">{{$v['gname']}}</td>
             <td >
                 <img src="{{$v['gpic']}}" alt="" style="width: 70px;">
@@ -114,7 +114,7 @@
               </td>
 
             <td class="td-manage">
-                <a onclick="member_stop(this,{{$v['gid']}})" status="{{$v['status']}}" href="javascript:;"  title="上架">
+                <a onclick="member_stop(this,{{$v['gid']}})" status="{{$v['status']}}" href="javascript:;"  title="{{ ($v['status']==1) ? '下架' : '上架' }}">
                     <i class="layui-icon">{!! ($v['status']==1) ? '&#xe601;' : '&#xe62f;' !!}</i>
                 </a>
               <a title="编辑"  onclick="x_admin_show('编辑','/admins/Good/{{ $v['gid'] }}/edit')" href="javascript:;">
@@ -158,7 +158,7 @@
           if(status==1){
               layer.confirm('确认要下架吗？',function(index){
 
-                  if($(obj).attr('title')=='上架'){
+                  if($(obj).attr('title')=='下架'){
 
                       $.ajax({
                           type: "POST",
@@ -171,10 +171,10 @@
                           success: function(data){
                             // console.log(data);
                               //发异步把用户状态进行更改
-                              $(obj).attr('title','下架')
+
                               $(obj).find('i').html('&#xe62f;');
 
-                              $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已下架');
+
                               layer.msg('已下架!',{icon: 5,time:1000});
                               location.reload(true);
                           }
@@ -198,9 +198,9 @@
                           success: function(data){
 
                                   //发异步把用户状态进行更改
-                                  $(obj).attr('title','上架')
+
                                   $(obj).find('i').html('&#xe601;');
-                                  $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn layui-btn-normal layui-btn-mini').html('已上架');
+                                  
                                   layer.msg('已上架!',{icon: 6,time:1000});
                                   location.reload(true);
 
