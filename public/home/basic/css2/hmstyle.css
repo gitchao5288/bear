@@ -232,7 +232,7 @@ text-align: center;float:none}
 .e-price{color:red; font-size:16px;}
 .topmenu .toptitle { text-align: center;}
 .flood li{width:25%;}
-.banner,.bannerTwo{ width:100%;overflow:hidden;margin-top: 0px;}
+.banner,.bannerTwo{ width:60%;overflow:hidden;margin-top: 0px;margin-left: 20%;}
 .scoll{ margin-top:0px;overflow: hidden;}
 
  /*改写的公告*/
@@ -739,15 +739,15 @@ filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#f8c375',endCo
 .topmenu .toptitle {height:45px;line-height:45px;}
 .shopNavfloat{float:left; position:static; margin-top:-4px;display: block;}
 
-.banner .am-slider .am-slides li{height:430px;}
-.banner .am-slider .am-slides img{width:954px ;left:50% ;position: absolute;margin-left: -438px;}
+.banner .am-slider .am-slides li{height:428px;}
+.banner .am-slider .am-slides img{width:798px ;left:50% ;position: absolute;margin-left: -438px;}
 
 
 /*第二套轮播图布局*/
 
 .bannerTwo{position: absolute;left:187px;;width:760px ;}
 /*公告布局*/
-.marqueen {width:220px;height: 404px;text-align: left;top:60px;padding: 10px;}
+.marqueen {width:220px;height: 430px;text-align: left;top:47px;padding: 10px;}
 .demo{padding-top: 5px;}
 .demo li, .demo li.title-first {height: 26px;line-height: 26px;}
 .marqueen-title{display: block;margin-left:5px ;margin-top: 10px;}

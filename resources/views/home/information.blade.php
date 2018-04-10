@@ -33,6 +33,7 @@
 									@else
 										<span target="_top" class="h">{{session('user')->uname}}</span>
 										<span target="_top" >您好！</span>
+										<a href="/home/exit" target="_top" class="h">[退出]</a>
 									@endif
 								</div>
 							</div>
@@ -97,25 +98,40 @@
 						</div>
 						<hr/>
 
-						<!--头像 -->
-						<div class="user-infoPic">
 
-							<div class="filePic">
-								<input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
-								<img class="am-circle am-img-thumbnail" src="/home/images/getAvatar.do.jpg" alt="" />
-							</div>
-
-							<p class="am-form-help">头像</p>
-
-							<div class="info-m">
-								<div><b>用户名：<i>{{session('user')->uname}}</i></b></div>
-
-							</div>
-						</div>
 
 						<!--个人信息 -->
 						<div class="info-main">
 							<form class="am-form am-form-horizontal" id="information" >
+
+								<!--头像 -->
+								<div class="user-infoPic" style="position: relative">
+
+									<div class="filePic" style="position: absolute;top: -15px;">
+
+										<input type="hidden" name="art_thumb" value="{{ (session('user')->face) ? session('user')->face : '/home/images/getAvatar.do.jpg'}}">
+										<img class="am-circle am-img-thumbnail" id="art_thumb" src="{{ (session('user')->face) ? session('user')->face : '/home/images/getAvatar.do.jpg'}}" alt="网络不好！亲！" />
+										<div class="layui-upload-list">
+
+										</div>
+									</div>
+
+									<div class="am-form-content sex" style="position: absolute;top: 100px;left: -60px;">
+										<div class="layui-upload" style="position: relative;">
+											<input type="file" id="file_upload" name="file_upload"  style="opacity: 0;position: relative;z-index: 999;">
+											<img src="/admin/images/123.png" alt="" style="position:absolute;left: 0px;top: -5px;z-index: 1;">
+										</div>
+
+
+									</div>
+
+									<p class="am-form-help">头像</p>
+
+									<div class="info-m">
+										<div><b>用户名：<i>{{session('user')->uname}}</i></b></div>
+
+									</div>
+								</div>
 
 
 
@@ -176,33 +192,81 @@
 
 				</div>
 				<!--底部-->
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="/">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-							<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
-						</p>
-					</div>
-				</div>
+				@include('home.public.footer')
 			</div>
-			@include('home.public.centerlayout')
+			<aside class="menu">
+				<ul>
+					<li class="person">
+						<a href="/center">个人中心</a>
+					</li>
+					<li class="person">
+
+						<ul>
+							<li class="active"> <a href="/information">个人信息</a></li>
+							<li> <a href="/safety">安全设置</a></li>
+							<li> <a href="/address">收货地址</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="#">我的交易</a>
+						<ul>
+
+							<li><a href="/publish">我的发布</a></li>
+
+							<li><a href="/order">订单管理</a></li>
+							<li> <a href="/change">退款售后</a></li>
+						</ul>
+					</li>
+				</ul>
+			</aside>
 
 		</div>
 		<script>
+
+            // 上传图片 **********************************************
+            $(function () {
+                $("#file_upload").change(function () {
+                    uploadImage();
+                })
+            });
+            function uploadImage() {
+				//  判断是否有选择上传文件
+                var imgPath = $("#file_upload").val();
+                if (imgPath == "") {
+                    alert("请选择上传图片！");
+                    return;
+                }
+                //判断上传文件的后缀名
+                var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+                if (strExtension != 'jpg' && strExtension != 'gif'
+                    && strExtension != 'png' && strExtension != 'bmp' && strExtension != 'jpeg') {
+                    alert("请选择图片文件");
+                    return;
+                }
+                // var formData = new FormData($('#art_form')[0]);
+                var formData = new FormData();
+                formData.append('file_upload', $('#file_upload')[0].files[0]);
+                $.ajax({
+                    type: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "/upload",
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        console.log(data);
+
+                        $('#art_thumb').attr('src',data);
+                        $("input[name='art_thumb']").val(data);
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert("上传失败，请检查网络后重试");
+                    }
+                });
+            }
 
 
 			$('#information').submit(function(){
@@ -216,6 +280,10 @@
 				var phone = $('input[name=phone]').val();
 				//邮箱
 				var email = $('input[name=email]').val();
+				// 头像
+                var gpic = $("input[name='art_thumb']").val();
+                // console.log(gpic);
+
 				if(!name){
 				    alert('姓名不能为空！');
 				    return false;
@@ -233,16 +301,18 @@
 
 					$.ajax({
 						url:'/infoupdate',
-						data:{name:name,sex:sex,age:age,phone:phone,email:email},
+						data:{name:name,sex:sex,age:age,phone:phone,email:email,gpic:gpic},
 						dataType: 'json',
 						type: 'post',
 						headers: {
 							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 						},
 						success:function(data){
+						    console.log(data);
 
 							if(data.status==1){
 							    alert(data.msg);
+
 							    window.location.reload(true);
 							}else{
 							    alert(data.msg);

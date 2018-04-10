@@ -41,7 +41,7 @@
 
     <div class="login-boxtitle">
 
-        <a href="home/demo.html"><img alt="" src="/home/images/logobig.png" /></a>
+        <a href="/"><img alt="" src="/home/basic/images2/logo2.png" /></a>
 
         @section('login')
 

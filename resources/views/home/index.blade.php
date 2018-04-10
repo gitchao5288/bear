@@ -36,9 +36,7 @@
 							@else
 								<span target="_top" class="h">{{session('user')->uname}}</span>
 								<span target="_top" >您好！</span>
-
-								<a href="/home/login/login" target="_top" class="h">[更换账号]</a>
-
+								<a href="/home/exit" target="_top" class="h">[退出]</a>
 							@endif
 						</div>
 					</div>
@@ -84,7 +82,9 @@
 
 							<ul class="am-slides">
 								@foreach($Res as $v)
-								<li><a href="{{$v->link}}"><img src="{{$v->feilname}}" /></a></li>
+									@if($v->rstatus==1)
+										<li><a href="https://{{$v->link}}"><img src="{{$v->feilname}}" /></a></li>
+									@endif
 								@endforeach
 							</ul>
 
@@ -100,16 +100,7 @@
 				<div class="slideall">
 
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
-					   <div class="nav-cont">
-							<ul>
-								<li class="index"><a href="/">首页</a></li>
-                                <li class="qc"><a href="#">手机二手</a></li>
-                                <li class="qc"><a href="#">女朋友二手</a></li>
-                                <li class="qc"><a href="#">降降降</a></li>
-                                <li class="qc last"><a href="/home/addgoods">发布闲置</a></li>
-
-							</ul>
-						</div>
+					   @include('home.public.nav')
 
 						<!--侧边导航 -->
 						<div id="nav" class="navfull">
@@ -263,40 +254,7 @@
 
 					<!--今日推荐 -->
 
-					<div class="am-g am-g-fixed recommendation">
-						<div class="clock am-u-sm-3" ">
-							<img src="/home/basic/images2/2016.png "></img>
-							<p>今日<br>推荐</p>
-						</div>
-						<div class="am-u-sm-4 am-u-lg-3 ">
-							<div class="info ">
-								<h3>真的有鱼</h3>
-								<h4>开年福利篇</h4>
-							</div>
-							<div class="recommendationMain one">
-								<a href="introduction.html"><img src="/home/basic/images2/tj.png "></img></a>
-							</div>
-						</div>
-						<div class="am-u-sm-4 am-u-lg-3 ">
-							<div class="info ">
-								<h3>囤货过冬</h3>
-								<h4>让爱早回家</h4>
-							</div>
-							<div class="recommendationMain two">
-								<img src="/home/basic/images2/tj1.png "></img>
-							</div>
-						</div>
-						<div class="am-u-sm-4 am-u-lg-3 ">
-							<div class="info ">
-								<h3>浪漫情人节</h3>
-								<h4>甜甜蜜蜜</h4>
-							</div>
-							<div class="recommendationMain three">
-								<img src="/home/basic/images2/tj2.png "></img>
-							</div>
-						</div>
 
-					</div>
 					<div class="clear "></div>
 
 				@foreach($firstCate as $k=>$v)
@@ -362,11 +320,11 @@
 										{{$goods[$k][0]['gname'] or '雪之恋和风大福'}}
 									</div>
 									<div class="sub-title ">
-										¥13.8
+										¥{{$goods[$k][0]['price']}}.00
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="/goodDetails/{{$goods[$k][0]['gid'] or '1'}}"><img src="{{$goods[$k][0]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
+								<a href="/goodDetails/{{$goods[$k][0]['gid'] or '1'}}"><img style="width: 200px;height:180px;" src="{{$goods[$k][0]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
 							</div>
 
 							<div class="am-u-sm-7 am-u-md-4 text-two">
@@ -375,11 +333,11 @@
 										{{$goods[$k][1]['gname'] or '雪之恋和风大福'}}
 									</div>
 									<div class="sub-title ">
-										¥13.8
+										¥{{$goods[$k][1]['price']}}.00
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="/goodDetails/{{$goods[$k][1]['gid'] or '1'}} "><img src="{{$goods[$k][1]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
+								<a href="/goodDetails/{{$goods[$k][1]['gid'] or '1'}} "><img style="width: 200px;height:160px;" src="{{$goods[$k][1]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
 							</div>
 
 
@@ -391,28 +349,15 @@
 										{{$goods[$k][2]['gname'] or '小优布丁'}}
 									</div>
 									<div class="sub-title ">
-										¥4.8
+										¥{{$goods[$k][2]['price']}}.00
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
 
-								<a href="/goodDetails/{{$goods[$k][2]['gid'] or '1'}}"><img src="{{$goods[$k][2]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
+								<a href="/goodDetails/{{$goods[$k][2]['gid'] or '1'}}"><img style="width: 200px;height:180px;" src="{{$goods[$k][2]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
 							</div>
 
-							<div class="am-u-sm-3 am-u-md-2 text-three sug">
-								<div class="outer-con ">
-									<div class="title ">
-										{{$goods[$k][3]['gname'] or '小优布丁'}}
-									</div>
 
-									<div class="sub-title ">
-										¥4.8
-									</div>
-									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-								</div>
-
-								<a href="/goodDetails/{{$goods[$k][3]['gid'] or '1'}}"><img src="{{$goods[$k][3]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
-							</div>
 
 							<div class="am-u-sm-3 am-u-md-2 text-three ">
 
@@ -422,13 +367,26 @@
 										{{$goods[$k][4]['gname'] or '小优布丁'}}
 									</div>
 									<div class="sub-title ">
-										¥4.8
+										¥{{$goods[$k][4]['price']}}.00
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="/goodDetails/{{$goods[$k][4]['gid'] or '1'}}"><img src="{{$goods[$k][4]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
+								<a href="/goodDetails/{{$goods[$k][4]['gid'] or '1'}}"><img style="width: 150px;height:120px;" src="{{$goods[$k][4]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
+							</div>
+						<div class="am-u-sm-3 am-u-md-2 text-three sug">
+							<div class="outer-con ">
+								<div class="title ">
+									{{$goods[$k][3]['gname'] or '小优布丁'}}
+								</div>
+
+								<div class="sub-title ">
+									¥{{$goods[$k][3]['price']}}.00
+								</div>
+								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
 
+							<a href="/goodDetails/{{$goods[$k][3]['gid'] or '1'}}"><img style="width: 200px;height:180px;" src="{{$goods[$k][3]['gpic'] or '/home/basic/images2/1.jpg'}}" /></a>
+						</div>
 							<div class="am-u-sm-3 am-u-md-2 text-three last big ">
 								<div class="outer-con ">
 									<div class="title ">
@@ -437,7 +395,7 @@
 
 									</div>
 									<div class="sub-title ">
-										¥4.8
+										¥{{$goods[$k][5]['price']}}.00
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
@@ -458,7 +416,13 @@
 
 
 
+			<!-- 广告 -->
 
+				<div id="AD">
+					<a href="{{$data->link}}">
+						<img src="{{$data->aimg}}" alt="" style="width:200px;height:200px;position:fixed;top:75%;z-index: 999;" />
+					</a>
+				</div>
 
 
 
@@ -496,28 +460,8 @@
 
 
 
-					<div class="footer ">
-						<div class="footer-hd ">
-							<p>
-								<a href="# ">恒望科技</a>
-								<b>|</b>
-								<a href="/">商城首页</a>
-								<b>|</b>
-								<a href="# ">支付宝</a>
-								<b>|</b>
-								<a href="# ">物流</a>
-							</p>
-						</div>
-						<div class="footer-bd ">
-							<p>
-								<a href="# ">关于恒望</a>
-								<a href="# ">合作伙伴</a>
-								<a href="# ">联系我们</a>
-								<a href="# ">网站地图</a>
-								<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
-							</p>
-						</div>
-					</div>
+				<!--底部-->
+				@include('home.public.footer')
 
 		</div>
 		</div>
@@ -544,6 +488,20 @@
             })
 		</script>
 		<script type="text/javascript " src="/home/basic/js/quick_links.js "></script>
+		<script type='text/javascript'>
+            (function(m, ei, q, i, a, j, s) {
+                m[i] = m[i] || function() {
+                    (m[i].a = m[i].a || []).push(arguments)
+                };
+                j = ei.createElement(q),
+                    s = ei.getElementsByTagName(q)[0];
+                j.async = true;
+                j.charset = 'UTF-8';
+                j.src = 'https://static.meiqia.com/dist/meiqia.js?_=t';
+                s.parentNode.insertBefore(j, s);
+            })(window, document, 'script', '_MEIQIA');
+            _MEIQIA('entId', 102652);
+		</script>
 	</body>
 
 </html>

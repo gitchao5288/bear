@@ -136,7 +136,7 @@
 
 
                     <li>
-                        <a class="J_menuItem" href="/admins/Data" tppabs="http://www.zi-han.net/theme/hplus/css_animation.html"><i class="fa fa-magic"></i> <span class="nav-label">数据统计</span></a>
+                        <a class="J_menuItem" href="https://tongji.baidu.com/web/25443028/overview/index" tppabs="http://www.zi-han.net/theme/hplus/css_animation.html"><i class="fa fa-magic"></i> <span class="nav-label">数据统计</span></a>
                     </li>
 
                 </ul>

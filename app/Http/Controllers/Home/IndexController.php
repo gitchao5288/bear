@@ -4,6 +4,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\AD;
 use App\Models\AdminRotation;
 use App\Model\HomeUser;
 use App\Models\Address;
@@ -45,9 +46,11 @@ class IndexController extends Controller
             $goods[] = Goods::where('cid',$v)->where('status','1')->get()->toArray();
         }
 //        dd($goods);
+        //广告
+        $data = AD::where('astatus','1')->first();
 
 
-    	return view('/home/index',['Res'=>$Res,'Cate'=>$Cate,'goods'=>$goods,'firstCate'=>$fc]);
+    	return view('/home/index',['Res'=>$Res,'Cate'=>$Cate,'goods'=>$goods,'firstCate'=>$fc,'data'=>$data]);
     }
     //定义一个子树方法 (全部信息,id,标记)
     public function subtree($arr,$id=0,$lev=1)
@@ -74,7 +77,11 @@ class IndexController extends Controller
     {
         $goods = Goods::where('cid',$id)->where('status','1')->paginate(12);
 //        $goods = Goods::where('cid',$id)->get();
+//        dd($goods);
+
         return view('home.search',compact('goods','request'));
+
+
     }
 
     //搜索条件查询方法展示列表页
@@ -84,12 +91,6 @@ class IndexController extends Controller
 
         return view('home.search',compact('goods','request'));
     }
-
-    //商品列表页
-//    public function search()
-//    {
-//        return view('home.search');
-//    }
 
 
     //购物车页面
@@ -211,6 +212,7 @@ class IndexController extends Controller
     public function infoupdate(Request $request)
     {
         $arr = [];
+
         //修改数据库个人信息
         $user = HomeUser::where('uname',session('user')->uname)->first();
 
@@ -219,15 +221,26 @@ class IndexController extends Controller
         $user->name = $request->name;
         $user->sex = $request->sex;
         $user->age = $request->age;
+        $user->face = $request->gpic;
+
         $res = $user->save();
+
+
         if($res){
-            $arr['status'] = 1;
-            $arr['msg'] = '修改成功';
+
+            $arr= [
+                'status'=>1,
+                'msg'=>'保存成功'
+            ];
             $ses = HomeUser::where('uname',session('user')->uname)->first();
             session()->put('user',$ses);
         }else{
-            $arr['status'] = 0;
-            $arr['msg'] = '修改失败';
+
+            $arr= [
+                'status'=>0,
+                'msg'=>'保存失败'
+            ];
+
 
         }
         return $arr;
@@ -304,7 +317,7 @@ class IndexController extends Controller
         foreach($orders as $k=>$v){
             $goods[$k] = Goods::where('gid',$v->gid)->first();
         }
-//        dd($orders);
+//        dd($goods);
 
         return view('home.order',compact('orders','goods'));
     }

@@ -233,6 +233,7 @@ class UserController extends Controller
                         'status'=>1,
                         'msg'=>'修改成功'
                     ];
+                      session()->forget('adminName');
                 }
             }
 

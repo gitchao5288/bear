@@ -28,6 +28,10 @@ Route::get('/mygoodDetail/{gid}','Home\IndexController@mygoodDetail');
 Route::get('/goodDetails/{id}','Home\IndexController@goodDetails');
 
 Route::prefix('/home')->group(function () {
+
+    //退出登录
+    Route::get('exit','Home\LoginController@exit');
+
     // 发布闲置
     Route::get('addgoods','Home\AddController@index')->middleware('Home');
     //结算页面
@@ -101,12 +105,15 @@ Route::prefix('/admins')->group(function(){
     // 审核通过并上架
 
     Route::post('Good/state','Admin\GoodsController@state')->middleware('Admin');
-    Route::resource('Good','Admin\GoodsController')->middleware('Admin');
 
 
     //商品类别联动 二级two 和三级three
     Route::get('Good/two','Admin\GoodsController@two')->middleware('Admin');
     Route::get('Good/three','Admin\GoodsController@three')->middleware('Admin');
+
+    Route::resource('Good','Admin\GoodsController')->middleware('Admin');
+
+
 
 
 
@@ -158,20 +165,8 @@ Route::get('/collection','Home\IndexController@collection')->middleware('Home');
  * 前台页面
  */
 
-//购物车页面
-Route::get('/home/shopcart',function(){
-
-
-    return view('home.shopcart');
-
-});
-
-
-
-
-
     // 生成验证码路由
-    Route::get('home/login/code','Home\loginController@code');
+    Route::get('home/login/code','Home\LoginController@code');
 
     // 前台登录处理路由
     Route::post('home/login/dologin','Home\LoginController@dologin');
@@ -270,21 +265,6 @@ Route::resource('/admins/Huser','Home\Husercontroller')->middleware('Admin');
 
 
 
-//后台用户浏览页面
-//Route::get('/admins/User','admin\AdminController@Auser');
-//后台用户添加
-
-
-/*Route::get('/admins/Useradd','admin\AdminController@Useradd')->middleware('Admin');
-
-//后台用户修改
-//Route::get('/admins/Useredit','admin\AdminController@Useredit');
-
-
-
-Route::resource('/admins/User','admin\UserController')->middleware('Admin');*/
-
-
 //后台用户修改
 
 Route::get('/admins/User/delall','admin\UserController@delall')->middleware('Admin');
@@ -294,7 +274,6 @@ Route::get('/admins/exit','admin\LoginController@exit')->middleware('Admin');
 Route::resource('/admins/User','admin\UserController')->middleware('Admin');
 
 
-// Route::get('/admins/Huser','admin\AdminController@Huser');
 
 //后台退出登录
 Route::get('/admins/exit','admin\LoginController@exit');

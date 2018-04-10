@@ -32,6 +32,7 @@
 						@else
 							<span target="_top" class="h">{{session('user')->uname}}</span>
 							<span target="_top" >您好！</span>
+							<a href="/home/exit" target="_top" class="h">[退出]</a>
 						@endif
 					</div>
 				</div>
@@ -181,7 +182,7 @@
 												<li class="td td-price">
 													<div class="item-price price-promo-promo">
 														<div class="price-content">
-															<em class="J_Price price-now">{{$data->price}}</em>
+															<em class="J_Price price-now">{{$data->price}}.00</em>
 														</div>
 													</div>
 												</li>
@@ -286,28 +287,8 @@
 						<div class="clear"></div>
 					</div>
 				</div>
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="/">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-							<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
-						</p>
-					</div>
-				</div>
+				<!--底部-->
+				@include('home.public.footer')
 			</div>
 			<div class="theme-popover-mask"></div>
 			<div class="theme-popover">

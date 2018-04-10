@@ -66,8 +66,8 @@
             <td>{{$v->email}}</td>
             <td>{{date('Y-m-d H:i:s',$v->maketime)}}</td>
             <td class="td-manage">
-               <a onclick="member_stop(this,{{ $v->uid }})" href="javascript:;" status="{{ $v->status }}"  title="启用">
-                <i class="layui-icon">&#xe601;</i>
+               <a onclick="member_stop(this,{{ $v->uid }})" href="javascript:;" status="{{ $v->status }}"  title="{{ ($v['status']==1) ? '停用' : '启用' }}">
+                <i class="layui-icon">{!! ($v['status']==1) ? '&#xe601;' : '&#xe62f;' !!}</i>
               </a>
             </td>
           </tr>
@@ -103,7 +103,7 @@
         if(status==1){
           layer.confirm('确认要停用吗？',function(index){
 
-           if($(obj).attr('title')=='启用'){
+           if($(obj).attr('title')=='停用'){
 
 
               $.ajax({
@@ -116,10 +116,10 @@
                   dataType: "json",
                   success: function(data){
                       //发异步把用户状态进行更改
-                      $(obj).attr('title','停用')
+
                       $(obj).find('i').html('&#xe62f;');
 
-                      $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
+
                       layer.msg('已停用!',{icon: 5,time:1000});
                       location.reload(true);
                   }
@@ -143,10 +143,10 @@
                   dataType: "json",
                   success: function(data){
                       //发异步把用户状态进行更改
-                      $(obj).attr('title','启用')
+
                       $(obj).find('i').html('&#xe601;');
 
-                      $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn layui-btn-normal layui-btn-mini').html('已启用');
+
                       layer.msg('已启用!',{icon: 6,time:1000});
                       location.reload(true);
                   }

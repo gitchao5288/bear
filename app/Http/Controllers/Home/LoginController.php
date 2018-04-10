@@ -324,10 +324,21 @@ class LoginController extends Controller
             return redirect('home/login/login')->with('errors','账号与密码不匹配,请重新输入');
         }
 
+        //判断登录方法
         if ( $uname_user ) {
+
+            if ( $uname_user->email && $uname_user->status!=1 ) {
+                return redirect('home/login/login')->with('errors','邮箱未激活,请去邮箱激活');
+            }
+
             $user = $uname_user;
 
         } else if ( $email_user ) {
+
+            if ( $email_user->status!=1 ) {
+                return redirect('home/login/login')->with('errors','邮箱未激活,请去邮箱激活');
+            }
+
             $user = $email_user;
 
         } else if ( $phone_user ) {
@@ -355,6 +366,14 @@ class LoginController extends Controller
 //        7. 如果都正确跳转到前台首页
         return redirect('/');
 
+    }
+
+    public function exit()
+    {
+        session()->forget('user');
+
+
+        return redirect('/home/login/login')->withErrors('退出登录成功');
     }
 
 

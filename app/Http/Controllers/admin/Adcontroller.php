@@ -12,6 +12,37 @@ class Adcontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    //   上架下架
+    public function changestatus(Request $request)
+    {
+//        return $request;
+        // 商品id
+        $gid = $request->input('id');
+        //用户的状态
+        $status =  ($request->input('status') == 0) ? 1 : 0;
+
+        //修改状态
+        // return $status;
+//        $goods = Goods::find($uid);
+        $res = AD::where('aid',$gid) ->update(['astatus'=>$status]);
+        if($res){
+//            json格式的接口信息  {'status':是否成功，'msg'：提示信息}
+            $arr = [
+                'status'=>0,
+                'msg'=>'修改成功'
+            ];
+        }else{
+            $arr = [
+                'status'=>1,
+                'msg'=>'修改失败'
+            ];
+        }
+
+        return $arr;
+    }
+
     public function upload(Request $request)
     {
         $file = $request->file('fileupload');
@@ -53,17 +84,17 @@ class Adcontroller extends Controller
     public function store(Request $request)
     {
         //获取要添加的数据
-         $input = $request->except('fileupload','_token');
-         $input['atime']=time();
+        $input = $request->except('fileupload','_token');
+        $input['atime']=time();
 
-         $res = AD::create($input);
+        $res = AD::create($input);
 
-         if($res){
+        if($res){
 
             return 1;
-         }else{
+        }else{
             return 0;
-         }
+        }
     }
 
     /**
@@ -133,7 +164,7 @@ class Adcontroller extends Controller
     }
     //批量删除
     public function delall(Request $request){
-         //获取请求参数中的数据
+        //获取请求参数中的数据
 
         $ids = $request -> input('ids');
 
