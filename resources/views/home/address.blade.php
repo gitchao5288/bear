@@ -75,7 +75,16 @@
 				</div>
 			</article>
 		</header>
+		@if(count($errors)>0)
+			<ul>
 
+				@foreach($errors->all() as $error)
+
+					<script>alert('{!! $error !!}');</script>
+
+				@endforeach
+			</ul>
+		@endif
 		<div class="nav-table">
 			<div class="long-title"><span class="all-goods">全部分类</span></div>
 			@include('home.public.nav')

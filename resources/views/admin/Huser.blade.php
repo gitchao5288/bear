@@ -36,7 +36,7 @@
         </form>
       </div>
       <xblock>
-        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+        <span class="x-right" style="line-height:40px">共有数据：{{$data->count()}} 条</span>
       </xblock>
       <table class="layui-table">
         <thead>

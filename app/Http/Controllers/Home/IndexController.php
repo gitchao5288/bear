@@ -93,15 +93,6 @@ class IndexController extends Controller
     }
 
 
-    //购物车页面
-    public function shopCart()
-    {
-
-//        $shopcart = session('shopcart');
-
-//        return view('home.shopcart',compact('shopcart'));
-    }
-
 
     //商品详情
     public function goodDetails($id)
@@ -141,6 +132,10 @@ class IndexController extends Controller
         $data = Goods::where('gid',$id)->first();
         $udata = Address::where('uid',session('user')->uid)->get();
         $default = Address::where('uid',session('user')->uid)->where('default','1')->first();
+        $count = Address::where('uid',session('user')->uid)->where('default','1')->get();
+        if($count->count()==0){
+            return redirect('/address')->withErrors('请先添加地址！');
+        }
         return view('home.pay',compact('data','udata','default'));
     }
     //提交订单页面
@@ -273,6 +268,12 @@ class IndexController extends Controller
         $address->add = $add['add'];
         $address->phone = $add['phone'];
         $address->addname = $add['addname'];
+
+        //查询当前用户有没有默认地址，如果有，直接添加，如果没有，本次添加的地址就为默认地址
+        $addfirst = Address::where('uid',session('user')->uid)->get();
+        if($addfirst->count()==0){
+            $address->default = '1';
+        }
         $res = $address->save();
         if($address){
             $arr['status'] = 1;

@@ -19,13 +19,13 @@ class AdminMiddleware
 
         //request变量 记录所有的请求参数
 
-        if(session('adminName')) {
+//        if(session('adminName')) {
 
 
         	return $next($request);
-        } else {
-	        return redirect('/admins/login')->withErrors('请登录账号');
-	    }
+//        } else {
+//	        return redirect('/admins/login')->withErrors('请登录账号');
+//	    }
   	}
 
 }
