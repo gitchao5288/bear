@@ -69,13 +69,10 @@ Route::prefix('/home')->group(function () {
 
 });
 
-
+//后台中间件
 Route::prefix('/admins')->group(function(){
 
-
-    //后台中间件
 //后台主页
-
     Route::get('index','admin\AdminController@index')->middleware('Admin');
     Route::get('wel','admin\AdminController@wel')->middleware('Admin');
 
@@ -98,6 +95,9 @@ Route::prefix('/admins')->group(function(){
     //Route::get('/admins/Good','admin\AdminController@Good');
     //上架下架
     Route::post('Good/changestatus','Admin\GoodsController@changestatus')->middleware('Admin');
+    //上下架广告
+    Route::post('AD/changestatus','Admin\Adcontroller@changestatus')->middleware('Admin');
+
     //批量删除
     Route::get('Good/delall','Admin\GoodsController@delall')->middleware('Admin');
     //待审核商品

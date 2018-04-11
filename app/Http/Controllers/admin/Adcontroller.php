@@ -17,11 +17,12 @@ class Adcontroller extends Controller
     //   上架下架
     public function changestatus(Request $request)
     {
+
 //        return $request;
         // 商品id
         $gid = $request->input('id');
         //用户的状态
-        $status =  ($request->input('status') == 0) ? 1 : 0;
+        $status =  ($request->input('status') == 0) ? '1' : '0';
 
         //修改状态
         // return $status;
