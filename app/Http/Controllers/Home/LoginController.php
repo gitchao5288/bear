@@ -37,10 +37,16 @@ class LoginController extends Controller
     public function doreg(Request $request)
     {
 
+
+
         // 除去_token -> 获取用户信息
         $data = $request->except('_token');
 //        $uname = $request->old('uname');
 
+        if ( empty($data['agree']) ) {
+            flash('请认真阅读并同意协议')->error();
+            return redirect('/home/login/index');
+        }
 
         $name = $data['uname'];
         $pass = $data['password'];

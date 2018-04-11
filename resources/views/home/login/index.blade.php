@@ -58,7 +58,7 @@
 
                     <div class="login-links">
                         <div id="emailche">
-                            <input id="reader-me" type="checkbox" class="che1" value="0" >
+                            <input id="reader-me" type="checkbox" class="che1" value="agree" name="agree">
                             <a href="#" class="btn1"> 点击表示您同意商城《服务协议》</a>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
 
                     <div class="login-links">
                         <div id="emailche">
-                            <input id="reader-me" type="checkbox" class="che1" value="1">
+                            <input id="reader-me" type="checkbox" class="che1" value="agree" name="agree">
                             <a href="#" class="btn1"> 点击表示您同意商城《服务协议》</a>
                         </div>
                     </div>
@@ -245,34 +245,18 @@
 
             });
 
-            // if(confirm('同意协议'));
-            // 点击同意才能注册通过
-            var che1;
-            var che2;
 
-            $("input[type='checkbox']").eq(0).click(function(){
-
-                che1 = $("input[type='checkbox']").eq(0).is(':checked');
-                // console.log(che1);
-            });
-
-            $('input[type="checkbox"]').eq(1).click(function(){
-
-                che2 = $('input[type="checkbox"]').eq(1).is(':checked');
-
-                // console.log(che2)
-            });
 
 
 
             $('.forms').submit(function(){
-                if ( che1 || ( che2 && CV ) ) {
+                if (CV) {
 
                     return true;
 
                 }
 
-                alert('请您认真阅读服务协议');
+                alert('验证码不匹配');
 
                 return false;
             })
