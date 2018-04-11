@@ -45,6 +45,18 @@
                   <span class="x-red">*</span>务必填写
               </div>
           </div>
+            <div class="layui-form-item">
+                <label for="phone" class="layui-form-label">
+                    <span class="x-red">*</span>广告链接
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text"  name="link" required="" lay-verify="required"
+                           autocomplete="off" class="layui-input" value="{{$data->link}}">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>务必填写
+                </div>
+            </div>
           <div class="layui-upload">
                 <label class="layui-form-label">缩略图上传</label>
 

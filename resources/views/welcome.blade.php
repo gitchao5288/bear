@@ -76,7 +76,6 @@ $('p#autoRotateText').beatText({isAuth:true,upTime:700,downTime:700,beatHeight:"
     <p id="roloadText">因为懒,所以无所畏惧.</p>
     <br>
     <br>
-    <a href="/admins/index"><p id="autoRotateText">点击进入--懒熊后台</p></a>
 </div>
 
 </body>

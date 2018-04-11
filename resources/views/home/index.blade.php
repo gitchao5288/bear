@@ -333,7 +333,7 @@
 										{{$goods[$k][1]['gname'] or '雪之恋和风大福'}}
 									</div>
 									<div class="sub-title ">
-										¥{{$goods[$k][1]['price']}}.00
+										¥{{$goods[$k][1]['price'] or '100'}}.00
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
@@ -349,7 +349,7 @@
 										{{$goods[$k][2]['gname'] or '小优布丁'}}
 									</div>
 									<div class="sub-title ">
-										¥{{$goods[$k][2]['price']}}.00
+										¥{{$goods[$k][2]['price'] or '100'}}.00
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
@@ -367,7 +367,7 @@
 										{{$goods[$k][4]['gname'] or '小优布丁'}}
 									</div>
 									<div class="sub-title ">
-										¥{{$goods[$k][4]['price']}}.00
+										¥{{$goods[$k][4]['price'] or '100'}}.00
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
@@ -380,7 +380,7 @@
 								</div>
 
 								<div class="sub-title ">
-									¥{{$goods[$k][3]['price']}}.00
+									¥{{$goods[$k][3]['price'] or '100'}}.00
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
@@ -395,7 +395,7 @@
 
 									</div>
 									<div class="sub-title ">
-										¥{{$goods[$k][5]['price']}}.00
+										¥{{$goods[$k][5]['price'] or '100'}}.00
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
@@ -419,8 +419,8 @@
 			<!-- 广告 -->
 
 				<div id="AD">
-					<a href="{{$data->link}}">
-						<img src="{{$data->aimg}}" alt="" style="width:200px;height:200px;position:fixed;top:75%;z-index: 999;" />
+					<a href="{{empty($data->link)?'#':$data->link}}">
+						<img src="{{empty($data->aimg)?:$data->aimg}}" alt="" style="width:200px;height:200px;position:fixed;top:75%;z-index: 999;" />
 					</a>
 				</div>
 
