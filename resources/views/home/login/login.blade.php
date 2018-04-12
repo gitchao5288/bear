@@ -32,7 +32,7 @@
 				</div>
 				<div class="user-pass">
 					<label for="password"><i class="am-icon-lock"></i></label>
-					<input type="text" name="password" id="password" placeholder="请输入密码">
+					<input type="password" name="password" id="password" placeholder="请输入密码">
 				</div>
                 <div class="user-pass">
                     <label for="password"><i class="am-icon-lock"></i></label>

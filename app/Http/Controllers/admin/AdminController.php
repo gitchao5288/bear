@@ -17,7 +17,6 @@ class AdminController extends Controller
    //首页
    public function index(){
 
-
       // 统计审核通过的数量
       $count = count(Goods::all()->where('status','==','0'));
 
@@ -25,7 +24,7 @@ class AdminController extends Controller
 
    }
    public function wel(){
-      return view('admin.wel');
+      return view('welcome');
    }
 
 
@@ -128,7 +127,7 @@ class AdminController extends Controller
 
         $cate = new Cate;
 
-        $cate->pid = $request->pid;
+        $cate->pid = 0;
         $cate->cate_name = $request->cate_name;
         $res  = $cate->save();
 
@@ -200,7 +199,7 @@ class AdminController extends Controller
         $arr = [];
         $rea = Cate::where('cate_name',$request->cate_name)->get();
 
-        if(!empty($rea)){
+        if($rea->count()!=0){
             $arr['status'] = 0;
             $arr['msg'] = '该类别已经存在';
             return $arr;

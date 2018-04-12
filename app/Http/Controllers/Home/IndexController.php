@@ -4,13 +4,22 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\AD;
 use App\Models\AdminRotation;
 use App\Model\HomeUser;
 use App\Models\Address;
+
+use App\Models\Goods;
+use App\Models\ORDER;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Cate;
+
+
+use App\Models\ORDERDETAIL;
+
 class IndexController extends Controller
 {
 
@@ -21,9 +30,27 @@ class IndexController extends Controller
 
         //查询所有类别数据
         $Cate = Cate::get();
+        $arr = [];
+        $fc = Cate::where('pid',0)->get();
+        $firstCate = Cate::where('pid',0)->get()->toArray();
+        foreach($firstCate as $v){
+
+            $arr[]= Cate::where('pid',$v['id'])->first()->id;
+        }
+        $brr = [];
+        foreach($arr as $v){
+            $brr[] = Cate::where('pid',$v)->first()->id;
+        }
+        $goods = [];
+        foreach($brr as $v){
+            $goods[] = Goods::where('cid',$v)->where('status','1')->get()->toArray();
+        }
+//        dd($goods);
+        //广告
+        $data = AD::where('astatus','1')->first();
 
 
-    	return view('/home/index',['Res'=>$Res,'Cate'=>$Cate]);
+    	return view('/home/index',['Res'=>$Res,'Cate'=>$Cate,'goods'=>$goods,'firstCate'=>$fc,'data'=>$data]);
     }
     //定义一个子树方法 (全部信息,id,标记)
     public function subtree($arr,$id=0,$lev=1)
@@ -45,16 +72,125 @@ class IndexController extends Controller
     }
 
 
-    //商品列表页
-    public function search()
+    //点击条件查询方法展示列表页
+    public function clickSearch(Request $request,$id)
     {
-        return view('home.search');
+        $goods = Goods::where('cid',$id)->where('status','1')->paginate(12);
+//        $goods = Goods::where('cid',$id)->get();
+//        dd($goods);
+
+        return view('home.search',compact('goods','request'));
+
+
     }
 
-    //商品详情
-    public function goodDetails()
+    //搜索条件查询方法展示列表页
+    public function searchCriteria(Request $request)
     {
-        return view('home.goodDetails');
+        $goods = Goods::where('gname','like','%'.$request->gname.'%')->paginate(12);
+
+        return view('home.search',compact('goods','request'));
+    }
+
+
+
+    //商品详情
+    public function goodDetails($id)
+    {   
+        $data = Goods::where('gid',$id)->first();
+       
+        return view('home.goodDetails',compact('data','id'));
+    }
+    //加入购物车
+    public function storecart(Request $request)
+    {   
+        $data = $request->except('_token');
+        $arr = [];
+        $arr['gid'] = $data->gid;
+        $arr['uid'] = $data->uid;
+        $arr['gname'] = $data->gname;
+        $arr['cid'] = $data->cid;
+        $arr['gpic'] = $data->gpic;
+        $arr['gdesc'] = $data->gdesc;
+        
+
+        session()->push('shopcart',$arr);
+        dd($arr);
+        // return view('home.shopcart');   
+    }
+    
+    //地址联动
+    public function Achange(Request $request)
+    {
+        $Adata=Address::where('addid',$request->id)->first();
+        return $Adata;
+    }
+
+    //确认订单页面
+    public function pay($id)
+    { 
+        $data = Goods::where('gid',$id)->first();
+        $udata = Address::where('uid',session('user')->uid)->get();
+        $default = Address::where('uid',session('user')->uid)->where('default','1')->first();
+        $count = Address::where('uid',session('user')->uid)->where('default','1')->get();
+        if($count->count()==0){
+            return redirect('/address')->withErrors('请先添加地址！');
+        }
+        return view('home.pay',compact('data','udata','default'));
+    }
+    //提交订单页面
+    public function success(Request $request)
+    {
+        $gid = $request->gid;
+        //修改商品为已经售出状态  状态码 3
+        $goods = Goods::find($gid);
+        if($goods->status==3){
+            header('refresh:2;url="/"');
+            die('宝贝已经售出，请浏览其他宝贝！');
+
+        }
+
+        $goods->status = '3';
+        $goods->save();
+
+
+
+        // dd($request->ormb);
+        //生成订单号
+
+        $oid = time().rand('1111','9999');
+        $ormb = $request->ormb;
+        $otime = time();
+        $bid = session('user')->uid;
+
+        $bmsg = $request->bmsg;
+        $sids = Goods::where('gid',$gid)->first();
+        $sid = $sids->uid;
+        $add = Address::find($request->addid);
+
+
+        $order = new ORDER();
+        $order->oid = $oid;
+        $order->ormb = $ormb;
+        $order->otime = $otime;
+        $order->bid = $bid;
+        $order->gid = $gid;
+        $order->save();
+
+        $orderdetail = new ORDERDETAIL();
+        $orderdetail->oid = $oid;
+        $orderdetail->gid = $gid;
+        $orderdetail->bmsg = $bmsg;
+        $orderdetail->addid = $request->addid;
+        $orderdetail->bid = $bid;
+        $orderdetail->sid = $sid;
+        $orderdetail->save();
+
+
+
+
+
+         return view('home.success',compact('add','ormb'));
     }
 
     public function center()
@@ -71,6 +207,7 @@ class IndexController extends Controller
     public function infoupdate(Request $request)
     {
         $arr = [];
+
         //修改数据库个人信息
         $user = HomeUser::where('uname',session('user')->uname)->first();
 
@@ -79,15 +216,25 @@ class IndexController extends Controller
         $user->name = $request->name;
         $user->sex = $request->sex;
         $user->age = $request->age;
+        $user->face = $request->gpic;
+
         $res = $user->save();
+
+
         if($res){
-            $arr['status'] = 1;
-            $arr['msg'] = '修改成功';
+
+            $arr= [
+                'status'=>1,
+                'msg'=>'保存成功'
+            ];
             $ses = HomeUser::where('uname',session('user')->uname)->first();
             session()->put('user',$ses);
         }else{
-            $arr['status'] = 0;
-            $arr['msg'] = '修改失败';
+
+            $arr= [
+                'status'=>0,
+                'msg'=>'保存失败'
+            ];
 
 
         }
@@ -121,6 +268,12 @@ class IndexController extends Controller
         $address->add = $add['add'];
         $address->phone = $add['phone'];
         $address->addname = $add['addname'];
+
+        //查询当前用户有没有默认地址，如果有，直接添加，如果没有，本次添加的地址就为默认地址
+        $addfirst = Address::where('uid',session('user')->uid)->get();
+        if($addfirst->count()==0){
+            $address->default = '1';
+        }
         $res = $address->save();
         if($address){
             $arr['status'] = 1;
@@ -157,8 +310,66 @@ class IndexController extends Controller
     //订单管理
     public function order()
     {
-        return view('home.order');
+
+        $id = session('user')->uid;
+        $orders = ORDER::where('bid',$id)->where('display','1')->get();
+
+        $goods = [];
+        foreach($orders as $k=>$v){
+            $goods[$k] = Goods::where('gid',$v->gid)->first();
+        }
+//        dd($goods);
+
+        return view('home.order',compact('orders','goods'));
     }
+
+    //前台删除订单
+    public function orderDisplay(Request $request)
+    {
+        $oid = $request->oid;
+        $order = ORDER::where('id',$oid)->first();
+
+        $order->display = '0';
+        $res = $order->save();
+        if($res){
+            return 1;
+        }
+
+    }
+
+    //我的发布页面
+    public function publish()
+    {
+
+        //获取本用户发布的商品
+        $goods = Goods::where('uid',session('user')->uid)->get();
+
+        return view('home.publish',compact('goods'));
+    }
+
+    //我的发布商品详情
+    public function mygoodDetail($gid)
+    {
+        $goods = Goods::find($gid);
+        $cid = $goods->cid;
+        $cate = Cate::find($cid);
+        //三级分类名称
+        $thirdCate = $cate->cate_name;
+        //二级分类名称
+        $second = Cate::find($cate->pid);
+        $secondCate = $second->cate_name;
+        //一级分类名称
+        $first = Cate::find($second->pid);
+        $firstCate = $first->cate_name;
+
+
+        return view('home.mygoodDetail',compact('goods','firstCate','secondCate','thirdCate'));
+        //return view('home.order');
+    }
+
+
+
+
     //退款售后
     public function change()
     {

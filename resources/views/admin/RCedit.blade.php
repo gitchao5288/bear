@@ -26,7 +26,7 @@
     <div class="x-body">
         <form class="layui-form">
         	<input type="hidden" name="rid" value="{{$data->rid}}" >
-        	<input type="hidden" name="oldfeilname" value="{{$data->feilname}}" >
+        	{{--<input type="hidden" name="oldfeilname" value="{{$data->feilname}}" >--}}
           <div class="layui-form-item">
               <label for="rname" class="layui-form-label">
                   <span class="x-red">*</span>轮播名称
@@ -149,7 +149,7 @@
                         contentType: false,
                         processData: false,
                         success: function(data) {
-
+                            console.log(data);
 
                             $('#art_thumb').attr('src', '/admin/upload/'+data);
                             $("input[name='feilname']").val('/admin/upload/'+data);

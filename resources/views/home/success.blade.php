@@ -28,13 +28,14 @@
          @else
              <span target="_top" class="h">{{session('user')->uname}}</span>
              <span target="_top" >您好！</span>
+             <a href="/home/exit" target="_top" class="h">[退出]</a>
          @endif
      </div></div>
   </ul>
   <ul class="message-r">
     <div class="topMessage home"><div class="menu-hd"><a href="/" target="_top" class="h">商城首页</a></div></div>
     <div class="topMessage my-shangcheng"><div class="menu-hd MyShangcheng"><a href="/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div></div>
-    <div class="topMessage mini-cart"><div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div></div>
+
     <div class="topMessage favorite"><div class="menu-hd"><a href="/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
   </ul>
 </div>
@@ -64,47 +65,27 @@
    <h2>您已成功付款</h2>
    <div class="successInfo">
      <ul>
-       <li>付款金额<em>¥9.90</em></li>
+       <li>付款金额<em>¥{{$ormb}}</em></li>
        <div class="user-info">
-         <p>收货人：艾迪</p>
-         <p>联系电话：15871145629</p>
-         <p>收货地址：湖北省 武汉市 武昌区 东湖路75号众环大厦</p>
+         <p>收货人: {{$add->addname}}</p>
+         <p>联系电话：{{$add->phone}}</p>
+         <p>收货地址：{{$add->add}}</p>
        </div>
              请认真核对您的收货信息，如有错误请联系客服
                                
      </ul>
      <div class="option">
        <span class="info">您可以</span>
-        <a href="../person/order.html" class="J_MakePoint">查看<span>已买到的宝贝</span></a>
-        <a href="../person/orderinfo.html" class="J_MakePoint">查看<span>交易详情</span></a>
+        <a href="/order" class="J_MakePoint">查看<span>已买到的宝贝</span></a>
+
      </div>
     </div>
   </div>
 </div>
 
 
-<div class="footer" >
- <div class="footer-hd">
- <p>
- <a href="#">恒望科技</a>
- <b>|</b>
- <a href="/">商城首页</a>
- <b>|</b>
- <a href="#">支付宝</a>
- <b>|</b>
- <a href="#">物流</a>
- </p>
- </div>
- <div class="footer-bd">
- <p>
- <a href="#">关于恒望</a>
- <a href="#">合作伙伴</a>
- <a href="#">联系我们</a>
- <a href="#">网站地图</a>
- <em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
- </p>
- </div>
-</div>
+<!--底部-->
+@include('home.public.footer')
 
 
 </body>

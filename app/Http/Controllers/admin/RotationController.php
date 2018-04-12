@@ -98,6 +98,7 @@ class RotationController extends Controller
      */
     public function store(Request $request)
     {
+
        $input = $request->except('fileupload');
        // return($input);
        $res = AdminRotation::create($input);
@@ -147,21 +148,21 @@ class RotationController extends Controller
          $data = AdminRotation::find($id);
          // return $data;
          // var_dump($data);
+
                     $data->rname = $request->rname;
                     $data->link = $request->link;
                     $data->rdes = $request->rdes;
+
+
                     $data->feilname = $request->feilname;
+
                     $data->rstatus = $request->rstatus;
                   $res = $data->save();
-                  if(!$res){
-
-                  }else{
-                    $oldfeilname = $request->input('oldfeilname');
-                    if (!empty($oldfeilname)) {
-                        unlink(public_path().$oldfeilname);
-                    }
-                    
+                  if($res){
                     return 1;
+                  }else{
+
+                    return 0;
                   }
     }
 

@@ -75,7 +75,7 @@ class GoodsController extends Controller
 //        \DB::connection()->disableQueryLog();
 //        dd($sql);
 //        dd($goods);
-        return view('admin.goods.good',['goods'=>$goods, 'request'=> $request,'count'=>$count]);
+        return view('admin.goods.Good',['goods'=>$goods, 'request'=> $request,'count'=>$count]);
 
     }
 
@@ -146,7 +146,7 @@ class GoodsController extends Controller
 
 //        dd($good->cate->id);
 
-        return view('admin.goods.goodsedit',compact('good','tree','one_id','two_name','three_name'));
+        return view('admin.goods.GoodsEdit',compact('good','tree','one_id','two_name','three_name'));
     }
 
     /**
@@ -160,55 +160,25 @@ class GoodsController extends Controller
     {
         // 获取提交的数据
         $data = $request->all();
-//        return $data;
-
-//        表单验证
-        /*$rule = [
-//            'uname' => 'required',
-            'gname' => 'required',
-            'cname' => 'required',
-            'thumb' => 'required',
-            'price' => 'required',
-            'gdesc' => 'required',
-
-        ];
-
-        $msg = [
-            'game.required' => '商品名称不能为空',
-            'cname.required' => '请重新选择类别',
-            'thumb.required' => '商品图片不能为空',
-            'price.required' => '商品价格不能为空',
-            'gdesc.required' => '商品描述不能为空',
-        ];
-
-        $validator = Validator::make($data, $rule, $msg);
-        // 2. 如果验证失败
-        if ($validator->fails()) {
-            return redirect('admin/Good/{'.$id.'}/edit')
-                ->withErrors($validator)
-                ->withInput();
-        }*/
+//        return $data['cname'];
 
 
-//        根据id获取数据库中数据
+
+//        根据类名找id并修改商品的cid
+        $cate = Cate::where('cate_name',$data['cname'])->first();
 
 //        修改商品信息
         $row_goods = Goods::where('gid',$id)
                 ->update(['gname'=>$data['gname'],
-
+                        'cid'=>$cate->id,
                         'gpic'=>$data['thumb'],
                         'price'=>$data['price'],
                         'gdesc'=>$data['gdesc'],
                         'status'=>$data['status'],
                     ]);
 
-//        修改类别名称
-        $good = Goods::find($id);
-
-        $row_cate = Cate::where('id',$good->cid)
-                ->update(['cate_name'=>$data['cname']]);
-//        return $row1;
-        if ( $row_goods || $row_cate ) {
+//        return $cate;
+        if ( $row_goods ) {
             $arr = [
                 'status'=>0,
                 'msg'=>'修改成功'

@@ -32,6 +32,7 @@
 									@else
 										<span target="_top" class="h">{{session('user')->uname}}</span>
 										<span target="_top" >您好！</span>
+										<a href="/home/exit" target="_top" class="h">[退出]</a>
 									@endif
 								</div>
 							</div>
@@ -43,9 +44,7 @@
 							<div class="topMessage my-shangcheng">
 								<div class="menu-hd MyShangcheng"><a href="/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 							</div>
-							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-							</div>
+
 							<div class="topMessage favorite">
 								<div class="menu-hd"><a href="/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
 						</ul>
@@ -55,7 +54,9 @@
 
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="/home/images/logobig.png" /></li>
+
+								<li><img src="/home/basic/images2/logo2.png" /></li>
+
 							</div>
 
 							<div class="search-bar pr">
@@ -74,19 +75,7 @@
 		</header>
             <div class="nav-table">
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
-					   <div class="nav-cont">
-							<ul>
-								<li class="index"><a href="#">首页</a></li>
-                                <li class="qc"><a href="#">闪购</a></li>
-                                <li class="qc"><a href="#">限时抢</a></li>
-                                <li class="qc"><a href="#">团购</a></li>
-                                <li class="qc last"><a href="#">大包装</a></li>
-							</ul>
-						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-						    </div>
-						</div>
+				@include('home.public.nav')
 			</div>
 			<b class="line"></b>
 		<div class="center">
@@ -119,17 +108,14 @@
 											<div class="s-title"><a href="#" title="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰">包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰</a></div>
 											<div class="s-price-box">
 												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">42.50</em></span>
-												<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">68.00</em></span>
+
+
 											</div>
-											<div class="s-extra-box">
-												<span class="s-comment">好评: 98.03%</span>
-												<span class="s-sales">月销: 219</span>
-											</div>
+
 										</div>
 										<div class="s-tp">
-											<span class="ui-btn-loading-before">找相似</span>
-											<i class="am-icon-shopping-cart"></i>
-											<span class="ui-btn-loading-before buy">加入购物车</span>
+
+
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
 											</p>
@@ -149,17 +135,13 @@
 											<div class="s-title"><a href="#" title="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰">s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰</a></div>
 											<div class="s-price-box">
 												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">49.90</em></span>
-												<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">88.00</em></span>
+
 											</div>
-											<div class="s-extra-box">
-												<span class="s-comment">好评: 99.74%</span>
-												<span class="s-sales">月销: 69</span>
-											</div>
+
 										</div>
 										<div class="s-tp">
-											<span class="ui-btn-loading-before">找相似</span>
-											<i class="am-icon-shopping-cart"></i>
-											<span class="ui-btn-loading-before buy">加入购物车</span>
+
+
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
 											</p>
@@ -180,17 +162,14 @@
 											<div class="s-title"><a href="#" title="4折抢购!十二生肖925银女戒指,时尚开口女戒">4折抢购!十二生肖925银女戒指,时尚开口女戒</a></div>
 											<div class="s-price-box">
 												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">378.00</em></span>
-												<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">1888.00</em></span>
+
+
 											</div>
-											<div class="s-extra-box">
-												<span class="s-comment">好评: 99.93%</span>
-												<span class="s-sales">月销: 278</span>
-											</div>
+
 										</div>
 										<div class="s-tp">
-											<span class="ui-btn-loading-before">找相似</span>
-											<i class="am-icon-trash"></i>
-											<span class="ui-btn-loading-before buy">进入店铺</span>
+
+
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
 											</p>
@@ -210,17 +189,14 @@
 											<div class="s-title"><a href="#" title="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰">包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰</a></div>
 											<div class="s-price-box">
 												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">42.50</em></span>
-												<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">68.00</em></span>
+
+
 											</div>
-											<div class="s-extra-box">
-												<span class="s-comment">好评: 98.03%</span>
-												<span class="s-sales">月销: 219</span>
-											</div>
+
 										</div>
 										<div class="s-tp">
-											<span class="ui-btn-loading-before">找相似</span>
-											<i class="am-icon-shopping-cart"></i>
-											<span class="ui-btn-loading-before buy">加入购物车</span>
+
+
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
 											</p>
@@ -240,17 +216,14 @@
 											<div class="s-title"><a href="#" title="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰">s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰</a></div>
 											<div class="s-price-box">
 												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">49.90</em></span>
-												<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">88.00</em></span>
+
+
 											</div>
-											<div class="s-extra-box">
-												<span class="s-comment">好评: 99.74%</span>
-												<span class="s-sales">月销: 69</span>
-											</div>
+
 										</div>
 										<div class="s-tp">
-											<span class="ui-btn-loading-before">找相似</span>
-											<i class="am-icon-shopping-cart"></i>
-											<span class="ui-btn-loading-before buy">加入购物车</span>
+
+
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
 											</p>
@@ -270,17 +243,14 @@
 											<div class="s-title"><a href="#" title="4折抢购!十二生肖925银女戒指,时尚开口女戒">4折抢购!十二生肖925银女戒指,时尚开口女戒</a></div>
 											<div class="s-price-box">
 												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">378.00</em></span>
-												<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">1888.00</em></span>
+
+
 											</div>
-											<div class="s-extra-box">
-												<span class="s-comment">好评: 99.93%</span>
-												<span class="s-sales">月销: 278</span>
-											</div>
+
 										</div>
 										<div class="s-tp">
-											<span class="ui-btn-loading-before">找相似</span>
-											<i class="am-icon-shopping-cart"></i>
-											<span class="ui-btn-loading-before buy">加入购物车</span>
+
+
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
 											</p>
@@ -298,31 +268,10 @@
 
 				</div>
 				<!--底部-->
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="#">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-							<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
-						</p>
-					</div>
-				</div>
+				@include('home.public.footer')
 			</div>
 
-			@include('home.public.centerlayout')
+
 		</div>
 
 	</body>

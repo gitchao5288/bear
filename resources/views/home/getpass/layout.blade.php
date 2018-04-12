@@ -29,8 +29,15 @@
 						<ul class="message-l">
 							<div class="topMessage">
 								<div class="menu-hd">
-									<a href="#" target="_top" class="h">亲，请登录</a>
-									<a href="#" target="_top">免费注册</a>
+									{{--如果用户没有登录，显示登录链接，如果已经登录，显示用户账号--}}
+									@if(!session('user'))
+										<a href="/home/login/login" target="_top" class="h">亲，请登录</a>
+										<a href="/home/login/index" target="_top">免费注册</a>
+									@else
+										<span target="_top" class="h">{{session('user')->uname}}</span>
+										<span target="_top" >您好！</span>
+										<a href="/home/exit" target="_top" class="h">[退出]</a>
+									@endif
 								</div>
 							</div>
 						</ul>

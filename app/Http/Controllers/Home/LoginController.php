@@ -37,10 +37,16 @@ class LoginController extends Controller
     public function doreg(Request $request)
     {
 
+
+
         // 除去_token -> 获取用户信息
         $data = $request->except('_token');
 //        $uname = $request->old('uname');
 
+        if ( empty($data['agree']) ) {
+            flash('请认真阅读并同意协议')->error();
+            return redirect('/home/login/index');
+        }
 
         $name = $data['uname'];
         $pass = $data['password'];
@@ -324,10 +330,21 @@ class LoginController extends Controller
             return redirect('home/login/login')->with('errors','账号与密码不匹配,请重新输入');
         }
 
+        //判断登录方法
         if ( $uname_user ) {
+
+            if ( $uname_user->email && $uname_user->status!=1 ) {
+                return redirect('home/login/login')->with('errors','邮箱未激活,请去邮箱激活');
+            }
+
             $user = $uname_user;
 
         } else if ( $email_user ) {
+
+            if ( $email_user->status!=1 ) {
+                return redirect('home/login/login')->with('errors','邮箱未激活,请去邮箱激活');
+            }
+
             $user = $email_user;
 
         } else if ( $phone_user ) {
@@ -349,11 +366,20 @@ class LoginController extends Controller
 
 //        Cookie::queue('www', $user->uname, 1);
 
+
 //        dd(Cookie::get('www'));
 
 //        7. 如果都正确跳转到前台首页
         return redirect('/');
 
+    }
+
+    public function exit()
+    {
+        session()->forget('user');
+
+
+        return redirect('/home/login/login')->withErrors('退出登录成功');
     }
 
 

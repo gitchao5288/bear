@@ -200,7 +200,7 @@
                                   //发异步把用户状态进行更改
 
                                   $(obj).find('i').html('&#xe601;');
-                                  
+
                                   layer.msg('已上架!',{icon: 6,time:1000});
                                   location.reload(true);
 
@@ -212,7 +212,7 @@
           }
       }
 
-      /*用户-删除*/
+      /*商品-删除****************************************************/
       function member_del(obj,id){
           // 获取商品id
 
@@ -223,11 +223,16 @@
                   if(data.status == 0){
                       //发异步删除数据
                       $(obj).parents("tr").remove();
-                      layer.msg('已删除!',{icon:1,time:1000});
-                      location.reload(true);
+                      layer.msg('已删除!',{icon:1,time:3000});
+                        setTimeout(function () {
+                            location.reload(true);
+                        },3000)
+
                   }else{
-                      layer.msg('删除失败!',{icon:1,time:1000});
-                      location.reload(true);
+                      layer.msg('删除失败!',{icon:1,time:3000});
+                      setTimeout(function () {
+                          location.reload(true);
+                      },3000)
                   }
               });
 
@@ -238,7 +243,7 @@
       }
 
 
-
+    // 批量删除 **********************************************************
       function delAll (argument) {
 
         // var data = tableCheck.getData();
@@ -251,22 +256,33 @@
           });
           // console.log(ids);
 
+          layer.confirm('确认要删除吗？',function(index){
+
           $.get('/admins/Good/delall',{"ids":ids},function(data){
               //后台如果删除成功，在前台上也把相关记录删除掉
               console.log(data);
               if(data.status == 0){
-                  layer.msg('删除成功', {icon: 1});
+                  layer.msg('删除成功', {icon: 1,time:3000});
                   $(".layui-form-checked").not('.header').parents('tr').remove();
+                  setTimeout(function () {
+                      location.reload(true);
+                  },3000)
               }else{
-                  layer.msg('删除失败', {icon: 2});
+                  layer.msg('删除失败', {icon: 2,time:3000});
+                  setTimeout(function () {
+                      location.reload(true);
+                  },3000)
               }
           })
 
-        layer.confirm('确认要删除吗？'+data,function(index){
-            //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
-            $(".layui-form-checked").not('.header').parents('tr').remove();
-        });
+          });
+
+        // layer.confirm('确认要删除吗？'+data,function(index){
+        //     //捉到所有被选中的，发异步进行删除
+        //     layer.msg('删除成功', {icon: 1});
+        //     $(".layui-form-checked").not('.header').parents('tr').remove();
+        //
+        // });
       }
 
 

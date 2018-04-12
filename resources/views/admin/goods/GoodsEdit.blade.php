@@ -50,8 +50,9 @@
                 {{--<input type="text" id="username" name="gname" value="{{$good->Cate->cate_name}}" required="" lay-verify="required"--}}
                        {{--autocomplete="off" class="layui-input">--}}
             {{--</div>--}}
+            <input type="hidden" name="cate_name" value="{{$three_name}}">
             <div class="layui-input-inline">
-                <select name="one" id="one" lay-filter="one" >
+                <select name="one" id="one" lay-filter="one" onchange="chengeOne()">
 
                     @foreach($tree as $v)
                         @if($v->lev==1)
@@ -233,7 +234,9 @@
     //     });
     // });
 
-    var hid = '';
+    var hid = $('input[name="cate_name"]').val();
+    // console.log(hid);
+
     layui.use(['form','layer'], function(){
         $ = layui.jquery;
         var form = layui.form
@@ -247,58 +250,22 @@
         // form = layui.form;
         $form = $('form');
 
-        //监听提交
-        /*form.on('submit(edit)', function(data){
-
-            //获取当前要修改的用户的id
-            var gid = $("input[name='gid']").val();
-            // var gid = $form.find('input[name=gid]').value;
-            console.log(gid);
-            $.ajax({
-                type: "PUT",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "/admins/Good/"+gid,
-                data: data.field,
-                dataType: "json",
-                success: function(data){
-                    console.log(data);
-                    // 如果添加成功
-                    if(data.status == 0){
-                        layer.alert(data.msg,{icon:6,time:3000},function(){
-                            //关闭弹层，刷新父页面
-
-                        })
-                        // parent.location.reload(true);
-                    }else{
-                        layer.alert(data.msg,{icon:6,time:3000},function(){
-                            //关闭弹层，刷新父页面
-
-                        })
-                        // parent.location.reload(true);
-                    }
-                }
-            });
-
-            return false;
-        });*/
 
 
 
         // 监听一级类
-        form.on('select(one)', function changeOne(data){
+        form.on('select(one)', function(data){
 
             // console.log(data.elem); //得到select原始DOM对象
             // console.log(data.value); //得到被选中的值
             // console.log(data.othis); //得到美化后的DOM对象
 
             var id = data.value;
+            // console.log(id);
 
             $form.find('select[name=two]').html("");
             $form.find('select[name=three]').html("");
             form.render('select');
-
 
 
             $.get('/admins/Good/two',{gid:id},function(data){
@@ -419,7 +386,7 @@
         var status = $('input[type="radio"]:checked').val();
         var gname = $('input[name="gname"]').val();
 
-        // console.log(status);
+        // console.log(cname);
 
         $.ajax({
             type: "PUT",
@@ -430,27 +397,27 @@
             data: {uname:uname,cname:cname,thumb:thumb,price:price,gdesc:gdesc,status:status,gname:gname},
             dataType: "json",
             success: function(data){
-                console.log(data);
+                // console.log(data);
                 // 如果添加成功
                 if(data.status == 0){
                     layer.alert(data.msg,{icon:6,time:3000},function(){
                         //关闭弹层，刷新父页面
 
+                        parent.location.reload(true);
                     })
-                    parent.location.reload(true);
                 }else{
                     layer.alert(data.msg,{icon:6,time:3000},function(){
                         //关闭弹层，刷新父页面
 
+                        parent.location.reload(true);
                     })
-                    parent.location.reload(true);
                 }
             }
         });
-        if(!cname ){
-            alert('请重新选择类别');
-        }
 
+        if(!cname || !thumb || !price || !gdesc || !status || !gname){
+            alert('必填项不能为空');
+        }
 
         return false;
     });
